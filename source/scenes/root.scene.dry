@@ -11,6 +11,7 @@ go-to: start_menu_2
 = An Alternative History
 
 @start_menu_2
+
 - @start: Start game
 - @credits: Credits
 - @game_over.achievements
