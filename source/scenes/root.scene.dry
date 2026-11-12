@@ -245,7 +245,7 @@ Q.old_middle_qol = 100;
 Q.new_middle_qol = 100;
 
 Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
-Q.parties = ['linke', 'greens', 'spd', 'cdu', 'csu', 'afd','other'];
+Q.parties = ['linke', 'greens', 'spd', 'cdu', 'csu', 'fdp', 'bsw', 'afd','other'];
 
 // TODO: add 'sapd' later on
 Q.sapd_formed = 0;
@@ -271,6 +271,13 @@ Q.catholics_linke = 15;
 // since they were ideologically similar, but they were separate parties.
 // They did not have a CDU/CSU-style relationship.
 Q.linke_r = 26;
+Q.greens_r = 10;
+Q.spd_r = 10;
+Q.cdu_r = 10;
+Q.csu_r = 10;
+Q.fdp_r = 10;
+Q.bws_r = 10;
+Q.afd_r = 10;
 
 // diff from prev
 Q.old_linke_r = 26;
