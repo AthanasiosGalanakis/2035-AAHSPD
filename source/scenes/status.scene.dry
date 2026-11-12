@@ -49,9 +49,11 @@ Reichstag composition:
 {!<span class="tooltip-text" title="CDU">CDU</span>!}: [+ cdu_r +]%
 # 1928: 10, 1930: 13
 {!<span class="tooltip-text" title="CSU">CSU</span>!}: [+ cdu_r +]%
+[? if fdp_r > 100: FDP: [+ fdp_r +]% ?]
+[? if bws_r > 100: FDP: [+ bsw_r +]% ?]
 # 1928: 10, 1930: 13
 {!<span class="tooltip-text" title="Afd">Afd</span>!}: [+ cdu_r +]%
-[? if fdp_r > 5: FDP: [+ fdp_r +]% ?]
+
 
 [? if spd_in_government = 1 : Budget: [+ budget +] ?]
 
