@@ -6,7 +6,8 @@ go-to: post_event if started = 1; start_menu if started = 0
 new-page: true
 go-to: start_menu_2
 
-= Social Democracy: An Alternate History
+= Social Democracy
+= An Alternate History
 
 @start_menu_2
 
@@ -21,7 +22,7 @@ on-arrival: {!
 Q.started = 1;
 // time elapsed (in months)
 Q.time = 1;
-Q.year = 1928;
+Q.year = 2030;
 Q.month = 1;
 // how many actions have been taken this month?
 Q.month_actions = 0;
@@ -560,7 +561,6 @@ For more information on the politics and government of the German Republic, see 
 - @1928_main: Begin (normal difficulty)
 - @1928_hard: Begin (hard difficulty)
 - @1928_historical: Begin (historical mode)
-- @1928_custom: Customize difficulty settings
 
 @1928_easy
 on-arrival: difficulty = -1; resources = 4; dues = 3; starting_rb_strength = 2500; rb_strength = 2500; left_dissent = 10; kpd_relation = 29; z_relation = 54; dvp_relation = 49; starting_budget = 5; budget = 5; hand_size = 4; starting_dissent = 0; starting_relations = 0;
