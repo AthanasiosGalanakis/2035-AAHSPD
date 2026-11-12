@@ -557,27 +557,35 @@ table {
 /* Styles for parties */
 .seat.linke {
     fill: #8B0000;
+    color: #8B0000;
 }
 .seat.greens {
     fill: #E3000F;
+    color: #E3000F;
 }
 .seat.spd {
     fill: #DCCA4A;
+    color: #DCCA4A;
 }
 .seat.cdu {
     fill: #000;
+    color: #000;
 }
 .seat.csu {
     fill: #69A2BE;
+    color: #69A2BE;
 }
 .seat.fdp {
     fill: #D5AC27;
+    color: #D5AC27;
 }
 .seat.bsw{
     fill: #D5AC27;
+    color: #D5AC27;
 }
 .seat.afd {
     fill: #D5AC27;
+    color: #D5AC27;
 }
 .seat.other {
     fill: #909090;

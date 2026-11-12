@@ -276,7 +276,7 @@ Q.spd_r = 10;
 Q.cdu_r = 10;
 Q.csu_r = 10;
 Q.fdp_r = 10;
-Q.bws_r = 10;
+Q.bsw_r = 10;
 Q.afd_r = 10;
 
 // diff from prev
