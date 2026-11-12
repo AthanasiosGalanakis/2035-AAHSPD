@@ -6,11 +6,11 @@ go-to: post_event if started = 1; start_menu if started = 0
 new-page: true
 go-to: start_menu_2
 
-= Social Democracy
-= An Alternate History
+= Social Democracy 
+
+= An Alternative History
 
 @start_menu_2
-
 - @start: Start game
 - @credits: Credits
 - @game_over.achievements
@@ -575,7 +575,7 @@ go-to: 1928_main
 choose-if: 0
 subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
 on-arrival: {!
-Q.hand_size = 3;
+Q.hand_size = 4;
 Q.difficulty = 2;
 Q.discard_disabled = 1;
 Q.historical_mode = 1;
