@@ -16,13 +16,13 @@ function addMonths(date, months) {
 d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataMax, dataMin, additionalMonths) {
     /* params */
     if (!parties) {
-        parties = ['spd', 'kpd', 'ddp', 'z', 'dvp', 'dnvp', 'nsdap', 'other'];
+        parties = ['linke', 'greens', 'spd', 'cdu', 'csu', 'afd', 'other'];
     }
     if (!partyColors) {
-        partyColors = {'spd': '#E3000F', 'kpd': '#8B0000', 'ddp': '#DCCA4A', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3f7bc1', 'nsdap': '#954B00', 'other': '#a0a0a0'};
+        partyColors = {'linke': '#8B0000', 'greens': '#8B0000', 'spd': '#8B0000', 'cdu': '#8B0000', 'csu': '#8B0000', 'afd': '#8B0000', 'other': '#8B0000'};
     }
     if (!partyNames) {
-        partyNames = {'spd': 'SPD', 'kpd': 'KPD', 'ddp': 'DDP', 'z': 'Z + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others'};
+        partyNames = {'linke': 'Die Linke', 'greens': 'Die Grüne', 'spd': 'SPD', 'cdu': 'CDU', 'csu': 'CSU', 'afd': 'AfD', 'other': 'Others'};
     }
     if (!additionalMonths) {
         additionalMonths = 10;
