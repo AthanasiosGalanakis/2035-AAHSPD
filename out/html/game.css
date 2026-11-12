@@ -560,8 +560,6 @@ table {
 }
 .seat.greens {
     fill: #E3000F;
-    stroke: var(--border-color);
-    stroke-width: 1.5px;
 }
 .seat.spd {
     fill: #DCCA4A;

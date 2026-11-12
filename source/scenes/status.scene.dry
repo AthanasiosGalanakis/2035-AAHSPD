@@ -38,21 +38,19 @@ Chancellor: [+ chancellor +] ([+ chancellor_party +])
 Reichstag composition:
 
 # 1928: 10, 1930: 13
-{!<span class="tooltip-text" title="Linke">Linke</span>!}: [+ linke_r +]%
+{!<span class="tooltip-text seat.linke" title="Linke">Linke</span>!}: [+ linke_r +]%{!<br>!}
 # 1928: 10, 1930: 13
-{!<span class="tooltip-text" title="Grüne">Grüne</span>!}: [+ greens_r +]%
+{!<span class="tooltip-text seat.greens" title="Grüne">Grüne</span>!}: [+ greens_r +]%{!<br>!}
 # 1928: 30, 1930: 25, 1932: 22
-{!<span class="tooltip-text" title="Social Democratic Party of Germany">SPD</span>!}: [+ spd_r +]%
-[? if sapd_formed and sapd_r > 0: SAPD: [+ sapd_r +]% ?]
-[? if srpd_formed and srpd_r > 0: SRPD: [+ srpd_r +]% ?]
+{!<span class="tooltip-text seat.spd" title="SPD">SPD</span>!}: [+ spd_r +]%{!<br>!}
 # 1928: 10, 1930: 13
-{!<span class="tooltip-text" title="CDU">CDU</span>!}: [+ cdu_r +]%
+{!<span class="tooltip-text seat.cdu" title="CDU">CDU</span>!}: [+ cdu_r +]%{!<br>!}
 # 1928: 10, 1930: 13
-{!<span class="tooltip-text" title="CSU">CSU</span>!}: [+ cdu_r +]%
-[? if fdp_r > 100: FDP: [+ fdp_r +]% ?]
-[? if bws_r > 100: FDP: [+ bsw_r +]% ?]
+{!<span class="tooltip-text seat.csu" title="CSU">CSU</span>!}: [+ cdu_r +]%{!<br>!}
+[? if fdp_r > 1: {!<span class="tooltip-text seat.fdp" title="FDP">FDP</span>!}: [+ fdp_r +]%{!<br>!} ?]
+[? if bsw_r > 1: {!<span class="tooltip-text seat.bsw" title="BSW">BSW</span>!}: [+ bsw_r +]%{!<br>!} ?]
 # 1928: 10, 1930: 13
-{!<span class="tooltip-text" title="Afd">Afd</span>!}: [+ cdu_r +]%
+{!<span class="tooltip-text seat.afd" title="Afd">Afd</span>!}: [+ cdu_r +]%{!<br>!}
 
 
 [? if spd_in_government = 1 : Budget: [+ budget +] ?]
