@@ -556,36 +556,36 @@ table {
 
 /* Styles for parties */
 .seat.linke {
-    fill: #8B0000;
-    color: #8B0000;
+    fill: #B61C3E;
+    color: #B61C3E;
 }
 .seat.greens {
+    fill: #46962B;
+    color: #46962B;
+}
+.seat.spd {
     fill: #E3000F;
     color: #E3000F;
 }
-.seat.spd {
-    fill: #DCCA4A;
-    color: #DCCA4A;
-}
 .seat.cdu {
-    fill: #000;
-    color: #000;
+    fill: #000000;
+    color: #000000;
 }
 .seat.csu {
-    fill: #69A2BE;
-    color: #69A2BE;
+    fill: #0080C9;
+    color: #0080C9;
 }
 .seat.fdp {
-    fill: #D5AC27;
-    color: #D5AC27;
+    fill: #FFED00;
+    color: #FFED00;
 }
 .seat.bsw{
-    fill: #D5AC27;
-    color: #D5AC27;
+    fill: #542344;
+    color: #542344;
 }
 .seat.afd {
-    fill: #D5AC27;
-    color: #D5AC27;
+    fill: #009EE0;
+    color: #009EE0;
 }
 .seat.other {
     fill: #909090;

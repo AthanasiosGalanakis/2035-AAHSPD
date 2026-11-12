@@ -35,7 +35,7 @@ President: [+ president +]
 
 Chancellor: [+ chancellor +] ([+ chancellor_party +])
 
-Reichstag composition:
+= Reichstag Composition
 
 # 1928: 10, 1930: 13
 {!<span class="tooltip-text seat linke" title="Linke">Linke</span>!}: [+ linke_r +]%
