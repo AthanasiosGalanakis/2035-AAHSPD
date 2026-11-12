@@ -22,7 +22,7 @@ d3.linegraph = function(noTicks, noDots, parties, partyColors, partyNames, dataM
         partyColors = {'linke': '#8B0000', 'greens': '#8B0000', 'spd': '#8B0000', 'cdu': '#8B0000', 'csu': '#8B0000', 'afd': '#8B0000', 'other': '#8B0000'};
     }
     if (!partyNames) {
-        partyNames = {'linke': 'Die Linke', 'greens': 'Die Grüne', 'spd': 'SPD', 'cdu': 'CDU', 'csu': 'CSU', 'afd': 'AfD', 'other': 'Others'};
+        partyNames = {'linke': 'Linke', 'greens': 'Grüne', 'spd': 'SPD', 'cdu': 'CDU', 'csu': 'CSU', 'afd': 'AfD', 'other': 'Others'};
     }
     if (!additionalMonths) {
         additionalMonths = 10;
