@@ -572,6 +572,12 @@ table {
 .seat.csu {
     fill: #69A2BE;
 }
+.seat.fdp {
+    fill: #D5AC27;
+}
+.seat.bsw{
+    fill: #D5AC27;
+}
 .seat.afd {
     fill: #D5AC27;
 }
