@@ -576,8 +576,8 @@ table {
     color: #0080C9;
 }
 .seat.fdp {
-    fill: #FFED00;
-    color: #FFED00;
+    fill: #C8A800;
+    color: #C8A800;
 }
 .seat.bsw{
     fill: #542344;
@@ -620,9 +620,10 @@ table {
     bottom: calc(100% + 9px);
     z-index: 10000;
     box-sizing: border-box;
-    width: 220px;
+    width: 240px;
+    min-height: 210px;
     max-width: calc(100vw - 24px);
-    padding: 12px;
+    padding: 14px 14px 16px;
     border: 2px solid #999;
     background: var(--content-bg-color, #fff);
     color: var(--text-color, #000);
@@ -651,5 +652,49 @@ table {
     visibility: visible;
     opacity: 1;
 }
-.ideology-tooltip-title { display: block; margin-bottom: 7px; }
+.ideology-tooltip-title {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    line-height: 1.25;
+}
 .ideology-tooltip-description { display: block; }
+.ideology-tooltip-image {
+    display: block;
+    width: 86px;
+    height: 73px;
+    margin: 0 auto 10px;
+    object-fit: contain;
+}
+.ideology-tooltip-logo-placeholder {
+    box-sizing: border-box;
+    border: 2px dashed #999;
+    color: #999;
+    font-size: 0.75rem;
+    line-height: 69px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+/* when there is no room above the name, the card opens below it */
+.tip-below .ideology-tooltip-tip {
+    top: calc(100% + 9px);
+    bottom: auto;
+}
+.tip-below .ideology-tooltip-tip:after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: #999;
+}
+
+/* Sidebar spacing: tighter rows, more room above each heading */
+#qualities p {
+  margin-bottom: 0.6em;
+}
+#qualities h1 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+#qualities h1:first-child {
+  margin-top: 0.3em;
+}

@@ -20,7 +20,7 @@ if (Q.economic_growth) {
 
 Resources available: [+ resources +]
 
-SPD position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
+{!<span class="ideology-tooltip-wrap seat spd" data-tip="spd" tabindex="0">SPD</span>!} position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
 [? if in_weimar_coalition and spd_in_government: Weimar Coalition ?][? if in_grand_coalition and spd_in_government: Grand Coalition ?][? if in_popular_front and spd_in_government: Popular Front ?][? if in_left_front and spd_in_government: Left Front ?][? if in_spd_majority and spd_in_government: SPD majority ?][? if in_minority_government and spd_in_government: minority government ?][? if in_emergency_government and spd_in_government: emergency government ?]
 
 [? if spd_in_government and not in_spd_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
@@ -33,7 +33,7 @@ Internal dissent: [+ dissent_percent : dissent +]
 
 President: [+ president +]
 
-Chancellor: [+ chancellor +] ([+ chancellor_party +])\
+Chancellor: [+ chancellor +] [? if chancellor_party = "SPD" : ({!<span class="ideology-tooltip-wrap seat spd" data-tip="spd" tabindex="0">SPD</span>!})?][? if chancellor_party = "CDU" and csu_split = 0 : ({!<span class="ideology-tooltip-wrap seat cdu" data-tip="cducsu" tabindex="0">CDU/CSU</span>!})?][? if chancellor_party = "CDU" and csu_split = 1 : ({!<span class="ideology-tooltip-wrap seat cdu" data-tip="cdu" tabindex="0">CDU</span>!})?][? if chancellor_party = "CSU" : ({!<span class="ideology-tooltip-wrap seat csu" data-tip="csu" tabindex="0">CSU</span>!})?][? if chancellor_party = "Grüne" : ({!<span class="ideology-tooltip-wrap seat greens" data-tip="greens" tabindex="0">Grüne</span>!})?][? if chancellor_party = "Linke" : ({!<span class="ideology-tooltip-wrap seat linke" data-tip="linke" tabindex="0">Linke</span>!})?][? if chancellor_party = "FDP" : ({!<span class="ideology-tooltip-wrap seat fdp" data-tip="fdp" tabindex="0">FDP</span>!})?][? if chancellor_party = "BSW" : ({!<span class="ideology-tooltip-wrap seat bsw" data-tip="bsw" tabindex="0">BSW</span>!})?][? if chancellor_party = "AfD" : ({!<span class="ideology-tooltip-wrap seat afd" data-tip="afd" tabindex="0">AfD</span>!})?]
 
 Next election: [+ next_election_month : month +] [+ next_election_year +]
 
@@ -93,31 +93,31 @@ Economic growth: [+ economic_growth_2 +]%
 
 = Party Leadership
 
-{!<span class="ideology-tooltip-wrap seat linke" data-tip="linke" tabindex="0">Linke</span>!}: [+ linke_leader +] ([+ linke_ideology +])
+{!<span class="ideology-tooltip-wrap seat linke" data-tip="linke" tabindex="0">Linke</span>!}{!<br>!}Party Leader: [+ linke_leader +]{!<br>!}Party Ideology: [+ linke_ideology +]
 
-{!<span class="ideology-tooltip-wrap seat greens" data-tip="greens" tabindex="0">Grüne</span>!}: [+ greens_leader +] ([+ greens_ideology +])
+{!<span class="ideology-tooltip-wrap seat greens" data-tip="greens" tabindex="0">Grüne</span>!}{!<br>!}Party Leader: [+ greens_leader +]{!<br>!}Party Ideology: [+ greens_ideology +]
 
-[? if csu_split = 0 : {!<span class="ideology-tooltip-wrap seat cdu" data-tip="cducsu" tabindex="0">CDU/CSU</span>!}: [+ cdu_leader +] ([+ cdu_ideology +]) ?]
+[? if csu_split = 0 : {!<span class="ideology-tooltip-wrap seat cdu" data-tip="cducsu" tabindex="0">CDU/CSU</span>!}{!<br>!}Party Leader: [+ cdu_leader +]{!<br>!}Party Ideology: [+ cdu_ideology +] ?]
 
-[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat cdu" data-tip="cdu" tabindex="0">CDU</span>!}: [+ cdu_leader +] ([+ cdu_ideology +]) ?]
+[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat cdu" data-tip="cdu" tabindex="0">CDU</span>!}{!<br>!}Party Leader: [+ cdu_leader +]{!<br>!}Party Ideology: [+ cdu_ideology +] ?]
 
-[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat csu" data-tip="csu" tabindex="0">CSU</span>!}: [+ csu_leader +] ([+ csu_ideology +]) ?]
+[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat csu" data-tip="csu" tabindex="0">CSU</span>!}{!<br>!}Party Leader: [+ csu_leader +]{!<br>!}Party Ideology: [+ csu_ideology +] ?]
 
-{!<span class="ideology-tooltip-wrap seat fdp" data-tip="fdp" tabindex="0">FDP</span>!}: [+ fdp_leader +] ([+ fdp_ideology +])
+{!<span class="ideology-tooltip-wrap seat fdp" data-tip="fdp" tabindex="0">FDP</span>!}{!<br>!}Party Leader: [+ fdp_leader +]{!<br>!}Party Ideology: [+ fdp_ideology +]
 
-{!<span class="ideology-tooltip-wrap seat bsw" data-tip="bsw" tabindex="0">BSW</span>!}: [+ bsw_leader +] ([+ bsw_ideology +])
+{!<span class="ideology-tooltip-wrap seat bsw" data-tip="bsw" tabindex="0">BSW</span>!}{!<br>!}Party Leader: [+ bsw_leader +]{!<br>!}Party Ideology: [+ bsw_ideology +]
 
-{!<span class="ideology-tooltip-wrap seat afd" data-tip="afd" tabindex="0">AfD</span>!}: [+ afd_leader +] ([+ afd_ideology +])
+{!<span class="ideology-tooltip-wrap seat afd" data-tip="afd" tabindex="0">AfD</span>!}{!<br>!}Party Leader: [+ afd_leader +]{!<br>!}Party Ideology: [+ afd_ideology +]
 
 = Internal Factions of the SPD
 
-{!<span class="ideology-tooltip-wrap left color" data-tip="left" tabindex="0">Parlamentarische Linke</span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +]
+{!<span class="ideology-tooltip-wrap left color" data-tip="left" tabindex="0">Parlamentarische Linke</span>!}{!<br>!}Strength: [+ left_strength : strength +]{!<br>!}Dissent: [+ left_dissent : dissent +]
 
-{!<span class="ideology-tooltip-wrap center color" data-tip="center" tabindex="0">Netzwerk Berlin</span>!} strength: [+ center_strength : strength +], dissent: [+ center_dissent : dissent +]
+{!<span class="ideology-tooltip-wrap center color" data-tip="center" tabindex="0">Netzwerk Berlin</span>!}{!<br>!}Strength: [+ center_strength : strength +]{!<br>!}Dissent: [+ center_dissent : dissent +]
 
-{!<span class="ideology-tooltip-wrap labor color" data-tip="labor" tabindex="0">AfA</span>!} strength: [+ labor_strength : strength +], dissent: [+ labor_dissent : dissent +]
+{!<span class="ideology-tooltip-wrap labor color" data-tip="labor" tabindex="0">AfA</span>!}{!<br>!}Strength: [+ labor_strength : strength +]{!<br>!}Dissent: [+ labor_dissent : dissent +]
 
-{!<span class="ideology-tooltip-wrap reformist color" data-tip="reformist" tabindex="0">Seeheimer Kreis</span>!} strength: [+ reformist_strength : strength +], dissent: [+ reformist_dissent : dissent +]
+{!<span class="ideology-tooltip-wrap reformist color" data-tip="reformist" tabindex="0">Seeheimer Kreis</span>!}{!<br>!}Strength: [+ reformist_strength : strength +]{!<br>!}Dissent: [+ reformist_dissent : dissent +]
 
 
 @paramilitaries
