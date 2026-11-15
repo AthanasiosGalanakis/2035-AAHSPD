@@ -78,7 +78,6 @@ Economic growth: [+ economic_growth_2 +]%
 
 = Inter-party Relations
 
-
 [? if linke_r >= 5 : {!<span class="tooltip-text seat linke" title="Linke">Linke</span>!}: [+ linke_relation : relationships +] ?]
 
 [? if greens_r >= 5 : {!<span class="tooltip-text seat greens" title="Grüne">Grüne</span>!}: [+ greens_relation : relationships +] ?]
