@@ -114,7 +114,7 @@ Q.moderate_plan_adopted = 0;
 // inter-party relations
 Q.linke_relation = 30;
 Q.greens_relation = 60;
-Q.cdu_relatio = 45;
+Q.cdu_relation = 45;
 Q.fdp_relation = 30;
 Q.bsw_relation = 30;
 Q.afd_relation = 0;
@@ -198,7 +198,7 @@ Q.catholics = 15;
 // unemployment: 1929 - 13.3, 1930 - 22.7, 1931 - 34.3, 1932 - 43.8 (same source as above)
 
 // income for industrial workers in reichsmarks/year - 1928 = 1600 Reichsmarks/year; 1931 = 1440 Reichsmarks/year; 1933 = 1138 Reichsmarks/year - source: https://babel.hathitrust.org/cgi/pt?id=uiug.30112104147985&seq=50
-Q.income = €54000;
+Q.income = 54000; // euros per year
 // what about incomes for different classes? rural workers? middle-class workers?
 
 // inflation (in %; 1928: 2.9; 1929: 0; 1930: -5%; 1931: -10%; 1932: -10%) - source: https://en.wikipedia.org/wiki/File:BSPDRWeltkriseEngl.PNG, derived from https://www.destatis.de/DE/Methoden/WISTA-Wirtschaft-und-Statistik/2009/03/rezession-betrachtung-032009.pdf?__blob=publicationFile
