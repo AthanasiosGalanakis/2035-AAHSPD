@@ -37,27 +37,25 @@ Chancellor: [+ chancellor +] ([+ chancellor_party +])
 
 = Reichstag Composition
 
-# 1928: 10, 1930: 13
-{!<span class="tooltip-text seat linke" title="Linke">Linke</span>!}: [+ linke_r +]%
+= Bundestag Composition
 
-# 1928: 10, 1930: 13
-{!<span class="tooltip-text seat greens" title="Grüne">Grüne</span>!}: [+ greens_r +]%
+[? if linke_r >= 5 : {!<span class="tooltip-text seat linke" title="Linke">Linke</span>!}: [+ linke_r +]% ?]
 
-# 1928: 30, 1930: 25, 1932: 22
-{!<span class="tooltip-text seat spd" title="SPD">SPD</span>!}: [+ spd_r +]%
+[? if greens_r >= 5 : {!<span class="tooltip-text seat greens" title="Grüne">Grüne</span>!}: [+ greens_r +]% ?]
 
-# 1928: 10, 1930: 13
-{!<span class="tooltip-text seat cdu" title="CDU">CDU</span>!}: [+ cdu_r +]%
+[? if spd_r >= 5 : {!<span class="tooltip-text seat spd" title="SPD">SPD</span>!}: [+ spd_r +]% ?]
 
-# 1928: 10, 1930: 13
-{!<span class="tooltip-text seat csu" title="CSU">CSU</span>!}: [+ cdu_r +]%
+[? if csu_split = 0 and cdu_r >= 5 : {!<span class="tooltip-text seat cdu" title="CDU/CSU">CDU/CSU</span>!}: [+ cdu_r +]% ?]
 
-[? if fdp_r > 1: {!<span class="tooltip-text seat fdp" title="FDP">FDP</span>!}: [+ fdp_r +]% ?]
+[? if csu_split = 1 and cdu_r >= 5 : {!<span class="tooltip-text seat cdu" title="CDU">CDU</span>!}: [+ cdu_r +]% ?]
 
-[? if bsw_r > 1: {!<span class="tooltip-text seat bsw" title="BSW">BSW</span>!}: [+ bsw_r +]% ?]
+[? if csu_split = 1 and csu_r >= 5 : {!<span class="tooltip-text seat csu" title="CSU">CSU</span>!}: [+ csu_r +]% ?]
 
-# 1928: 10, 1930: 13
-{!<span class="tooltip-text seat afd" title="AfD">AfD</span>!}: [+ cdu_r +]%
+[? if fdp_r >= 5 : {!<span class="tooltip-text seat fdp" title="FDP">FDP</span>!}: [+ fdp_r +]% ?]
+
+[? if bsw_r >= 5 : {!<span class="tooltip-text seat bsw" title="BSW">BSW</span>!}: [+ bsw_r +]% ?]
+
+[? if afd_r >= 5 : {!<span class="tooltip-text seat afd" title="AfD">AfD</span>!}: [+ afd_r +]% ?]
 
 
 [? if spd_in_government = 1 : Budget: [+ budget +] ?]
@@ -81,17 +79,23 @@ Economic growth: [+ economic_growth_2 +]%
 = Inter-party Relations
 
 
-{!<span class="tooltip-text" title="Center Party">Z</span>!}: [+ z_relation : relationships +]
+[? if linke_r >= 5 : {!<span class="tooltip-text seat linke" title="Linke">Linke</span>!}: [+ linke_relation : relationships +] ?]
 
-{!<span class="tooltip-text" title="German Democratic Party">!}[? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]{!</span>!}: [+ ddp_relation : relationships +]
+[? if greens_r >= 5 : {!<span class="tooltip-text seat greens" title="Grüne">Grüne</span>!}: [+ greens_relation : relationships +] ?]
 
-{!<span class="tooltip-text" title="German People's Party">DVP</span>!}: [+ dvp_relation : relationships +]
+[? if csu_split = 0 and cdu_r >= 5 : {!<span class="tooltip-text seat cdu" title="CDU/CSU">CDU/CSU</span>!}: [+ cdu_relation : relationships +] ?]
 
-{!<span class="tooltip-text" title="Communist Party of Germany">KPD</span>!}: [+ kpd_relation : relationships +]
+[? if csu_split = 1 and cdu_r >= 5 : {!<span class="tooltip-text seat cdu" title="CDU">CDU</span>!}: [+ cdu_relation : relationships +] ?]
 
-{!<span class="tooltip-text" title="German National People's Party">DNVP</span>!}: [+ dnvp_relation : relationships +]
+[? if csu_split = 1 and csu_r >= 5 : {!<span class="tooltip-text seat csu" title="CSU">CSU</span>!}: [+ csu_relation : relationships +] ?]
 
-{!<span class="tooltip-text" title="National-Socialist German Worker's Party (Nazis)">NSDAP</span>!}: [+ nsdap_relation : relationships +]
+[? if fdp_r >= 5 : {!<span class="tooltip-text seat fdp" title="FDP">FDP</span>!}: [+ fdp_relation : relationships +] ?]
+
+[? if bsw_r >= 5 : {!<span class="tooltip-text seat bsw" title="BSW">BSW</span>!}: [+ bsw_relation : relationships +] ?]
+
+[? if afd_r >= 5 : {!<span class="tooltip-text seat afd" title="AfD">AfD</span>!}: [+ afd_relation : relationships +] ?]
+
+= Party Leadership 
 
 = Internal Factions of the SPD
 
