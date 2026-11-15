@@ -33,36 +33,33 @@ Internal dissent: [+ dissent_percent : dissent +]
 
 President: [+ president +]
 
-Chancellor: [+ chancellor +] ([+ chancellor_party +])
-
-= Reichstag Composition
-
-= Bundestag Composition
-
-[? if linke_r >= 5 : {!<span class="tooltip-text seat linke" title="Linke">Linke</span>!}: [+ linke_r +]% ?]
-
-[? if greens_r >= 5 : {!<span class="tooltip-text seat greens" title="Grüne">Grüne</span>!}: [+ greens_r +]% ?]
-
-[? if spd_r >= 5 : {!<span class="tooltip-text seat spd" title="SPD">SPD</span>!}: [+ spd_r +]% ?]
-
-[? if csu_split = 0 and cdu_r >= 5 : {!<span class="tooltip-text seat cdu" title="CDU/CSU">CDU/CSU</span>!}: [+ cdu_r +]% ?]
-
-[? if csu_split = 1 and cdu_r >= 5 : {!<span class="tooltip-text seat cdu" title="CDU">CDU</span>!}: [+ cdu_r +]% ?]
-
-[? if csu_split = 1 and csu_r >= 5 : {!<span class="tooltip-text seat csu" title="CSU">CSU</span>!}: [+ csu_r +]% ?]
-
-[? if fdp_r >= 5 : {!<span class="tooltip-text seat fdp" title="FDP">FDP</span>!}: [+ fdp_r +]% ?]
-
-[? if bsw_r >= 5 : {!<span class="tooltip-text seat bsw" title="BSW">BSW</span>!}: [+ bsw_r +]% ?]
-
-[? if afd_r >= 5 : {!<span class="tooltip-text seat afd" title="AfD">AfD</span>!}: [+ afd_r +]% ?]
-
-
-[? if spd_in_government = 1 : Budget: [+ budget +] ?]
+Chancellor: [+ chancellor +] ([+ chancellor_party +])\
 
 Next election: [+ next_election_month : month +] [+ next_election_year +]
 
+= Bundestag Composition
+
+[? if linke_r >= 5 : {!<span class="ideology-tooltip-wrap seat linke" tabindex="0">Linke<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Die Linke</strong><span class="ideology-tooltip-description">Democratic socialists to the left of the SPD.</span></span></span>!}: [+ linke_r +]% ?]
+
+[? if greens_r >= 5 : {!<span class="ideology-tooltip-wrap seat greens" tabindex="0">Grüne<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Bündnis 90/Die Grünen</strong><span class="ideology-tooltip-description">Ecological, socially liberal and pro-European.</span></span></span>!}: [+ greens_r +]% ?]
+
+[? if spd_r >= 5 : {!<span class="ideology-tooltip-wrap seat spd" tabindex="0">SPD<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Sozialdemokratische Partei Deutschlands</strong><span class="ideology-tooltip-description">Centre-left social democrats. Your party.</span></span></span>!}: [+ spd_r +]% ?]
+
+[? if csu_split = 0 and cdu_r >= 5 : {!<span class="ideology-tooltip-wrap seat cdu" tabindex="0">CDU/CSU<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Union (CDU/CSU)</strong><span class="ideology-tooltip-description">Centre-right Christian democrats and their Bavarian sister party.</span></span></span>!}: [+ cdu_r +]% ?]
+
+[? if csu_split = 1 and cdu_r >= 5 : {!<span class="ideology-tooltip-wrap seat cdu" tabindex="0">CDU<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Christlich Demokratische Union</strong><span class="ideology-tooltip-description">Centre-right Christian democrats, active outside Bavaria.</span></span></span>!}: [+ cdu_r +]% ?]
+
+[? if csu_split = 1 and csu_r >= 5 : {!<span class="ideology-tooltip-wrap seat csu" tabindex="0">CSU<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Christlich-Soziale Union</strong><span class="ideology-tooltip-description">Bavarian conservatives, now running separately from the CDU.</span></span></span>!}: [+ csu_r +]% ?]
+
+[? if fdp_r >= 5 : {!<span class="ideology-tooltip-wrap seat fdp" tabindex="0">FDP<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Freie Demokratische Partei</strong><span class="ideology-tooltip-description">Pro-market liberals.</span></span></span>!}: [+ fdp_r +]% ?]
+
+[? if bsw_r >= 5 : {!<span class="ideology-tooltip-wrap seat bsw" tabindex="0">BSW<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Bündnis Sahra Wagenknecht</strong><span class="ideology-tooltip-description">Left on economics, conservative on migration and culture.</span></span></span>!}: [+ bsw_r +]% ?]
+
+[? if afd_r >= 5 : {!<span class="ideology-tooltip-wrap seat afd" tabindex="0">AfD<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Alternative für Deutschland</strong><span class="ideology-tooltip-description">Far-right nationalists opposed to immigration.</span></span></span>!}: [+ afd_r +]% ?]
+
 = Economics
+
+[? if spd_in_government = 1 : Budget: [+ budget +] ?]
 
 Inflation: [+ inflation_2 +]%
 
@@ -78,33 +75,49 @@ Economic growth: [+ economic_growth_2 +]%
 
 = Inter-party Relations
 
-[? if linke_r >= 5 : {!<span class="tooltip-text seat linke" title="Linke">Linke</span>!}: [+ linke_relation : relationships +] ?]
+{!<span class="ideology-tooltip-wrap seat linke" tabindex="0">Linke<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Die Linke</strong><span class="ideology-tooltip-description">Democratic socialists to the left of the SPD.</span></span></span>!}: [+ linke_relation : relationships +]
 
-[? if greens_r >= 5 : {!<span class="tooltip-text seat greens" title="Grüne">Grüne</span>!}: [+ greens_relation : relationships +] ?]
+{!<span class="ideology-tooltip-wrap seat greens" tabindex="0">Grüne<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Bündnis 90/Die Grünen</strong><span class="ideology-tooltip-description">Ecological, socially liberal and pro-European.</span></span></span>!}: [+ greens_relation : relationships +]
 
-[? if csu_split = 0 and cdu_r >= 5 : {!<span class="tooltip-text seat cdu" title="CDU/CSU">CDU/CSU</span>!}: [+ cdu_relation : relationships +] ?]
+[? if csu_split = 0 : {!<span class="ideology-tooltip-wrap seat cdu" tabindex="0">CDU/CSU<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Union (CDU/CSU)</strong><span class="ideology-tooltip-description">Centre-right Christian democrats and their Bavarian sister party.</span></span></span>!}: [+ cdu_relation : relationships +] ?]
 
-[? if csu_split = 1 and cdu_r >= 5 : {!<span class="tooltip-text seat cdu" title="CDU">CDU</span>!}: [+ cdu_relation : relationships +] ?]
+[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat cdu" tabindex="0">CDU<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Christlich Demokratische Union</strong><span class="ideology-tooltip-description">Centre-right Christian democrats, active outside Bavaria.</span></span></span>!}: [+ cdu_relation : relationships +] ?]
 
-[? if csu_split = 1 and csu_r >= 5 : {!<span class="tooltip-text seat csu" title="CSU">CSU</span>!}: [+ csu_relation : relationships +] ?]
+[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat csu" tabindex="0">CSU<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Christlich-Soziale Union</strong><span class="ideology-tooltip-description">Bavarian conservatives, now running separately from the CDU.</span></span></span>!}: [+ csu_relation : relationships +] ?]
 
-[? if fdp_r >= 5 : {!<span class="tooltip-text seat fdp" title="FDP">FDP</span>!}: [+ fdp_relation : relationships +] ?]
+{!<span class="ideology-tooltip-wrap seat fdp" tabindex="0">FDP<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Freie Demokratische Partei</strong><span class="ideology-tooltip-description">Pro-market liberals.</span></span></span>!}: [+ fdp_relation : relationships +]
 
-[? if bsw_r >= 5 : {!<span class="tooltip-text seat bsw" title="BSW">BSW</span>!}: [+ bsw_relation : relationships +] ?]
+{!<span class="ideology-tooltip-wrap seat bsw" tabindex="0">BSW<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Bündnis Sahra Wagenknecht</strong><span class="ideology-tooltip-description">Left on economics, conservative on migration and culture.</span></span></span>!}: [+ bsw_relation : relationships +] 
 
-[? if afd_r >= 5 : {!<span class="tooltip-text seat afd" title="AfD">AfD</span>!}: [+ afd_relation : relationships +] ?]
+{!<span class="ideology-tooltip-wrap seat afd" tabindex="0">AfD<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Alternative für Deutschland</strong><span class="ideology-tooltip-description">Far-right nationalists opposed to immigration.</span></span></span>!}: [+ afd_relation : relationships +] 
 
-= Party Leadership 
+= Party Leadership
+
+{!<span class="ideology-tooltip-wrap seat linke" tabindex="0">Linke<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Die Linke</strong><span class="ideology-tooltip-description">Led by Schwerdtner and van Aken. Democratic socialist.</span></span></span>!}: [+ linke_leader +] ([+ linke_ideology +])
+
+{!<span class="ideology-tooltip-wrap seat greens" tabindex="0">Grüne<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Bündnis 90/Die Grünen</strong><span class="ideology-tooltip-description">Led by Brantner and Banaszak. Green liberal.</span></span></span>!}: [+ greens_leader +] ([+ greens_ideology +])
+
+[? if csu_split = 0 : {!<span class="ideology-tooltip-wrap seat cdu" tabindex="0">CDU/CSU<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Union (CDU/CSU)</strong><span class="ideology-tooltip-description">Led by Merz. Conservative.</span></span></span>!}: [+ cdu_leader +] ([+ cdu_ideology +]) ?]
+
+[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat cdu" tabindex="0">CDU<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Christlich Demokratische Union</strong><span class="ideology-tooltip-description">Led by Merz. Conservative.</span></span></span>!}: [+ cdu_leader +] ([+ cdu_ideology +]) ?]
+
+[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat csu" tabindex="0">CSU<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Christlich-Soziale Union</strong><span class="ideology-tooltip-description">Led by Söder. Bavarian conservative.</span></span></span>!}: [+ csu_leader +] ([+ csu_ideology +]) ?]
+
+{!<span class="ideology-tooltip-wrap seat fdp" tabindex="0">FDP<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Freie Demokratische Partei</strong><span class="ideology-tooltip-description">Led by Dürr. Classical liberal.</span></span></span>!}: [+ fdp_leader +] ([+ fdp_ideology +])
+
+{!<span class="ideology-tooltip-wrap seat bsw" tabindex="0">BSW<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Bündnis Sahra Wagenknecht</strong><span class="ideology-tooltip-description">Led by Wagenknecht. Left-conservative.</span></span></span>!}: [+ bsw_leader +] ([+ bsw_ideology +])
+
+{!<span class="ideology-tooltip-wrap seat afd" tabindex="0">AfD<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Alternative für Deutschland</strong><span class="ideology-tooltip-description">Led by Weidel and Chrupalla. Right-wing populist.</span></span></span>!}: [+ afd_leader +] ([+ afd_ideology +])
 
 = Internal Factions of the SPD
 
-{!<span class="tooltip-text" title="The Left is interested in radical, transformative policies and cooperation with the KPD.">Left</span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +]
+{!<span class="ideology-tooltip-wrap left color" tabindex="0">Parlamentarische Linke<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Parlamentarische Linke</strong><span class="ideology-tooltip-description">The left wing of the SPD, close to the Jusos. Wants redistribution, a looser debt brake and cooperation with the Greens and Die Linke.</span></span></span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +]
 
-{!<span class="tooltip-text" title="The Center is a faction of Center Marxists, between reform and revolution.">Center</span>!} strength: [+ center_strength : strength +], dissent: [+ center_dissent : dissent +]
+{!<span class="ideology-tooltip-wrap center color" tabindex="0">Netzwerk Berlin<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Netzwerk Berlin</strong><span class="ideology-tooltip-description">The pragmatic camp around the party leadership, between the left and right wings.</span></span></span>!} strength: [+ center_strength : strength +], dissent: [+ center_dissent : dissent +]
 
-{!<span class="tooltip-text" title="Labor's goal is economic reform and benefits for organized workers.">Labor</span>!} strength: [+ labor_strength : strength +], dissent: [+ labor_dissent : dissent +]
+{!<span class="ideology-tooltip-wrap labor color" tabindex="0">AfA<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">AfA</strong><span class="ideology-tooltip-description">The trade union wing. Wants secure jobs, higher wages and benefits for organized workers.</span></span></span>!} strength: [+ labor_strength : strength +], dissent: [+ labor_dissent : dissent +]
 
-{!<span class="tooltip-text" title="Reformists are pragmatic participants in government, and seek to expand the welfare state and defend democracy.">Reformist</span>!} strength: [+ reformist_strength : strength +], dissent: [+ reformist_dissent : dissent +]
+{!<span class="ideology-tooltip-wrap reformist color" tabindex="0">Seeheimer Kreis<span class="ideology-tooltip-tip"><strong class="ideology-tooltip-title">Seeheimer Kreis</strong><span class="ideology-tooltip-description">The conservative wing. Pragmatic participants in government who favour fiscal discipline and coalitions with the centre.</span></span></span>!} strength: [+ reformist_strength : strength +], dissent: [+ reformist_dissent : dissent +]
 
 [? if neorevisionism > 0 : Neorevisionist strength: [+ neorevisionist_strength : strength +], dissent: [+ neorevisionist_dissent : dissent +] ?]
 

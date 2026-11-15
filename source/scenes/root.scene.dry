@@ -221,6 +221,25 @@ Q.new_middle_qol = 100;
 Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
 Q.parties = ['linke', 'greens', 'spd', 'cdu', 'fdp', 'bsw', 'afd', 'ssw', 'other'];
 
+//Leaders
+Q.linke_leader = "Schwerdtner, van Aken";
+Q.greens_leader = "Brantner, Banaszak";
+Q.cdu_leader = "Merz";
+Q.csu_leader = "Söder";
+Q.fdp_leader = "Dürr";
+Q.bsw_leader = "Wagenknecht";
+Q.afd_leader = "Weidel, Chrupalla";
+
+// Ideologies
+Q.linke_ideology = "Democratic socialist";
+Q.greens_ideology = "Green liberal";
+Q.cdu_ideology = "Conservative";
+Q.csu_ideology = "Bavarian conservative";
+Q.fdp_ideology = "Classical liberal";
+Q.bsw_ideology = "Left-conservative";
+Q.afd_ideology = "Right-wing populist";
+
+
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
 Q.workers_linke = 60;
@@ -586,4 +605,5 @@ go-to: main if hand_size == 4; main.main_easy if hand_size == 10
 It is a not so bright time for German democracy. After a period of economic prosperity, things are unfortunately looking less promising. The economy is struggling, growth is slowing, and it seems the good times are behind us. Our democracy is facing increasing challenges. Trust in democratic institutions is weakening, extremist forces are gaining ground, and political divisions are becoming harder to overcome.
 
 Now, the task of Social Democracy is to prepare for the next election. As a leading force in the current government, we must prove that we can meet these challenges and restore confidence in our republic. The task ahead will not be easy, but Social Democracy has never shied away from difficult times. Perhaps we can  secure yet another term and continue our work for the German proletariat.
+
 
