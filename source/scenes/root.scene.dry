@@ -114,7 +114,8 @@ Q.moderate_plan_adopted = 0;
 // inter-party relations
 Q.linke_relation = 30;
 Q.greens_relation = 60;
-Q.cdu_relation = 45;
+Q.cdu_relation = 50; // coalition partner, strained
+Q.csu_relation = Q.cdu_relation;
 Q.fdp_relation = 30;
 Q.bsw_relation = 30;
 Q.afd_relation = 0;
@@ -202,10 +203,10 @@ Q.income = 54000; // euros per year
 // what about incomes for different classes? rural workers? middle-class workers?
 
 // inflation (in %; 1928: 2.9; 1929: 0; 1930: -5%; 1931: -10%; 1932: -10%) - source: https://en.wikipedia.org/wiki/File:BSPDRWeltkriseEngl.PNG, derived from https://www.destatis.de/DE/Methoden/WISTA-Wirtschaft-und-Statistik/2009/03/rezession-betrachtung-032009.pdf?__blob=publicationFile
-Q.inflation = 3.6;
+Q.inflation = 4.5; // energy-driven price spike
 
 // economic growth - same source as above, Table 2 (preisbereinigt) - this is also the source for the yearly changes in the great depression.
-Q.economic_growth = 0.4;
+Q.economic_growth = -0.6; // mild recession going into the election
 
 // economic expansion timer
 Q.economic_expansion = 0;
@@ -234,28 +235,34 @@ Q.unemployed_linke = 25;
 
 Q.catholics_linke = 15;
 
-// Current Reichstag composition
-// % of Reichstag in Jan 1928
-// source: wikipedia
-// note: the Z figures also include the BVP (Bavarian people's party)
-// since they were ideologically similar, but they were separate parties.
-// They did not have a CDU/CSU-style relationship.
-Q.linke_r = 8.8;
-Q.greens_r = 11.6;
-Q.spd_r = 16.4;
-Q.cdu_r = 28.6;
-Q.fdp_r = 4.3;
-Q.bsw_r = 4.9;
-Q.afd_r = 20.8;
+// Current Bundestag composition: % of seats after the 23 Feb 2025 election (630 seats)
+// CDU/CSU 208 (CDU 164, CSU 44), AfD 152, SPD 120, Grüne 85, Linke 64, SSW 1
+// FDP and BSW fell below the 5% threshold. With csu_split = 1: CDU 26.0, CSU 7.0
+Q.linke_r = 10.2;
+Q.greens_r = 13.5;
+Q.spd_r = 19.0;
+Q.cdu_r = 33.0;
+Q.fdp_r = 0;
+Q.bsw_r = 0;
+Q.afd_r = 24.1;
 Q.ssw_r = 0.2;
-Q.other_r = 4.4;
+Q.other_r = 0;
 
 // diff from prev
-Q.old_linke_r = 26;
+Q.old_linke_r = 10.2;
+Q.old_greens_r = 13.5;
+Q.old_spd_r = 19.0;
+Q.old_cdu_r = 33.0;
+Q.old_fdp_r = 0;
+Q.old_bsw_r = 0;
+Q.old_afd_r = 24.1;
+Q.old_ssw_r = 0.2;
+Q.old_other_r = 0;
 
 // sapd isn't formed yet, but it may be formed
 Q.csu_split = 0;
 Q.csu_r = 0;
+Q.old_csu_r = 0;
 
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
@@ -266,15 +273,23 @@ Q.economic_records = [];
 
 
 // State of the government
-Q.president = "Hindenburg";
-// starting chancellor: Wilhelm Marx
-Q.chancellor = "Marx";
-Q.chancellor_party = 'Z';
-Q.spd_in_government = 0;
-Q.z_in_government = 1;
+Q.president = "Steinmeier";
+// starting chancellor: Friedrich Merz (CDU/CSU-SPD coalition)
+Q.chancellor = "Merz";
+Q.chancellor_party = 'CDU';
+Q.spd_in_government = 1;
+Q.cdu_in_government = 1;
+Q.csu_in_government = 1;
+Q.linke_in_government = 0;
+Q.greens_in_government = 0;
+Q.fdp_in_government = 0;
+Q.bsw_in_government = 0;
+Q.afd_in_government = 0;
+// old Weimar flags, still read by other scenes
+Q.z_in_government = 0;
 Q.ddp_in_government = 0;
-Q.dvp_in_government = 1;
-Q.dnvp_in_government = 1;
+Q.dvp_in_government = 0;
+Q.dnvp_in_government = 0;
 Q.kpd_in_government = 0;
 Q.nsdap_in_government = 0;
 
@@ -308,24 +323,24 @@ Q.spd_toleration = 0;
 Q.minority_government = 0;
 
 // ministries - which parties control the ministries?
-// starting with the 4th Marx cabinet https://en.wikipedia.org/wiki/Fourth_Marx_cabinet
-// is the agricultural ministry useful at all?
-Q.foreign_minister = 'Streseman';
-Q.foreign_minister_party = 'DVP';
-Q.interior_minister = 'von Keudell';
-Q.interior_minister_party = 'DNVP';
-Q.justice_minister = 'Hergt';
-Q.justice_minister_party = 'DNVP';
-Q.labor_minister = 'Brauns';
-Q.labor_minister_party = 'Z';
-Q.reichswehr_minister = 'Groener';
-Q.reichswehr_minister_party = 'I';
-Q.economic_minister = 'Curtius';
-Q.economic_minister_party = 'DVP';
-Q.finance_minister = 'Köhler';
-Q.finance_minister_party = 'Z';
-Q.agriculture_minister = 'Schiele';
-Q.agriculture_minister_party = 'DNVP';
+// starting with the Merz cabinet (as of Nov 2026) https://en.wikipedia.org/wiki/Merz_cabinet
+// reichswehr_minister = defence minister
+Q.foreign_minister = 'Wadephul';
+Q.foreign_minister_party = 'CDU';
+Q.interior_minister = 'Dobrindt';
+Q.interior_minister_party = 'CSU';
+Q.justice_minister = 'Hubig';
+Q.justice_minister_party = 'SPD';
+Q.labor_minister = 'Schweitzer';
+Q.labor_minister_party = 'SPD';
+Q.reichswehr_minister = 'Pistorius';
+Q.reichswehr_minister_party = 'SPD';
+Q.economic_minister = 'Reiche';
+Q.economic_minister_party = 'CDU';
+Q.finance_minister = 'Klingbeil';
+Q.finance_minister_party = 'SPD';
+Q.agriculture_minister = 'Rainer';
+Q.agriculture_minister_party = 'CSU';
 
 // Events: what has occurred?
 Q.unemployment_insurance_seen = 0;
@@ -375,8 +390,6 @@ Q.education_science = 0;
 Q.lower_tax_rates = 0;
 Q.upper_tax_rates = 0;
 Q.tariffs = 0;
-
-Q.electoral_threshold = 0;
 
 // our conduct in the government, and the conduct of our coalition opponents.
 // did the SPD vote against the previous government in a vote of no confidence?
