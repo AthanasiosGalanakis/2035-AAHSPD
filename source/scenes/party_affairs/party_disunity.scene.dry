@@ -13,10 +13,10 @@ tags: party_affairs
 
 The party is being torn apart by internal dissent. Upset at the leadership and general direction, factions have started sabotaging their rivals, hampering our efforts to win votes and carry out our policies.
 
-[? if reformist_dissent > 30 : The reformists are upset at our direction.  ?]
-[? if center_dissent > 30 : The centrists are displeased with the direction of our party. ?]
-[? if labor_dissent > 30 : The trade unions disagree with our present course of action. ?]
-[? if left_dissent > 30: Leftists are making noises about another party split. ?]
+[? if reformist_dissent > 30 : The Seeheimer Kreis is upset at our direction.  ?]
+[? if center_dissent > 30 : Netzwerk Berlin is displeased with the direction of our party. ?]
+[? if labor_dissent > 30 : The AfA and the trade unions disagree with our present course of action. ?]
+[? if left_dissent > 30: The Parlamentarische Linke is making noises about a party split. ?]
 [? if neorevisionist_dissent > 30 and neorevisionism = 1 : Neorevisionists are in disagreement about our political direction. ?]
 
 Something must be done to reinforce party unity.
@@ -41,28 +41,28 @@ Enforcing party discipline reduces dissent, but it could lead to an exit of diss
 # each party has a concessions action and an expulsions action.
 
 @concessions_reformists
-title: Give concessions to the reformists.
+title: Give concessions to the Seeheimer Kreis.
 view-if: reformist_dissent > 30
 on-arrival: reformist_dissent -= 7; left_dissent += 5
 
 We have promised to adopt a more reformist posture. This may alienate the left, however.
 
 @concessions_center
-title: Give concessions to the centrists.
+title: Give concessions to Netzwerk Berlin.
 view-if: center_dissent > 30
 on-arrival: center_dissent -= 7; reformist_dissent += 2; left_dissent += 2; neorevisionist_dissent += 2
 
 We have promised to take more policy suggestions from the centrists. Both the left and reformist wings of the party might be displeased.
 
 @concessions_left
-title: Give concessions to the left.
+title: Give concessions to the Parlamentarische Linke.
 view-if: left_dissent > 30
 on-arrival: left_dissent -= 7; reformist_dissent += 5
 
 We have promised that we will listen to the left wing of the party. Of course, this leads to increased dissent from the centrists.
 
 @concessions_labor
-title: Give concessions to labor.
+title: Give concessions to the AfA.
 view-if: labor_dissent > 30
 on-arrival: labor_dissent -= 7; center_dissent += 5
 
@@ -85,17 +85,17 @@ Let the factions bicker; perhaps dissent is healthy for the party.
 # TODO: should we be allowed to preemptively expel factions?
 
 @expel_reformists
-title: Expel the dissident reformists.
+title: Expel the dissident Seeheimer.
 view-if: reformist_dissent > 30
 
 @expel_left
-title: Expel the dissident leftists.
+title: Expel the dissidents of the Parlamentarische Linke.
 view-if: left_dissent > 30
 
 @expel_center
-title: Expel the centrists.
+title: Expel the Netzwerk Berlin dissidents.
 view-if: center_dissent > 30
 
 @expel_labor
-title: Expel the labor supporters.
+title: Expel the AfA dissidents.
 view-if: labor_dissent > 30
