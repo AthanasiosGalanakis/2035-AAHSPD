@@ -76,6 +76,9 @@ if (Q.unemployed <= 1) {
 }
 
 // re-calculate dissent.
+// the fifth faction is not used in the modern setting.
+Q.neorevisionist_strength = 0;
+Q.neorevisionist_dissent = 0;
 var total_strength = Q.left_strength + Q.center_strength + Q.labor_strength + Q.reformist_strength + Q.neorevisionist_strength;
 
 // normalize strength for the different factions
