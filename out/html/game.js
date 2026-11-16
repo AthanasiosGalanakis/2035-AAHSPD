@@ -26,7 +26,7 @@
           // top-level
           'main_tab': "Haupt",
           'politics_tab': "Politik",
-          'paramilitary_tab': "Militär",
+          'defense_tab': "Militär",
           'poll_tab': "Wahl",
           'stats-link': "Bibliothek",
           'save-link': "Speichern/Laden",
@@ -76,7 +76,7 @@
           // top-level
           'main_tab': "Main",
           'politics_tab': "Politics",
-          'paramilitary_tab': "Defense",
+          'defense_tab': "Defense",
           'poll_tab': "Polls",
           'stats-link': "Library",
           'save-link': "Save/Load",

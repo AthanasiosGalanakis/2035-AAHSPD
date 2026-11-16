@@ -428,6 +428,21 @@ a.card:focus .card-tooltip, a.card:hover .card-tooltip {
   object-fit: cover;
 }
 
+/* Party leader portrait, centered above the decks (after the DDP mod, credit to Irridalyst) */
+.leader-card {
+  text-align: center;
+  margin-bottom: 1em;
+  clear: both;
+}
+.leader-card .leader-portrait {
+  display: block;
+  margin: 0 auto;
+  width: 170px;
+  height: 210px;
+  object-fit: cover;
+  border: 5px solid var(--card-border-color);
+}
+
 /*
  * sprite stuff- feel free to comment out/remove if not using
  */

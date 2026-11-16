@@ -1,0 +1,233 @@
+title: apply government
+on-arrival: {!
+// Sets every government flag from Q.coalition. The coalition scenes in events/election_1928 set
+// Q.coalition and then use "call: apply_government".
+//
+// Q.coalition        id of the current government (see the list below)
+// Q.coalition_name   the name shown on the status page
+// <party>_in_government   one flag per party
+// Q.coalition_leader_party / Q.coalition_leader   the strongest party of the coalition and its chancellor candidate
+// default_<ministry>_party / default_<ministry>_minister   who holds a ministry when the SPD does not take it
+//
+// The old flags are kept as groups, so that the cards keep working:
+//   in_grand_coalition  = the SPD governs with a partner to its right (groko, deutschland, brombeer, rot_blau)
+//   in_weimar_coalition = the SPD governs in a centre-left or mixed coalition (kenya, ampel, rot_gruen, rot_lila)
+//   in_left_front       = the SPD governs with the Linke (r2g, rot_rot)
+//   in_spd_majority, in_minority_government = the SPD governs alone, with or without a majority
+//   in_right_coalition  = CDU/CSU + AfD, SPD in opposition
+//   spd_toleration      = the SPD tolerates a CDU/CSU minority government
+// timeline: 1 = the centre holds, 2 = the left turn, 3 = the firewall falls
+
+var c = Q.coalition;
+
+// reset
+Q.spd_in_government = 0;
+Q.cdu_in_government = 0;
+Q.csu_in_government = 0;
+Q.linke_in_government = 0;
+Q.greens_in_government = 0;
+Q.fdp_in_government = 0;
+Q.bsw_in_government = 0;
+Q.afd_in_government = 0;
+Q.in_grand_coalition = 0;
+Q.in_weimar_coalition = 0;
+Q.in_left_front = 0;
+Q.in_popular_front = 0;
+Q.in_right_coalition = 0;
+Q.in_red_blue_coalition = 0;
+Q.in_spd_majority = 0;
+Q.in_minority_government = 0;
+Q.in_emergency_government = 0;
+Q.in_unity_government = 0;
+Q.spd_toleration = 0;
+Q.spd_caretaker = 0;
+
+// the people each party sends into the cabinet
+var people = {
+    'SPD': {'foreign': 'Schmid', 'interior': 'Faeser', 'justice': 'Hubig', 'labor': 'Bas', 'reichswehr': 'Pistorius', 'economic': 'Rehlinger', 'finance': 'Klingbeil', 'agriculture': 'Backhaus'},
+    'CDU': {'foreign': 'Wadephul', 'interior': 'Dobrindt', 'justice': 'Krings', 'labor': 'Laumann', 'reichswehr': 'Röwekamp', 'economic': 'Reiche', 'finance': 'Linnemann', 'agriculture': 'Rainer'},
+    'Grüne': {'foreign': 'Nouripour', 'interior': 'Mihalic', 'justice': 'von Notz', 'labor': 'Dröge', 'reichswehr': 'Nanni', 'economic': 'Brantner', 'finance': 'Audretsch', 'agriculture': 'Özdemir'},
+    'Linke': {'foreign': 'van Aken', 'interior': 'Renner', 'justice': 'Bünger', 'labor': 'Schwerdtner', 'reichswehr': 'Pellmann', 'economic': 'Pellmann', 'finance': 'Görke', 'agriculture': 'Latendorf'},
+    'FDP': {'foreign': 'Strack-Zimmermann', 'interior': 'Kuhle', 'justice': 'Buschmann', 'labor': 'Vogel', 'reichswehr': 'Strack-Zimmermann', 'economic': 'Vogel', 'finance': 'Dürr', 'agriculture': 'Hocker'},
+    'BSW': {'foreign': 'Dağdelen', 'interior': 'Mohamed Ali', 'justice': 'Nastić', 'labor': 'Ernst', 'reichswehr': 'Dağdelen', 'economic': 'Wagenknecht', 'finance': 'De Masi', 'agriculture': 'Ernst'},
+    'AfD': {'foreign': 'Frohnmaier', 'interior': 'Baumann', 'justice': 'Brandner', 'labor': 'Springer', 'reichswehr': 'Lucassen', 'economic': 'Holm', 'finance': 'Gottschalk', 'agriculture': 'Protschka'}
+};
+var ministries = ['foreign', 'interior', 'justice', 'labor', 'reichswehr', 'economic', 'finance', 'agriculture'];
+// give a list of ministries to a party. This also resets the ministries that the SPD held.
+function give(list, party) {
+    for (var m of list) {
+        var label = party;
+        // the CSU traditionally holds Interior and Agriculture for the union
+        if (party == 'CDU' && (m == 'interior' || m == 'agriculture')) {
+            label = 'CSU';
+        }
+        Q['default_' + m + '_party'] = label;
+        Q['default_' + m + '_minister'] = people[party][m];
+        Q[m + '_minister_party'] = label;
+        Q[m + '_minister'] = people[party][m];
+    }
+}
+
+// the members of the coalition, to find the strongest partner
+var members = [];
+Q.leverage = Math.round(Q.spd_r*2);
+
+if (c == 'groko') {
+    Q.coalition_name = 'Große Koalition (CDU/CSU, SPD)';
+    Q.in_grand_coalition = 1;
+    Q.timeline = 1;
+    members = ['spd', 'cdu'];
+    give(ministries, 'CDU');
+} else if (c == 'kenya') {
+    Q.coalition_name = 'Kenia-Koalition (CDU/CSU, SPD, Grüne)';
+    Q.in_weimar_coalition = 1;
+    Q.timeline = 1;
+    members = ['spd', 'cdu', 'greens'];
+    give(ministries, 'CDU');
+    give(['economic', 'agriculture'], 'Grüne');
+    Q.leverage -= 5;
+} else if (c == 'deutschland') {
+    Q.coalition_name = 'Deutschland-Koalition (CDU/CSU, SPD, FDP)';
+    Q.in_grand_coalition = 1;
+    Q.timeline = 1;
+    members = ['spd', 'cdu', 'fdp'];
+    give(ministries, 'CDU');
+    give(['finance', 'justice'], 'FDP');
+    Q.leverage -= 5;
+} else if (c == 'brombeer') {
+    Q.coalition_name = 'Brombeer-Koalition (CDU/CSU, BSW, SPD)';
+    Q.in_grand_coalition = 1;
+    Q.timeline = 1;
+    members = ['spd', 'cdu', 'bsw'];
+    give(ministries, 'CDU');
+    give(['labor', 'agriculture'], 'BSW');
+    Q.leverage -= 5;
+} else if (c == 'ampel') {
+    Q.coalition_name = 'Ampel (SPD, Grüne, FDP)';
+    Q.in_weimar_coalition = 1;
+    Q.timeline = 1;
+    members = ['spd', 'greens', 'fdp'];
+    give(ministries, 'Grüne');
+    give(['finance', 'justice'], 'FDP');
+    Q.leverage -= 5;
+} else if (c == 'rot_gruen') {
+    Q.coalition_name = 'Rot-Grün (SPD, Grüne)';
+    Q.in_weimar_coalition = 1;
+    Q.timeline = 2;
+    members = ['spd', 'greens'];
+    give(ministries, 'Grüne');
+} else if (c == 'r2g') {
+    Q.coalition_name = 'Rot-Rot-Grün (SPD, Grüne, Linke)';
+    Q.in_left_front = 1;
+    Q.timeline = 2;
+    members = ['spd', 'greens', 'linke'];
+    give(ministries, 'Grüne');
+    give(['labor', 'finance'], 'Linke');
+    Q.leverage -= 5;
+} else if (c == 'rot_rot') {
+    Q.coalition_name = 'Rot-Rot (SPD, Linke)';
+    Q.in_left_front = 1;
+    Q.timeline = 2;
+    members = ['spd', 'linke'];
+    give(ministries, 'Linke');
+} else if (c == 'rot_lila') {
+    Q.coalition_name = 'Rot-Lila (SPD, BSW)';
+    Q.in_weimar_coalition = 1;
+    Q.timeline = 2;
+    members = ['spd', 'bsw'];
+    give(ministries, 'BSW');
+} else if (c == 'rot_blau') {
+    Q.coalition_name = 'Rot-Blau (SPD, AfD)';
+    Q.in_grand_coalition = 1;
+    Q.in_red_blue_coalition = 1;
+    Q.timeline = 3;
+    members = ['spd', 'afd'];
+    give(ministries, 'AfD');
+} else if (c == 'spd_allein') {
+    Q.coalition_name = 'SPD-Alleinregierung';
+    Q.in_spd_majority = 1;
+    Q.timeline = 2;
+    members = ['spd'];
+    give(ministries, 'SPD');
+} else if (c == 'spd_minority') {
+    Q.coalition_name = 'SPD-Minderheitsregierung';
+    Q.in_minority_government = 1;
+    Q.timeline = 2;
+    members = ['spd'];
+    give(ministries, 'SPD');
+} else if (c == 'cdu_minority') {
+    // tolerated by the SPD
+    Q.coalition_name = 'CDU/CSU-Minderheitsregierung';
+    Q.spd_toleration = 1;
+    Q.timeline = 1;
+    members = ['cdu'];
+    give(ministries, 'CDU');
+} else if (c == 'schwarz_gruen') {
+    Q.coalition_name = 'Schwarz-Grün (CDU/CSU, Grüne)';
+    Q.timeline = 1;
+    members = ['cdu', 'greens'];
+    give(ministries, 'CDU');
+    give(['foreign', 'economic', 'agriculture'], 'Grüne');
+} else if (c == 'jamaika') {
+    Q.coalition_name = 'Jamaika (CDU/CSU, Grüne, FDP)';
+    Q.timeline = 1;
+    members = ['cdu', 'greens', 'fdp'];
+    give(ministries, 'CDU');
+    give(['foreign', 'economic', 'agriculture'], 'Grüne');
+    give(['finance', 'justice'], 'FDP');
+} else if (c == 'schwarz_gelb') {
+    Q.coalition_name = 'Schwarz-Gelb (CDU/CSU, FDP)';
+    Q.timeline = 1;
+    members = ['cdu', 'fdp'];
+    give(ministries, 'CDU');
+    give(['foreign', 'finance', 'justice'], 'FDP');
+} else if (c == 'schwarz_blau') {
+    Q.coalition_name = 'Schwarz-Blau (CDU/CSU, AfD)';
+    Q.in_right_coalition = 1;
+    Q.timeline = 3;
+    members = ['cdu', 'afd'];
+    give(ministries, 'CDU');
+    give(['interior', 'justice', 'labor', 'agriculture'], 'AfD');
+} else {
+    // no government could be formed: the old chancellor stays on as caretaker until the new election
+    Q.coalition = 'none';
+    Q.coalition_name = 'caretaker government';
+    members = [];
+}
+
+// party flags and the strongest partner. Ties go to the SPD.
+var labels = {'spd': 'SPD', 'cdu': 'CDU', 'greens': 'Grüne', 'linke': 'Linke', 'fdp': 'FDP', 'bsw': 'BSW', 'afd': 'AfD'};
+var leaders = {'spd': 'Klingbeil', 'cdu': Q.cdu_leader, 'greens': 'Brantner', 'linke': 'Reichinnek', 'fdp': 'Dürr', 'bsw': 'Wagenknecht', 'afd': 'Weidel'};
+var leader = members[0];
+for (var m of members) {
+    Q[m + '_in_government'] = 1;
+    var r = Q[m + '_r'];
+    var leader_r = Q[leader + '_r'];
+    if (m == 'cdu') {
+        Q.csu_in_government = 1;
+        r += Q.csu_r;
+    }
+    if (leader == 'cdu') {
+        leader_r += Q.csu_r;
+    }
+    if (r > leader_r) {
+        leader = m;
+    }
+}
+if (members.length > 0) {
+    Q.coalition_leader_party = labels[leader];
+    Q.coalition_leader = leaders[leader];
+    Q.chancellor_party = labels[leader];
+    Q.chancellor = leaders[leader];
+    Q.coalition_leader_label = labels[leader];
+    if (leader == 'cdu' && !Q.csu_split) {
+        Q.coalition_leader_label = 'CDU/CSU';
+    }
+}
+
+// a coalition offered on the CDU/CSU's terms to save the firewall
+if (Q.firewall_concession) {
+    Q.leverage -= 15;
+    Q.firewall_concession = 0;
+}
+!}

@@ -1,5 +1,5 @@
 title: Next month
-set-bg: img/map_2.jpg
+set-bg: link.jpg
 is-hand: true
 on-arrival: {!
 if (Q.advisor_action_timer <= 0) {
@@ -11,6 +11,10 @@ if (Q.advisor_action_timer <= 0) {
 }
 !}
 max-cards: 4
+
+<div class="leader-card">
+<img class="leader-portrait" src="[+ spd_leader_img +]">
+</div>
 
 #Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
 
@@ -20,7 +24,7 @@ max-cards: 4
 - @shuffle_leadership_pinned
 
 @main_easy
-set-bg: img/map_2.jpg
+set-bg: link.jpg
 is-hand: true
 on-arrival: {!
 if (Q.advisor_action_timer <= 0) {
@@ -32,6 +36,10 @@ if (Q.advisor_action_timer <= 0) {
 }
 !}
 max-cards: 4
+
+<div class="leader-card">
+<img class="leader-portrait" src="[+ img_leader +]">
+</div>
 
 #Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
 

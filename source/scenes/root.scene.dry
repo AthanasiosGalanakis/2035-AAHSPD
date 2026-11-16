@@ -10,6 +10,9 @@ go-to: start_menu_2
 
 = An Alternative History
 
+It is a not so bright time for German democracy. After a period of economic prosperity, things are unfortunately looking less promising. The economy is struggling, growth is slowing, and it seems the good times are behind us. Our democracy is facing increasing challenges. Trust in democratic institutions is weakening, extremist forces are gaining ground, and political divisions are becoming harder to overcome.
+
+Now, the task of Social Democracy is to prepare for the next election. As a leading force in the current government, we must prove that we can meet these challenges and restore confidence in our republic. The task ahead will not be easy, but Social Democracy has never shied away from difficult times. Perhaps we can  secure yet another term and continue our work for the German proletariat.
 
 @start_menu_2
 
@@ -77,6 +80,8 @@ Q.unions_independent = 0;
 Q.centrists_resign = 0;
 Q.left_split = 0;
 
+Q.spd_leader_img = https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93049_%28cropped%29.jpg/960px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93049_%28cropped%29.jpg
+
 // crisis_urgency indicates how seriously the SPD is taking the economic crisis - scale from 0 to 10.
 Q.crisis_urgency = 0;
 // afd_urgency indicates how seriously the SPD takes the nazis - scale from 0 to 10.
@@ -96,8 +101,6 @@ Q.linke_coalition = 0;
 Q.economic_plan = 0;
 // have we officially adopted the WTB plan?
 Q.wtb_adopted = 0;
-// have we formed the iron front?
-Q.iron_front_formed = 0;
 // people's party support
 Q.peoples_party_support = 0;
 // support for nationalizations
@@ -124,34 +127,21 @@ Q.afd_leader = "Weidel";
 
 // Does the SPD lead in Prussia?
 Q.spd_prussia = 1;
-// Options: spd, z, dnvp, papen, nsdap
+// Options: spd, cdu, bsw, papen, afd
 Q.prussian_government = "SPD";
 
-// The array of forces - paramilitary groups
-// Number of members in 1928 (in thousands)
-// Reichsbanner, stahlhelm, SA, rotfrontkämpferbund
-Q.starting_rb_strength = 2000;
-Q.rb_strength = 2000;
-Q.rb_militancy = 0.01;
-Q.women_in_rb = 0;
-Q.sh_strength = 500;
-Q.sh_militancy = 0.5;
-Q.sh_banned = 0;
-Q.sa_strength = 80;
-Q.sa_militancy = 0.5;
-Q.sa_banned = 0;
-Q.rfb_strength = 130;
-Q.rfb_militancy = 0.5;
-Q.rfb_banned = 0;
-
+// Security forces
 Q.federal_police_strength = 55;
 Q.federal_police_militancy = 1;
 Q.federal_police_loyalty = 0.90;
 
 // strength includes actual military and de facto reserves?
-Q.bundeswehr_strength = 100;
+Q.bundeswehr_strength = 182; // thousand active soldiers
 Q.bundeswehr_militancy = 5;
-Q.bundeswehr_loyalty = 0.2;
+Q.bundeswehr_loyalty = 0.9;
+
+// Verfassungsschutz (domestic intelligence): how reliably it serves the elected government
+Q.verfassungsschutz_loyalty = 0.8;
 
 // The state of the country
 
@@ -178,7 +168,7 @@ Q.linke_banned = 0;
 Q.afd_banned = 0;
 
 // coups and capital strikes happen when you upset the right or the capitalists too much with your policies. they're an additional check on your policies, when purely electoral checks don't suffice.
-// when coup_progress reaches 10 or capital_strike_progress reaches 10, there's a special event that launches the coup.
+// when firewall_erosion reaches 10 or capital_strike_progress reaches 10, there's a special event that launches the coup.
 Q.firewall_erosion = 0;
 Q.capital_strike_progress = 0;
 
@@ -216,6 +206,7 @@ Q.csu_leader = "Söder";
 Q.fdp_leader = "Dürr";
 Q.bsw_leader = "Wagenknecht";
 Q.afd_leader = "Weidel, Chrupalla";
+Q.img_leader = "img/spd_leader.jpg"; // picture of the SPD party leader, shown above the decks
 
 // Ideologies
 Q.linke_ideology = "Democratic socialist";
@@ -329,7 +320,7 @@ Q.csu_split = 0;
 Q.csu_r = 0;
 Q.old_csu_r = 0;
 
-// array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
+// array of objects of the form {date: Date(), spd: 10, linke: 12, ...} for each election
 Q.election_records = [];
 // party support records for every month
 Q.party_support_records = [];
@@ -350,23 +341,43 @@ Q.greens_in_government = 0;
 Q.fdp_in_government = 0;
 Q.bsw_in_government = 0;
 Q.afd_in_government = 0;
-// old Weimar flags, still read by other scenes
-Q.z_in_government = 0;
-Q.ddp_in_government = 0;
-Q.dvp_in_government = 0;
-Q.dnvp_in_government = 0;
-Q.kpd_in_government = 0;
-Q.nsdap_in_government = 0;
-
+// CDU/CSU + AfD: the firewall has fallen
 Q.in_right_coalition = 0;
-// Weimar coalition = SPD + Z + DDP
+// which path the country is on after the last election: 1 = the centre holds, 2 = the left turn, 3 = the firewall falls
+Q.timeline = 1;
+// The current government. apply_government.scene.dry sets all of these from Q.coalition after an election.
+Q.coalition = 'groko';
+Q.coalition_name = 'Große Koalition (CDU/CSU, SPD)';
+Q.coalition_leader_party = 'CDU';
+Q.coalition_leader_label = 'CDU/CSU';
+Q.coalition_leader = 'Merz';
+// SPD + AfD
+Q.in_red_blue_coalition = 0;
+Q.firewall_concession = 0;
+// who holds a ministry when the SPD does not take it
+Q.default_foreign_party = 'CDU';
+Q.default_foreign_minister = 'Wadephul';
+Q.default_interior_party = 'CSU';
+Q.default_interior_minister = 'Dobrindt';
+Q.default_justice_party = 'CDU';
+Q.default_justice_minister = 'Krings';
+Q.default_labor_party = 'CDU';
+Q.default_labor_minister = 'Laumann';
+Q.default_reichswehr_party = 'CDU';
+Q.default_reichswehr_minister = 'Röwekamp';
+Q.default_economic_party = 'CDU';
+Q.default_economic_minister = 'Reiche';
+Q.default_finance_party = 'CDU';
+Q.default_finance_minister = 'Linnemann';
+Q.default_agriculture_party = 'CSU';
+Q.default_agriculture_minister = 'Rainer';
+// the SPD governs in a centre-left or mixed coalition: Kenia, Ampel, Rot-Grün, Rot-Lila (old flag name kept)
 Q.in_weimar_coalition = 0;
-// Grand coalition = SPD + Z + BVP + DDP + DVP
-// also includes the "new grand coalition" of SPD + Z + BVP + DDP + DVP + Others
-Q.in_grand_coalition = 0;
-// Popular front = SPD + KPD + Z + DDP
+// the SPD governs with a partner to its right: Große Koalition, Deutschland, Brombeer, Rot-Blau. The game starts in a Große Koalition.
+Q.in_grand_coalition = 1;
+// Popular front: not used by the modern elections
 Q.in_popular_front = 0;
-// left coalition = SPD + KPD + left-splinters
+// the SPD governs with the Linke: Rot-Rot-Grün or Rot-Rot (old flag name kept)
 Q.in_left_front = 0;
 // emergency government containing the SPD: only president Braun can do this.
 Q.in_emergency_government = 0;
@@ -379,7 +390,7 @@ Q.in_minority_government = 0;
 // if you're in a coalition, this is an incremental counter for how many times dissent has happened from the right.
 Q.coalition_dissent = 0;
 // dissent from the KPD, in a popular front or left front government
-Q.kpd_coalition_dissent = 0;
+Q.linke_coalition_dissent = 0;
 
 // does the SPD tolerate the government even if it is not a participant?
 Q.spd_toleration = 0;
@@ -466,12 +477,12 @@ Q.n_advisors = 3;
 Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
             'fundraising', 'ideology',
             'inter_party_relationships', 'international_relations',
-            'iron_front', 'media', 'enemies',
-            'party_organizations', 'rally', 'reichsbanner',
+            'media', 'enemies',
+            'party_organizations', 'rally',
             'shuffle_leadership', 'peoples_party',
             'party_disunity',
             // govt
-            'agricultural_policy', 'domestic_enemies', 'fiscal_policy',
+            'agricultural_policy', 'fiscal_policy',
             'foreign_policy', 'judiciary', 'labor_affairs', 'military_policy',
             'police', 'prussian_affairs', 'shuffle_cabinet', 'social_welfare',
             'homosexual_rights', 'economic_policy', 'coalition_affairs',
@@ -481,7 +492,6 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
             'education_science', 'curriculum',
             // events
             'emergency_cuts', 'unemployment_insurance',
-            'sa_ban', 'sh_ban',
             'kpd_policy', 'kpd_ultimatum', 'popular_front_dispute',
             'high_inflation', 'banking_crisis',
             'understanding_enemy'];
@@ -493,12 +503,10 @@ Q.fundraising_timer = 0;
 Q.ideology_timer = 0;
 Q.inter_party_relationships_timer = 0;
 Q.international_relations_timer = 0;
-Q.iron_front_timer = 0;
 Q.media_timer = 0;
 Q.enemies_timer = 0;
 Q.party_organizations_timer =  0;
 Q.rally_timer = 0;
-Q.reichsbanner_timer = 0;
 Q.shuffle_leadership_timer = 0;
 Q.peoples_party_timer = 0;
 // n_elections is the number of elections that have happened since the start of the game.
@@ -512,7 +520,6 @@ Q.next_election_month = 3;
 Q.next_election_time = 5;
 // government affairs timers
 Q.agricultural_policy_timer = 0;
-Q.domestic_enemies_timer = 0;
 Q.economic_policy_timer = 0;
 Q.fiscal_policy_timer = 0;
 Q.foreign_policy_timer = 0;
@@ -530,8 +537,6 @@ Q.coalition_affairs_timer = 0;
 // event timers
 Q.emergency_cuts_timer = 0;
 Q.unemployment_insurance_timer = 0;
-Q.sa_ban_timer = 0;
-Q.sh_ban_timer = 0;
 Q.kpd_ultimatum_timer = 0;
 
 
@@ -596,8 +601,5 @@ go-to: main if hand_size == 4; main.main_easy if hand_size == 10
 
 = 1928
 
-It is a not so bright time for German democracy. After a period of economic prosperity, things are unfortunately looking less promising. The economy is struggling, growth is slowing, and it seems the good times are behind us. Our democracy is facing increasing challenges. Trust in democratic institutions is weakening, extremist forces are gaining ground, and political divisions are becoming harder to overcome.
-
-Now, the task of Social Democracy is to prepare for the next election. As a leading force in the current government, we must prove that we can meet these challenges and restore confidence in our republic. The task ahead will not be easy, but Social Democracy has never shied away from difficult times. Perhaps we can  secure yet another term and continue our work for the German proletariat.
 
 

@@ -1,6 +1,6 @@
 title: Understanding the Enemy
 subtitle: Why did the Nazis gain so many votes?
-view-if: year >= 1929 and year <= 1932 and nsdap_r >= 15 and understanding_enemy_seen = 0 and understanding_enemy_timer = 0
+view-if: year >= 1929 and year <= 1932 and afd_r >= 15 and understanding_enemy_seen = 0 and understanding_enemy_timer = 0
 on-arrival: understanding_enemy_seen = 1
 max-visits: 1
 new-page: true
@@ -47,7 +47,7 @@ We can combat the Nazis by adopting a "People's Party" posture that might compet
 
 
 @p3
-on-arrival: neorevisionist_strength += 10; nazi_urgency += 1; neorevisionism += 1;
+on-arrival: neorevisionist_strength += 10; afd_urgency += 1; neorevisionism += 1;
 
 Working together with other "neorevisionists" such as Sergei Chakhotin, Mierendorff has developed new propaganda methods to fight the rise of the Nazis. They focus on visually striking symbols and repetitious slogans. Time will tell how effective they are.
 
