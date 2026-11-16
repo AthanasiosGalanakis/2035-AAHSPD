@@ -576,8 +576,8 @@ table {
     color: #0080C9;
 }
 .seat.fdp {
-    fill: #FFED00;
-    color: #FFED00;
+    fill: #C8A800;
+    color: #C8A800;
 }
 .seat.bsw{
     fill: #542344;
@@ -605,14 +605,29 @@ table {
   color:#3C6E9F;
 }
 
-/* Hover tooltips (adapted from the DDP mod) */
+/* The hoverable word: bold, no background until you hover over it.
+   The padding and the negative margin cancel out, so the word sits exactly
+   where plain text would, and the hover background has a little room. */
 .ideology-tooltip-wrap {
     position: relative;
     display: inline-block;
     cursor: help;
-    text-decoration-line: underline;
-    text-decoration-style: dotted;
-    text-underline-offset: 2px;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0 0.25em;
+    margin: 0 -0.25em;
+    border-radius: 0.35em;
+    background-color: transparent;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+/* On hover/focus: a small tinted background and a very small lift */
+.ideology-tooltip-wrap:hover,
+.ideology-tooltip-wrap:focus {
+    z-index: 10000;
+    outline: none;
+    background-color: color-mix(in srgb, currentColor 14%, var(--content-bg-color, #fff));
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+    transform: translateY(-1px);
 }
 .ideology-tooltip-tip {
     position: absolute;
