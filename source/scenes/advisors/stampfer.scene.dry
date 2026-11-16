@@ -37,7 +37,6 @@ Which faction should we support?
 - @support_center: Center
 - @support_labor: Labor
 - @support_reform: Reformists
-- @support_neorev: Neorevisionists
 
 @support_left
 on-arrival: left_dissent -= 8; left_strength += 8
@@ -58,12 +57,6 @@ Vorwärts prints editorials in support of the policies of the trade unions.
 on-arrival: reformist_dissent -= 8; reformist_strength += 8;
 
 Vorwärts prints editorials in support of the reformist policies.
-
-@support_neorev
-view-if: neorevisionism
-on-arrival: neorevisionist_dissent -= 8; neorevisionist_strength += 8
-
-Vorwärts prints editorials in support of neorevisionist ideas.
 
 @kpd_cooperation
 title: Cooperation with the KPD

@@ -31,11 +31,9 @@ Q.month_actions = 0;
 // 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
 Q.difficulty = 0;
 Q.historical_mode = 0;
-// old demographics
-Q.old_demographics = 0;
 // use decimals for reichstag seats
 // TODO: not yet implemented
-Q.use_decimals = 0;
+Q.use_decimals = 1;
 // TODO: detailed difficulty settinigs
 Q.annual_income = 0;
 Q.saves_disabled = 0;
@@ -78,7 +76,6 @@ Q.neorevisionist_dissent = 0;
 Q.unions_independent = 0;
 Q.centrists_resign = 0;
 Q.left_split = 0;
-Q.reformists_resigned = 0;
 
 // crisis_urgency indicates how seriously the SPD is taking the economic crisis - scale from 0 to 10.
 Q.crisis_urgency = 0;
@@ -137,19 +134,15 @@ Q.starting_rb_strength = 2000;
 Q.rb_strength = 2000;
 Q.rb_militancy = 0.01;
 Q.women_in_rb = 0;
-Q.rb_banned = 0;
 Q.sh_strength = 500;
 Q.sh_militancy = 0.5;
 Q.sh_banned = 0;
-Q.sh_banned_prussia = 0;
 Q.sa_strength = 80;
 Q.sa_militancy = 0.5;
 Q.sa_banned = 0;
-Q.sa_banned_prussia = 0;
 Q.rfb_strength = 130;
 Q.rfb_militancy = 0.5;
 Q.rfb_banned = 0;
-Q.rfb_banned_prussia = 0;
 
 Q.federal_police_strength = 55;
 Q.federal_police_militancy = 1;
@@ -173,6 +166,10 @@ Q.pro_republic = 75;
 
 // minimum percentage of votes to be represented in the Reichstag
 Q.electoral_threshold = 5;
+// a party that wins 3 constituencies enters the Bundestag even below 5%
+Q.direct_mandate_rule = 1;
+Q.linke_direct = 6; // constituencies won in 2025. Events can raise or lower this.
+Q.csu_direct = 44; // only matters when csu_split = 1
 // constitutional reform level
 Q.constitutional_reform = 0;
 // allows banning of non-constitutional parties
@@ -184,24 +181,20 @@ Q.afd_banned = 0;
 // when coup_progress reaches 10 or capital_strike_progress reaches 10, there's a special event that launches the coup.
 Q.firewall_erosion = 0;
 Q.capital_strike_progress = 0;
-Q.general_strike_progress = 0;
 
 Q.starting_budget = 2;
 Q.budget = 2;
 
 // Proportion of different social groups
-Q.workers = 28; // industry and trade
-Q.old_middle = 42; // "old mittelstand"
-Q.new_middle = 8; // "new mittelstand"
-Q.rural = 16; // agriculture and forestry employment... but many of those are proletarians so...
+Q.workers = 17; // blue-collar and routine service workers
+Q.new_middle = 25; // salaried employees, civil servants
+Q.old_middle = 7; // self-employed, business owners
+Q.rural = 9; // rural and small-town West
 Q.unemployed = 6;
-Q.catholics = 15;
+Q.catholics = 12; // now: East Germans
+Q.pensioners = 24;
 
 // unemployment: 1929 - 13.3, 1930 - 22.7, 1931 - 34.3, 1932 - 43.8 (same source as above)
-
-// income for industrial workers in reichsmarks/year - 1928 = 1600 Reichsmarks/year; 1931 = 1440 Reichsmarks/year; 1933 = 1138 Reichsmarks/year - source: https://babel.hathitrust.org/cgi/pt?id=uiug.30112104147985&seq=50
-Q.income = 54000; // euros per year
-// what about incomes for different classes? rural workers? middle-class workers?
 
 // inflation (in %; 1928: 2.9; 1929: 0; 1930: -5%; 1931: -10%; 1932: -10%) - source: https://en.wikipedia.org/wiki/File:BSPDRWeltkriseEngl.PNG, derived from https://www.destatis.de/DE/Methoden/WISTA-Wirtschaft-und-Statistik/2009/03/rezession-betrachtung-032009.pdf?__blob=publicationFile
 Q.inflation = 4.5; // energy-driven price spike
@@ -212,14 +205,7 @@ Q.economic_growth = -0.6; // mild recession going into the election
 // economic expansion timer
 Q.economic_expansion = 0;
 
-// quality of life (as % of 1928 - currently unused - should be welfare-adjusted.)
-Q.workers_qol = 100;
-Q.rural_qol = 100;
-Q.unemployed_qol = 100;
-Q.old_middle_qol = 100;
-Q.new_middle_qol = 100;
-
-Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
+Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics', 'pensioners'];
 Q.parties = ['linke', 'greens', 'spd', 'cdu', 'fdp', 'bsw', 'afd', 'ssw', 'other'];
 
 //Leaders
@@ -243,17 +229,76 @@ Q.afd_ideology = "Right-wing populist";
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
-Q.workers_linke = 60;
+Q.workers_linke = 8;
+Q.workers_greens = 5;
+Q.workers_spd = 14;
+Q.workers_cdu = 23;
+Q.workers_fdp = 4;
+Q.workers_bsw = 6;
+Q.workers_afd = 35;
+Q.workers_ssw = 0.15;
+Q.workers_other = 5;
 
-Q.old_middle_linke = 5;
+Q.old_middle_linke = 6;
+Q.old_middle_greens = 12;
+Q.old_middle_spd = 8;
+Q.old_middle_cdu = 35;
+Q.old_middle_fdp = 10;
+Q.old_middle_bsw = 3;
+Q.old_middle_afd = 21;
+Q.old_middle_ssw = 0.15;
+Q.old_middle_other = 5;
 
-Q.new_middle_linke = 5;
+Q.new_middle_linke = 11;
+Q.new_middle_greens = 20;
+Q.new_middle_spd = 16;
+Q.new_middle_cdu = 26;
+Q.new_middle_fdp = 5;
+Q.new_middle_bsw = 3;
+Q.new_middle_afd = 13;
+Q.new_middle_ssw = 0.15;
+Q.new_middle_other = 6;
 
-Q.rural_linke = 10;
+Q.rural_linke = 4;
+Q.rural_greens = 9;
+Q.rural_spd = 14;
+Q.rural_cdu = 37;
+Q.rural_fdp = 4;
+Q.rural_bsw = 3;
+Q.rural_afd = 23;
+Q.rural_ssw = 0.15;
+Q.rural_other = 6;
 
-Q.unemployed_linke = 25;
+Q.unemployed_linke = 14;
+Q.unemployed_greens = 6;
+Q.unemployed_spd = 13;
+Q.unemployed_cdu = 13;
+Q.unemployed_fdp = 2;
+Q.unemployed_bsw = 9;
+Q.unemployed_afd = 35;
+Q.unemployed_ssw = 0.15;
+Q.unemployed_other = 8;
 
-Q.catholics_linke = 15;
+// catholics now stands for East Germans
+Q.catholics_linke = 13;
+Q.catholics_greens = 6;
+Q.catholics_spd = 11;
+Q.catholics_cdu = 19;
+Q.catholics_fdp = 3;
+Q.catholics_bsw = 10;
+Q.catholics_afd = 33;
+Q.catholics_ssw = 0.15;
+Q.catholics_other = 5;
+
+Q.pensioners_linke = 5;
+Q.pensioners_greens = 10;
+Q.pensioners_spd = 24;
+Q.pensioners_cdu = 39;
+Q.pensioners_fdp = 4;
+Q.pensioners_bsw = 4;
+Q.pensioners_afd = 11;
+Q.pensioners_ssw = 0.15;
+Q.pensioners_other = 3;
 
 // Current Bundestag composition: % of seats after the 23 Feb 2025 election (630 seats)
 // CDU/CSU 208 (CDU 164, CSU 44), AfD 152, SPD 120, Grüne 85, Linke 64, SSW 1
@@ -339,9 +384,6 @@ Q.kpd_coalition_dissent = 0;
 // does the SPD tolerate the government even if it is not a participant?
 Q.spd_toleration = 0;
 
-// is the current government a presidential minority government?
-Q.minority_government = 0;
-
 // ministries - which parties control the ministries?
 // starting with the Merz cabinet (as of Nov 2026) https://en.wikipedia.org/wiki/Merz_cabinet
 // reichswehr_minister = defence minister
@@ -363,7 +405,6 @@ Q.agriculture_minister = 'Rainer';
 Q.agriculture_minister_party = 'CSU';
 
 // Events: what has occurred?
-Q.unemployment_insurance_seen = 0;
 // unemployment insurance event is seen if the unemployment level is at least 4 more than the threshold...
 Q.unemployment_insurance_threshold = 10;
 
@@ -427,24 +468,23 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
             'inter_party_relationships', 'international_relations',
             'iron_front', 'media', 'enemies',
             'party_organizations', 'rally', 'reichsbanner',
-            'shuffle_leadership', 'streetfighting', 'peoples_party',
+            'shuffle_leadership', 'peoples_party',
             'party_disunity',
             // govt
             'agricultural_policy', 'domestic_enemies', 'fiscal_policy',
             'foreign_policy', 'judiciary', 'labor_affairs', 'military_policy',
             'police', 'prussian_affairs', 'shuffle_cabinet', 'social_welfare',
             'homosexual_rights', 'economic_policy', 'coalition_affairs',
-            'war_guilt', 'womens_rights', 'economic_democracy',
+            'womens_rights', 'economic_democracy',
             'dealing_with_toleration',
             'constitutional_reform', 'labor_rights',
             'education_science', 'curriculum',
             // events
             'emergency_cuts', 'unemployment_insurance',
-            'sa_ban', 'sh_ban', 'papen_chancellor',
+            'sa_ban', 'sh_ban',
             'kpd_policy', 'kpd_ultimatum', 'popular_front_dispute',
-            'high_inflation', 'banking_crisis', 'march_on_berlin',
-            'understanding_enemy', 'schleichers_schemes',
-            'hindenburg_dismissal'];
+            'high_inflation', 'banking_crisis',
+            'understanding_enemy'];
 Q.advisor_action_timer = 0;
 // party affairs timers
 Q.confronting_nazis_timer = 0;
@@ -460,7 +500,6 @@ Q.party_organizations_timer =  0;
 Q.rally_timer = 0;
 Q.reichsbanner_timer = 0;
 Q.shuffle_leadership_timer = 0;
-Q.streetfighting_timer = 0;
 Q.peoples_party_timer = 0;
 // n_elections is the number of elections that have happened since the start of the game.
 Q.n_elections = 0;
@@ -484,7 +523,6 @@ Q.police_timer = 0;
 Q.prussian_affairs_timer = 0;
 Q.shuffle_cabinet_timer = 0;
 Q.social_welfare_timer = 0;
-Q.war_guilt_timer = 0;
 Q.womens_rights_timer = 0;
 Q.homosexual_rights_timer = 0;
 Q.economic_democracy_timer = 0;
@@ -495,16 +533,12 @@ Q.unemployment_insurance_timer = 0;
 Q.sa_ban_timer = 0;
 Q.sh_ban_timer = 0;
 Q.kpd_ultimatum_timer = 0;
-Q.march_on_berlin_timer = 0;
-Q.hindenburg_dismissal_timer = 0;
 
 
 // all the initial advisors are centrists.
 Q.wels_advisor = 1; // Otto Wels
 Q.muller_advisor = 1; // Hermann Müller
 Q.muller_dead = 0;
-// okay I know Arthur Crispien was a leader irl but i couldn't find much interesting about him...
-Q.crispien_advisor = 0; // Arthur Crispien
 Q.hilferding_advisor = 1; // Rudolf Hilferding
 
 // left advisors
@@ -552,48 +586,7 @@ This is a game of alternate history. While historical accuracy is a major concer
 
 For more information on the politics and government of the German Republic, see the "Library" page on the top left. If this is your first time playing the game, it is strongly recommended that you read at least some of this information.
 
-- @1928_easy: Begin (easy difficulty)
 - @1928_main: Begin (normal difficulty)
-- @1928_hard: Begin (hard difficulty)
-- @1928_historical: Begin (historical mode)
-
-@1928_easy
-choose-if: 0
-on-arrival: difficulty = -1; resources = 4; dues = 3; starting_rb_strength = 2500; rb_strength = 2500; left_dissent = 10; kpd_relation = 29; z_relation = 54; dvp_relation = 49; starting_budget = 5; budget = 5; hand_size = 4; starting_dissent = 0; starting_relations = 0;
-go-to: 1928_main
-
-@1928_hard
-choose-if: 0
-on-arrival: difficulty = 1; resources = 0; starting_resources = 0; dues = 1; starting_rb_strength = 1000; rb_strength = 1000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; kpd_relation = 16; dvp_relation = 31; starting_budget = 3; budget = 3; discard_disabled = 1; starting_dissent = 2; starting_relations = 2;
-go-to: 1928_main
-
-@1928_historical
-choose-if: 0
-subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
-on-arrival: {!
-Q.hand_size = 4;
-Q.difficulty = 2;
-Q.discard_disabled = 1;
-Q.historical_mode = 1;
-Q.annual_income = 2;
-Q.resources = 2;
-Q.dues = 1;
-Q.rb_strength = 2000;
-Q.starting_dissent = 2;
-Q.reformist_dissent = 25;
-Q.left_dissent = 30;
-Q.labor_dissent = 25;
-Q.center_dissent = 25;
-Q.starting_relations = 2;
-Q.z_relation = 41;
-Q.kpd_relation = 16;
-Q.dvp_relation = 31;
-Q.budget = 2;
-Q.fundraising_disabled = 1;
-Q.saves_disabled = 1;
-this.state.disableSaves = true;
-!}
-go-to: 1928_main
 
 @1928_main
 subtitle: The way the game is meant to be player. The only option for now.

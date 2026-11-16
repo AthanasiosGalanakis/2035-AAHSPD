@@ -13,8 +13,6 @@ Leipart is a leader of the ADGB, the largest federation of socialist trade union
 - @depression
 - @root: Return to main
 
-# leipart was one of the people who argued for union independence
-#- @union_unity
 
 @organizing
 title: Organizing workers
@@ -33,12 +31,3 @@ unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +
 on-arrival: advisor_action_timer = 6; wtb_support += 2; center_dissent += 10; labor_strength += 1
 
 The WTB-Plan, standing for its primary supporters Woytinsky, Tarnow, and Baade, has been adopted as the unions' plan for getting us out of the depression. Leipart canvasses in favor of this policy throughout the party and the unions.
-
-@union_unity
-title: Union-party coordination
-subtitle: Reduce dissent among the unions.
-choose-if: advisor_action_timer <= 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; labor_dissent -= 5; labor_strength += 5
-
-We have reduced tensions with the Labor faction, and increased its strength in the party.

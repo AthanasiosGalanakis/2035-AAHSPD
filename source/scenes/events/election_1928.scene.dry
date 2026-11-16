@@ -45,7 +45,9 @@ var new_party_sum = 0;
 for (var party of Q.parties) {
     Q['old_' + party + '_r'] = Q[party + '_r'];
     if (Q.electoral_threshold > 0) {
-        if ((Q[party + '_votes'] < Q.electoral_threshold && party != 'ssw') || (Q.electoral_threshold > 1 && party == 'other') || Q[party + '_banned']) {
+        // exempt from the threshold: the SSW (national minority) and parties with 3 direct mandates
+        var exempt = party == 'ssw' || (Q.direct_mandate_rule && Q[party + '_direct'] >= 3);
+        if ((Q[party + '_normalized']*100 < Q.electoral_threshold && !exempt) || (Q.electoral_threshold > 1 && party == 'other') || Q[party + '_banned']) {
             Q[party + '_r'] = 0;
         } else {
             Q[party + '_r'] = Q[party + '_votes'];
@@ -79,7 +81,7 @@ if (Q.electoral_threshold && Q.electoral_threshold > 0) {
         } else {
             Q[party + '_r_disp'] = Q[party+'_r'];
         }
-        Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
+        Q['change_' + party + '_r'] = Math.round((Q[party + '_r'] - Q['old_' + party + '_r'])*10)/10;
         var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
         Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
     }
@@ -428,7 +430,7 @@ In response to the KPD's entrance into the government, the right-wing immediatel
 
 The Center manages to diffuse some of the hostility from the Reichswehr and the Stahlhelm, but fail to prevent the outbreak of fighting. We are forced to fight on the same side as the KPD, whether we want to or not.
 
-- @civil_war: A civil war, then.
+- @game_over: A civil war, then.
 
 
 
@@ -510,7 +512,7 @@ Immediately, [+ chancellor +] goes to work building a "Soviet Germany": consolid
 
 In response to [+ chancellor +] being appointed Chancellor, the right-wing forces launches almost immediately launch an attempted coup. Troops of the Stahlhelm and Nazi SA enter Berlin and immediately begin clashing with our supporters! Reactionary officers within the Reichswehr have taken their troops out of the barracks and joined them with the Stahlhelm to stop the KPD from taking power. We are forced to be on the same side as the KPD, whether we want to or not.
 
-- @civil_war
+- @game_over: Game over.
 
 
 @left_coalition_resources
@@ -551,7 +553,7 @@ on-arrival: reichswehr_loyalty += 0.1
 
 In response to the KPD's entrance into the government, the right-wing immediately launches a coup attempt. Troops of the Stahlhelm and Nazi SA enter Berlin and begin clashing with our supporters. Reactionary officers within the Reichswehr have taken their troops out of the barracks and joined them with the Stahlhelm to stop us from taking power.
 
-- @civil_war: A civil war, then.
+- @game_over: A civil war, then.
 
 
 
@@ -872,7 +874,7 @@ The far-right parties, seeing that we are willing to deny them government by que
 
 Their numbers are bolstered by the many government workers who are against the prospect of a unified Socialist government. Police and soldiers defect to the SA and Stahlhelm.
 
-- @civil_war: It is war.
+- @game_over: It is war.
 
 
 @emergency_no_confidence
