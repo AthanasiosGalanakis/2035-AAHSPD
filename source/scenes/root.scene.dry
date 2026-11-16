@@ -80,7 +80,7 @@ Q.unions_independent = 0;
 Q.centrists_resign = 0;
 Q.left_split = 0;
 
-Q.spd_leader_img = https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93049_%28cropped%29.jpg/960px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93049_%28cropped%29.jpg
+Q.spd_leader_img = "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93049_%28cropped%29.jpg/960px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93049_%28cropped%29.jpg";
 
 // crisis_urgency indicates how seriously the SPD is taking the economic crisis - scale from 0 to 10.
 Q.crisis_urgency = 0;
