@@ -587,6 +587,10 @@ table {
     fill: #009EE0;
     color: #009EE0;
 }
+.seat.ssw {
+    fill: #003C8F;
+    color: #003C8F;
+}
 .seat.other {
     fill: #909090;
 }

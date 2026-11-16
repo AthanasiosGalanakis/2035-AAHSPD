@@ -50,7 +50,8 @@ for (var party of Q.parties) {
         if ((Q[party + '_normalized']*100 < Q.electoral_threshold && !exempt) || (Q.electoral_threshold > 1 && party == 'other') || Q[party + '_banned']) {
             Q[party + '_r'] = 0;
         } else {
-            Q[party + '_r'] = Q[party + '_votes'];
+            // exact share, so that a small party like the SSW is not rounded away
+            Q[party + '_r'] = Q[party + '_normalized']*100;
         }
         new_party_sum += Q[party + '_r'];
     } else {
@@ -85,6 +86,19 @@ if (Q.electoral_threshold && Q.electoral_threshold > 0) {
         var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
         Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
     }
+    // rounding can leave the total at 99.9 or 100.1: the largest party takes the difference
+    var seat_sum = 0;
+    var largest = Q.parties[0];
+    for (var party of Q.parties) {
+        seat_sum += Q[party + '_r'];
+        if (Q[party + '_r'] > Q[largest + '_r']) {
+            largest = party;
+        }
+    }
+    Q[largest + '_r'] = Math.round((Q[largest + '_r'] + 100 - seat_sum)*10)/10;
+    Q[largest + '_r_disp'] = Q.use_decimals ? Q[largest + '_r'].toFixed(1) : Q[largest + '_r'];
+    Q['change_' + largest + '_r'] = Math.round((Q[largest + '_r'] - Q['old_' + largest + '_r'])*10)/10;
+    Q['str_change_' + largest] = (Q['change_' + largest + '_r'] > 0 ? '+' : '') + Q['change_' + largest + '_r'];
 }
 
 // get change arrows and signs

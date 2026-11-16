@@ -42,6 +42,18 @@ for (var party of Q.parties) {
     //Q[party+'_votes'] = Q[party+'_votes_dec'];
     // display
 }
+// rounding can leave the total at 99.9 or 100.1: the largest party takes the difference
+var votes_sum = 0;
+var largest = Q.parties[0];
+for (var party of Q.parties) {
+    votes_sum += Q[party+'_votes'];
+    if (Q[party+'_votes'] > Q[largest+'_votes']) {
+        largest = party;
+    }
+}
+Q[largest+'_votes'] = Math.round((Q[largest+'_votes'] + 100 - votes_sum)*10)/10;
+Q[largest+'_votes_dec'] = Q[largest+'_votes'];
+Q[largest+'_votes_disp'] = Q.use_decimals ? Q[largest+'_votes'] : Q[largest+'_votes'].toFixed(1);
 !}
 go-to: jumpScene
 

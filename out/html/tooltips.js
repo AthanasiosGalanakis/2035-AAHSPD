@@ -57,6 +57,11 @@ var TOOLTIPS = {
         text: "Right-wing populist and nationalist party. It opposes immigration and the EU in its current form.",
         logo: ""
     },
+    ssw: {
+        title: "Südschleswigscher Wählerverband",
+        text: "Party of the Danish and Frisian minorities in Schleswig-Holstein. As a national minority party it is exempt from the 5% threshold.",
+        logo: ""
+    },
 
     // SPD factions
     left: {
