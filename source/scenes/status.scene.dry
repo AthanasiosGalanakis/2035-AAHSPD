@@ -95,21 +95,21 @@ Economic growth: [+ economic_growth_2 +]%
 
 = Party Leadership
 
-{!<span class="ideology-tooltip-wrap seat linke" data-tip="linke" tabindex="0">Linke</span>!}{!<br>!}Party Leader: [+ linke_leader +]{!<br>!}Party Ideology: [+ linke_ideology +]
+{!<span class="ideology-tooltip-wrap seat linke" data-tip="linke" tabindex="0">Linke</span>!}{!<br>!}Party Leader: [+ {! return window.joinNames(Q.linke_leader); !} +]{!<br>!}Party Ideology: [+ linke_ideology +]
 
-{!<span class="ideology-tooltip-wrap seat greens" data-tip="greens" tabindex="0">Grüne</span>!}{!<br>!}Party Leader: [+ greens_leader +]{!<br>!}Party Ideology: [+ greens_ideology +]
+{!<span class="ideology-tooltip-wrap seat greens" data-tip="greens" tabindex="0">Grüne</span>!}{!<br>!}Party Leader: [+ {! return window.joinNames(Q.greens_leader); !} +]{!<br>!}Party Ideology: [+ greens_ideology +]
 
-[? if csu_split = 0 : {!<span class="ideology-tooltip-wrap seat cdu" data-tip="cducsu" tabindex="0">CDU/CSU</span>!}{!<br>!}Party Leader: [+ cdu_leader +]{!<br>!}Party Ideology: [+ cdu_ideology +] ?]
+[? if csu_split = 0 : {!<span class="ideology-tooltip-wrap seat cdu" data-tip="cducsu" tabindex="0">CDU/CSU</span>!}{!<br>!}Party Leader: [+ {! return window.joinNames(Q.cdu_leader); !} +]{!<br>!}Party Ideology: [+ cdu_ideology +] ?]
 
-[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat cdu" data-tip="cdu" tabindex="0">CDU</span>!}{!<br>!}Party Leader: [+ cdu_leader +]{!<br>!}Party Ideology: [+ cdu_ideology +] ?]
+[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat cdu" data-tip="cdu" tabindex="0">CDU</span>!}{!<br>!}Party Leader: [+ {! return window.joinNames(Q.cdu_leader); !} +]{!<br>!}Party Ideology: [+ cdu_ideology +] ?]
 
-[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat csu" data-tip="csu" tabindex="0">CSU</span>!}{!<br>!}Party Leader: [+ csu_leader +]{!<br>!}Party Ideology: [+ csu_ideology +] ?]
+[? if csu_split = 1 : {!<span class="ideology-tooltip-wrap seat csu" data-tip="csu" tabindex="0">CSU</span>!}{!<br>!}Party Leader: [+ {! return window.joinNames(Q.csu_leader); !} +]{!<br>!}Party Ideology: [+ csu_ideology +] ?]
 
-{!<span class="ideology-tooltip-wrap seat fdp" data-tip="fdp" tabindex="0">FDP</span>!}{!<br>!}Party Leader: [+ fdp_leader +]{!<br>!}Party Ideology: [+ fdp_ideology +]
+{!<span class="ideology-tooltip-wrap seat fdp" data-tip="fdp" tabindex="0">FDP</span>!}{!<br>!}Party Leader: [+ {! return window.joinNames(Q.fdp_leader); !} +]{!<br>!}Party Ideology: [+ fdp_ideology +]
 
-{!<span class="ideology-tooltip-wrap seat bsw" data-tip="bsw" tabindex="0">BSW</span>!}{!<br>!}Party Leader: [+ bsw_leader +]{!<br>!}Party Ideology: [+ bsw_ideology +]
+{!<span class="ideology-tooltip-wrap seat bsw" data-tip="bsw" tabindex="0">BSW</span>!}{!<br>!}Party Leader: [+ {! return window.joinNames(Q.bsw_leader); !} +]{!<br>!}Party Ideology: [+ bsw_ideology +]
 
-{!<span class="ideology-tooltip-wrap seat afd" data-tip="afd" tabindex="0">AfD</span>!}{!<br>!}Party Leader: [+ afd_leader +]{!<br>!}Party Ideology: [+ afd_ideology +]
+{!<span class="ideology-tooltip-wrap seat afd" data-tip="afd" tabindex="0">AfD</span>!}{!<br>!}Party Leader: [+ {! return window.joinNames(Q.afd_leader); !} +]{!<br>!}Party Ideology: [+ afd_ideology +]
 
 = Internal Factions of the SPD
 
@@ -141,8 +141,6 @@ Q.socialism_disp = Math.round(Q.socialism);
 
 = Projected election results
 
-(if the election were to be held now)
-
 {!<div style="display:flex;align-items:center;gap:0.4em;margin:0.2em 0"><span class="ideology-tooltip-wrap seat spd" data-tip="spd" tabindex="0" style="width:4.8em;font-weight:bold">SPD</span><span style="flex:1;height:0.75em;border-radius:3px;overflow:hidden;background:rgba(128,128,128,0.2)"><span style="display:block;height:100%;background:#E3000F;width:calc(2% * !}[+ spd_votes +]{!)"></span></span><span style="width:3.2em;text-align:right">!}[+ spd_votes +]{!%</span></div>!}
 
 [? if csu_split = 0 : {!<div style="display:flex;align-items:center;gap:0.4em;margin:0.2em 0"><span class="ideology-tooltip-wrap seat cdu" data-tip="cducsu" tabindex="0" style="width:4.8em;font-weight:bold">CDU/CSU</span><span style="flex:1;height:0.75em;border-radius:3px;overflow:hidden;background:rgba(128,128,128,0.2)"><span style="display:block;height:100%;background:#000000;width:calc(2% * !}[+ cdu_votes +]{!)"></span></span><span style="width:3.2em;text-align:right">!}[+ cdu_votes +]{!%</span></div>!} ?]
@@ -166,8 +164,6 @@ Q.socialism_disp = Math.round(Q.socialism);
 {!<div style="display:flex;align-items:center;gap:0.4em;margin:0.2em 0"><span style="width:4.8em;font-weight:bold">Others</span><span style="flex:1;height:0.75em;border-radius:3px;overflow:hidden;background:rgba(128,128,128,0.2)"><span style="display:block;height:100%;background:#909090;width:calc(2% * !}[+ other_votes +]{!)"></span></span><span style="width:3.2em;text-align:right">!}[+ other_votes +]{!%</span></div>!}
 
 = By demographic
-
-Each bar shows how a group would vote, from left to right: Linke, SPD, Grüne, FDP, CDU/CSU, BSW, AfD, and others in grey. Click a group for the numbers.
 
 {!<details style="margin:0.5em 0"><summary style="cursor:pointer"><b>Workers</b><span style="display:flex;height:0.75em;margin-top:0.25em;border-radius:3px;overflow:hidden;background:#909090"><span style="background:#B61C3E;width:!}[+ workers_linke_display +]{!%"></span><span style="background:#E3000F;width:!}[+ workers_spd_display +]{!%"></span><span style="background:#46962B;width:!}[+ workers_greens_display +]{!%"></span><span style="background:#C8A800;width:!}[+ workers_fdp_display +]{!%"></span><span style="background:#000000;width:!}[+ workers_cdu_display +]{!%"></span><span style="background:#542344;width:!}[+ workers_bsw_display +]{!%"></span><span style="background:#009EE0;width:!}[+ workers_afd_display +]{!%"></span></span></summary><div style="display:grid;grid-template-columns:1fr 1fr;gap:0 0.8em;margin:0.3em 0 0.2em 0.9em;font-size:0.9em"><span><b><span class="ideology-tooltip-wrap seat spd" data-tip="spd" tabindex="0">SPD</span></b> !}[+ workers_spd_display +]{!%</span><span><b><span class="ideology-tooltip-wrap seat cdu" data-tip="cducsu" tabindex="0">CDU/CSU</span></b> !}[+ workers_cdu_display +]{!%</span><span><b><span class="ideology-tooltip-wrap seat afd" data-tip="afd" tabindex="0">AfD</span></b> !}[+ workers_afd_display +]{!%</span><span><b><span class="ideology-tooltip-wrap seat greens" data-tip="greens" tabindex="0">Grüne</span></b> !}[+ workers_greens_display +]{!%</span><span><b><span class="ideology-tooltip-wrap seat linke" data-tip="linke" tabindex="0">Linke</span></b> !}[+ workers_linke_display +]{!%</span><span><b><span class="ideology-tooltip-wrap seat fdp" data-tip="fdp" tabindex="0">FDP</span></b> !}[+ workers_fdp_display +]{!%</span><span><b><span class="ideology-tooltip-wrap seat bsw" data-tip="bsw" tabindex="0">BSW</span></b> !}[+ workers_bsw_display +]{!%</span><span><b>Others</b> !}[+ workers_other_display +]{!%</span>!}[? if sapd_formed : {!<span><b>SAPD</b> !}[+ workers_sapd_display +]{!%</span>!} ?][? if srpd_formed : {!<span><b>SRPD</b> !}[+ workers_srpd_display +]{!%</span>!} ?]{!</div></details>!}
 

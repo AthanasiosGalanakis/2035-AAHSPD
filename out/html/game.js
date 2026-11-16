@@ -358,6 +358,23 @@
       $('#qualities').append(dendryUI.contentToHTML.convert(displayContent));
   };
 
+  // Joins names as "A", "A and B" or "A, B and C". Also splits names given as "A, B" in one string.
+  window.joinNames = function(names) {
+      var list = [];
+      [].concat(names).forEach(function(n) {
+          String(n).split(',').forEach(function(part) {
+              part = part.trim();
+              if (part) {
+                  list.push(part);
+              }
+          });
+      });
+      if (list.length <= 1) {
+          return list.join('');
+      }
+      return list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1];
+  };
+
   // Right-hand news sidebar: shows the scene "news" (source/scenes/news.scene.dry).
   window.updateNewsSidebar = function() {
       $('#news').empty();

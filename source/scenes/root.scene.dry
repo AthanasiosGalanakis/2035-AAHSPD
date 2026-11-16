@@ -202,7 +202,7 @@ Q.cdu_leader = ["Friedrich Merz"];
 Q.csu_leader = ["Markus Söder"];
 Q.fdp_leader = ["Wolfgang Kubicki"];
 Q.bsw_leader = ["Amira Mohamed Ali", "Fabio De Masi"];
-Q.afd_leader = ["Alice Weide, Tino Chrupalla"];
+Q.afd_leader = ["Alice Weidel, Tino Chrupalla"];
 
 // Ideologies
 Q.linke_ideology = "Democratic socialist";
