@@ -1,0 +1,10 @@
+title: News
+is-special: true
+
+= Vorwärts
+
+<p class="news-date">[+ month : month +] [+ year +]</p>
+
+# Write your news items below, one block per item, for example:
+# [? if year = 2028 and month = 11: Your headline here. ?]
+# Several items in the same month can be separated with <hr>.

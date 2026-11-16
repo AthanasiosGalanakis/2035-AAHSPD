@@ -358,6 +358,20 @@
       $('#qualities').append(dendryUI.contentToHTML.convert(displayContent));
   };
 
+  // Right-hand news sidebar: shows the scene "news" (source/scenes/news.scene.dry).
+  window.updateNewsSidebar = function() {
+      $('#news').empty();
+      var scene = dendryUI.game.scenes[window.newsTab];
+      if (!scene) {
+          return;
+      }
+      if (scene.onArrival) {
+          dendryUI.dendryEngine._runActions(scene.onArrival);
+      }
+      var displayContent = dendryUI.dendryEngine._makeDisplayContent(scene.content, true);
+      $('#news').append(dendryUI.contentToHTML.convert(displayContent));
+  };
+
   window.changeTab = function(newTab, tabId) {
       if (tabId == 'poll_tab' && dendryUI.dendryEngine.state.qualities.historical_mode) {
           window.alert('Polls are not available in historical mode.');
@@ -375,6 +389,7 @@
 
   window.onDisplayContent = function() {
       window.updateSidebar();
+      window.updateNewsSidebar();
   };
 
   /*
@@ -411,6 +426,7 @@
 
   window.justLoaded = true;
   window.statusTab = "status";
+  window.newsTab = "news";
   window.dendryModifyUI = main;
   console.log("Modifying stats: see dendryUI.dendryEngine.state.qualities");
 
@@ -420,6 +436,7 @@
         var sidebar_fs = fs - 0.1;
         document.getElementById("content").setAttribute("style", "font-size: " + fs + "em;");
         document.getElementById("stats_sidebar").setAttribute("style", "font-size: " + sidebar_fs + "em;");
+        document.getElementById("news_sidebar").setAttribute("style", "font-size: " + sidebar_fs + "em;");
         document.getElementById('font_size_value').textContent = window.dendryUI.font_size.toFixed(1) + "em";
         window.dendryUI.saveSettings();
   }
@@ -430,6 +447,7 @@
         var sidebar_fs = fs - 0.1;
         document.getElementById("content").setAttribute("style", "font-size: " + fs + "em;");
         document.getElementById("stats_sidebar").setAttribute("style", "font-size: " + sidebar_fs + "em;");
+        document.getElementById("news_sidebar").setAttribute("style", "font-size: " + sidebar_fs + "em;");
         document.getElementById('font_size_value').textContent = window.dendryUI.font_size.toFixed(1) + "em";
         window.dendryUI.saveSettings();
   }
@@ -449,6 +467,7 @@
         var sidebar_fs = fs - 0.1;
         document.getElementById("content").setAttribute("style", "font-size: " + fs + "em;");
         document.getElementById("stats_sidebar").setAttribute("style", "font-size: " + sidebar_fs + "em;");
+        document.getElementById("news_sidebar").setAttribute("style", "font-size: " + sidebar_fs + "em;");
     }
     document.getElementById('font_size_value').textContent = window.dendryUI.font_size.toFixed(1) + "em";
     window.pinnedCardsDescription = "Advisor cards - actions are only usable once per 6 months.";
