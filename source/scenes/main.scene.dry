@@ -14,7 +14,11 @@ max-cards: 4
 
 <div class="leader-card">
 <img class="leader-portrait" src="[+ spd_leader_img +]">
+<div class="leader-name">[+ spd_leader[0] +]</div>
+<div class="leader-role">Parteivorsitzender</div>
 </div>
+
+
 
 #Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
 

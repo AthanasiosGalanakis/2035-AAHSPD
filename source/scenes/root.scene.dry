@@ -121,10 +121,6 @@ Q.fdp_relation = 30;
 Q.bsw_relation = 30;
 Q.afd_relation = 0;
 
-Q.linke_leader = "van Aken";
-Q.cdu_leader = "Merz";
-Q.afd_leader = "Weidel";
-
 // Does the SPD lead in Prussia?
 Q.spd_prussia = 1;
 // Options: spd, cdu, bsw, papen, afd
@@ -176,12 +172,12 @@ Q.starting_budget = 2;
 Q.budget = 2;
 
 // Proportion of different social groups
-Q.workers = 17; // blue-collar and routine service workers
+Q.workers = 14; // blue-collar and routine service workers
 Q.new_middle = 25; // salaried employees, civil servants
-Q.old_middle = 7; // self-employed, business owners
-Q.rural = 9; // rural and small-town West
+Q.old_middle = 6; // self-employed, business owners
+Q.rural = 8; // rural and small-town West
 Q.unemployed = 6;
-Q.catholics = 12; // now: East Germans
+Q.catholics = 17; // now: East Germans (five eastern states, without Berlin)
 Q.pensioners = 24;
 
 // unemployment: 1929 - 13.3, 1930 - 22.7, 1931 - 34.3, 1932 - 43.8 (same source as above)
@@ -199,14 +195,14 @@ Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'cath
 Q.parties = ['linke', 'greens', 'spd', 'cdu', 'fdp', 'bsw', 'afd', 'ssw', 'other'];
 
 //Leaders
-Q.linke_leader = "Schwerdtner, van Aken";
-Q.greens_leader = "Brantner, Banaszak";
-Q.cdu_leader = "Merz";
-Q.csu_leader = "Söder";
-Q.fdp_leader = "Dürr";
-Q.bsw_leader = "Wagenknecht";
-Q.afd_leader = "Weidel, Chrupalla";
-Q.img_leader = "img/spd_leader.jpg"; // picture of the SPD party leader, shown above the decks
+Q.linke_leader = ["Ines Schwerdtner", " Luigi Pantisano"];
+Q.greens_leader = ["Franziska Brantner", "Felix Banaszak"];
+Q.spd_leader = ["Lars Klingbeil"];
+Q.cdu_leader = ["Friedrich Merz"];
+Q.csu_leader = ["Markus Söder"];
+Q.fdp_leader = ["Wolfgang Kubicki"];
+Q.bsw_leader = ["Amira Mohamed Ali", "Fabio De Masi"];
+Q.afd_leader = ["Alice Weide, Tino Chrupalla"];
 
 // Ideologies
 Q.linke_ideology = "Democratic socialist";
@@ -221,74 +217,74 @@ Q.afd_ideology = "Right-wing populist";
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
 Q.workers_linke = 8;
-Q.workers_greens = 5;
-Q.workers_spd = 14;
-Q.workers_cdu = 23;
+Q.workers_greens = 6;
+Q.workers_spd = 17;
+Q.workers_cdu = 26;
 Q.workers_fdp = 4;
-Q.workers_bsw = 6;
-Q.workers_afd = 35;
-Q.workers_ssw = 0.15;
+Q.workers_bsw = 5;
+Q.workers_afd = 30;
+Q.workers_ssw = 0.18;
 Q.workers_other = 5;
 
-Q.old_middle_linke = 6;
-Q.old_middle_greens = 12;
-Q.old_middle_spd = 8;
-Q.old_middle_cdu = 35;
-Q.old_middle_fdp = 10;
+Q.old_middle_linke = 5;
+Q.old_middle_greens = 14;
+Q.old_middle_spd = 10;
+Q.old_middle_cdu = 36;
+Q.old_middle_fdp = 8;
 Q.old_middle_bsw = 3;
-Q.old_middle_afd = 21;
-Q.old_middle_ssw = 0.15;
+Q.old_middle_afd = 18;
+Q.old_middle_ssw = 0.18;
 Q.old_middle_other = 5;
 
-Q.new_middle_linke = 11;
-Q.new_middle_greens = 20;
-Q.new_middle_spd = 16;
-Q.new_middle_cdu = 26;
+Q.new_middle_linke = 12;
+Q.new_middle_greens = 21;
+Q.new_middle_spd = 17;
+Q.new_middle_cdu = 27;
 Q.new_middle_fdp = 5;
 Q.new_middle_bsw = 3;
-Q.new_middle_afd = 13;
-Q.new_middle_ssw = 0.15;
-Q.new_middle_other = 6;
+Q.new_middle_afd = 12;
+Q.new_middle_ssw = 0.18;
+Q.new_middle_other = 4;
 
 Q.rural_linke = 4;
 Q.rural_greens = 9;
-Q.rural_spd = 14;
-Q.rural_cdu = 37;
-Q.rural_fdp = 4;
+Q.rural_spd = 15;
+Q.rural_cdu = 38;
+Q.rural_fdp = 5;
 Q.rural_bsw = 3;
-Q.rural_afd = 23;
-Q.rural_ssw = 0.15;
-Q.rural_other = 6;
+Q.rural_afd = 21;
+Q.rural_ssw = 0.18;
+Q.rural_other = 4;
 
-Q.unemployed_linke = 14;
+Q.unemployed_linke = 15;
 Q.unemployed_greens = 6;
-Q.unemployed_spd = 13;
-Q.unemployed_cdu = 13;
+Q.unemployed_spd = 15;
+Q.unemployed_cdu = 16;
 Q.unemployed_fdp = 2;
-Q.unemployed_bsw = 9;
-Q.unemployed_afd = 35;
-Q.unemployed_ssw = 0.15;
+Q.unemployed_bsw = 7;
+Q.unemployed_afd = 32;
+Q.unemployed_ssw = 0.18;
 Q.unemployed_other = 8;
 
 // catholics now stands for East Germans
-Q.catholics_linke = 13;
-Q.catholics_greens = 6;
-Q.catholics_spd = 11;
+Q.catholics_linke = 12;
+Q.catholics_greens = 5;
+Q.catholics_spd = 10;
 Q.catholics_cdu = 19;
 Q.catholics_fdp = 3;
 Q.catholics_bsw = 10;
-Q.catholics_afd = 33;
-Q.catholics_ssw = 0.15;
+Q.catholics_afd = 36;
+Q.catholics_ssw = 0;
 Q.catholics_other = 5;
 
 Q.pensioners_linke = 5;
-Q.pensioners_greens = 10;
-Q.pensioners_spd = 24;
-Q.pensioners_cdu = 39;
+Q.pensioners_greens = 11;
+Q.pensioners_spd = 23;
+Q.pensioners_cdu = 37;
 Q.pensioners_fdp = 4;
 Q.pensioners_bsw = 4;
-Q.pensioners_afd = 11;
-Q.pensioners_ssw = 0.15;
+Q.pensioners_afd = 12;
+Q.pensioners_ssw = 0.18;
 Q.pensioners_other = 3;
 
 // Current Bundestag composition: % of seats after the 23 Feb 2025 election (630 seats)
