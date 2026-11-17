@@ -1,44 +1,43 @@
-title: High Inflation
+title: Prices Are Rising Again
 subtitle: Workers are seeing their purchasing power decline.
-view-if: inflation >= 7 and high_inflation_timer = 0 and spd_in_government
+view-if: inflation >= 5 and high_inflation_timer = 0 and spd_in_government
 new-page: true
-on-arrival: capital_strike_progress += 1; workers_spd -= 4; old_middle_spd -= 6; new_middle_spd -= 6; rural_spd -= 5; unemployed_spd -= 4; high_inflation_timer = 6; high_inflation_timer = 4 if inflation > 8; high_inflation_timer = 2 if inflation >= 10; pro_republic -= 5; old_middle_afd += 2; new_middle_afd += 2; rural_afd += 2
+on-arrival: capital_strike_progress += 1; workers_spd -= 4; old_middle_spd -= 5; new_middle_spd -= 5; rural_spd -= 4; unemployed_spd -= 4; pensioners_spd -= 3; high_inflation_timer = 6; high_inflation_timer = 4 if inflation > 6; high_inflation_timer = 2 if inflation >= 8; trust_in_democracy -= 4; old_middle_afd += 2; new_middle_afd += 2; rural_afd += 2
 tags: event
 
-= High Inflation
+= Prices Are Rising Again
 
-Inflation has risen. People of all social classes are seeing their purchasing power fall. Memories of the hyperinflation period of 1923 echo through the public conscious, even though the present inflation is not nearly as severe.
+Inflation is up again. Rent, food and energy bills are eating into everyone's income, and the memory of the 2022 energy shock is still fresh. The tabloids print shopping-basket comparisons every week.
 
-The people and the press are clamoring for action to reduce inflation.
+People and press are demanding that the government act.
 
-- @taxes: Raise taxes.
-- @welfare: Reduce welfare and social spending.
-- @price_controls: Impose price and wage controls.
-- @bank: Surely the Reichsbank has a plan this time?
+- @taxes: Raise taxes to cool the economy.
+- @welfare: Cut government spending.
+- @price_controls: Cap energy and rent prices.
+- @bank: Surely the European Central Bank will act?
 - @nothing: Realistically, there is nothing we can do.
 
 @taxes
-on-arrival: upper_tax_rates += 1; lower_tax_rates += 1; budget += 2; unemployed += 1.5; capital_strike_progress -= 1; inflation -= 1; new_middle_spd -= 3; old_middle_spd -= 3; workers_spd -= 3; rural_spd -= 3; linke_coalition_dissent += 1; linke_relation -= 5; left_dissent += 5; economic_growth -= 0.4
+on-arrival: upper_tax_rates += 1; lower_tax_rates += 1; budget += 2; unemployment_rate += 0.4; capital_strike_progress -= 1; inflation -= 0.8; new_middle_spd -= 3; old_middle_spd -= 3; workers_spd -= 3; rural_spd -= 3; linke_coalition_dissent += 1; linke_relation -= 5; left_dissent += 5; economic_growth -= 0.3
 
-Raising taxes is unpopular among everyone, but it might be what it takes to keep inflation under control.
+Raising taxes is unpopular with everyone, but it may be what it takes to bring inflation under control.
 
 @welfare
-on-arrival: welfare -= 1; budget += 1; capital_strike_progress -= 2; unemployed += 1.5; new_middle_spd += 4*(1-dissent); old_middle_spd += 4*(1-dissent); workers_spd -= 5; unemployed_spd -= 5; inflation -= 1; left_dissent += 5; labor_dissent += 5; center_dissent += 5; linke_coalition_dissent += 1; economic_growth -= 0.4
+on-arrival: welfare -= 1; budget += 1; capital_strike_progress -= 2; unemployment_rate += 0.4; new_middle_spd += 3*(1-dissent); old_middle_spd += 4*(1-dissent); workers_spd -= 5; unemployed_spd -= 5; inflation -= 0.8; left_dissent += 5; labor_dissent += 5; center_dissent += 5; linke_coalition_dissent += 1; economic_growth -= 0.3
 
-Reducing the amount of government spending should reduce the inflation rate, according to classical economics. But it imposes pain upon the people who are suffering the most.
+Spending less should cool the economy, according to the textbooks. But the pain falls on the people who are already struggling the most.
 
 @price_controls
-on-arrival: capital_strike_progress += 3; inflation -= 3; coalition_dissent += 1; unemployed += 1; old_middle_spd -= 4; new_middle_spd -= 3; rural_spd -= 5; workers_spd -= 2; unemployed_spd += 3; labor_dissent += 6; fdp_relation -= 6; cdu_relation -= 4; greens_relation -= 4; economic_growth -= 0.4
+on-arrival: capital_strike_progress += 3; inflation -= 1.5; coalition_dissent += 1; unemployment_rate += 0.2; old_middle_spd -= 4; new_middle_spd -= 2; rural_spd -= 3; workers_spd += 2; unemployed_spd += 3; fdp_relation -= 6; cdu_relation -= 4; greens_relation -= 2; economic_growth -= 0.2; budget -= 1
 
-Price controls are very unpopular with the bourgeoisie and their representatives, as well as rural producers, while wage controls hurt organized workers. However, the policies do stem the tide of inflation, at least somewhat.
+An energy price cap and a national rent freeze are popular with tenants and workers, but landlords, energy companies and the liberal press are furious. Inflation does fall, at least for now.
 
 @bank
-on-arrival: capital_strike_progress += 2
+on-arrival: capital_strike_progress += 1; inflation -= 0.3
 
-Unfortunately, but perhaps expectedly, the Reichsbank is refusing to help the government, claiming that our socialist policies are solely to blame. Reichsbank president [? if year <= 1930 : Hjalmar Schacht ?][? if year > 1930 : Hans Luther ?] is all but calling for the fall of the government.
+The ECB raises interest rates again. That will bring inflation down in time, but it also makes mortgages and investment more expensive, and the ECB reminds Berlin that fiscal policy is the government's job.
 
 @nothing
 on-arrival: capital_strike_progress += 1
 
-Realistically, there is nothing we can do to stem the tide of inflation.
-
+Realistically, there is nothing we can do to stop the rise in prices.

@@ -1,0 +1,40 @@
+title: Michael Roth
+is-pinned-card: true
+tags: advisor, center
+view-if: roth_advisor = 1
+new-page: true
+
+= Michael Roth
+
+Michael Roth from Hesse was minister of state for Europe and later chaired the Bundestag's foreign affairs committee. He is a passionate European and a firm supporter of Ukraine.
+
+- @international
+- @foreign
+- @party_discipline
+- @root: Return to main
+
+@international
+title: International party relations
+subtitle: Work with our sister parties.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; international_relations_timer -= 12; last_advisor_action = 1
+go-to: international_relations
+
+@foreign
+title: Foreign policy
+subtitle: Use the foreign office.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if foreign_minister_party != "SPD" or spd_in_government == 0 : The SPD does not hold the foreign office. ?]
+choose-if: advisor_action_timer == 0 and spd_in_government and foreign_minister_party == "SPD"
+on-arrival: advisor_action_timer = 6; foreign_policy_timer -= 8; last_advisor_action = 1
+go-to: foreign_policy
+
+@party_discipline
+title: Party discipline
+subtitle: Reduce dissent across the party.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; left_dissent -= 5; labor_dissent -= 10; center_dissent -= 10; reformist_dissent -= 10
+
+We remind every faction that a divided party loses elections.
+

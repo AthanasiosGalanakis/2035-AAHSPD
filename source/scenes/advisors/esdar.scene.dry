@@ -1,0 +1,39 @@
+title: Wiebke Esdar
+is-pinned-card: true
+tags: advisor, left
+view-if: esdar_advisor = 1
+new-page: true
+
+= Wiebke Esdar
+
+Wiebke Esdar from Bielefeld is one of the spokespersons of the Parlamentarische Linke. She argues for more public investment, better schools and a fairer share for the regions.
+
+- @curriculum_
+- @structure_
+- @crisis_left
+- @root: Return to main
+
+@curriculum_
+title: Change the curriculum
+subtitle: Agree on new school standards with our Länder.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government or chancellor_party != "SPD" : We need the chancellery. ?][? if curriculum_timer > 0 : It is too early to change the curriculum again. ?]
+choose-if: advisor_action_timer = 0 and spd_in_government and chancellor_party = "SPD" and spd_states and curriculum_timer = 0
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1
+go-to: education_science.curriculum
+
+@structure_
+title: Reform the schools
+subtitle: Change the structure and funding of schools.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government or chancellor_party != "SPD" : We need the chancellery. ?]
+choose-if: advisor_action_timer = 0 and spd_in_government and chancellor_party = "SPD" and spd_states
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1
+go-to: education_science.structure
+
+@crisis_left
+title: Addressing the economic crisis
+subtitle: Argue for the transformation of industry.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if recession_seen == 0 : There is no economic crisis. ?][? if nationalization_adopted : The party has already adopted the plan. ?]
+choose-if: advisor_action_timer <= 0 and nationalization_adopted == 0 and recession_seen == 1 and nationalization_support <= 3
+on-arrival: advisor_action_timer = 6
+go-to: crisis_program.support_left
+

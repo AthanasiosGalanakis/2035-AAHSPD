@@ -1,117 +1,105 @@
 title: Inter-Party Relationships
 new-page: true
-view-if: year <= 1932 and inter_party_relationships_timer <= 0
+view-if: inter_party_relationships_timer <= 0
 tags: party_affairs
 is-card: true
 on-arrival: month_actions += 1; inter_party_relationships_timer = 6;
 card-image: img/weimar_coalition_2.jpg
 max-visits: 12
-#subtitle: Building relations with the other political parties of Germany.
 
 = Inter-Party Relationships
 
-The SPD cannot govern by itself yet. Because we do not have an electoral majority, we need the support of other parties. Recently, our governments have consisted of the Weimar Coalition of the SPD, Center, and Democratic parties. We can reach out and build additional connections with these parties, or perhaps we can stand alone.
+No party has won a majority on its own since 1957, and none will soon. Every government needs partners. Which relationships should we work on?
 
-- @liberals: Strengthen our bonds with the left-liberal German Democratic Party and conservative-liberal German People's Party.
-- @center: Strengthen our bonds with the Catholic Center Party.
-- @linke: Work towards repairing relationships with the Communist Party.
+- @liberals: Strengthen our ties with the Grüne and the FDP.
+- @center: Strengthen our ties with the CDU/CSU.
+- @linke: Work on our relationship with the Linke.
+- @bsw: Sound out the BSW.
 - @spd_alone: The SPD can stand alone for now.
 - @easy_discard
-
 
 @linke
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 on-arrival: resources -= 1; linke_inter_party_seen += 1
-go-to: linke_blutmai if blutmai = 1; linke_1 if blutmai = 0 and linke_coalition_success = 0 and (linke_relation < 40 or linke_rectified_history = 1); linke_rectification_of_history if linke_relation >= 40 and linke_rectified_history = 0; linke_2 if linke_coalition_success = 1 and linke_rectified_history = 1
+go-to: linke_1 if linke_coalition_success = 0 and (linke_relation < 40 or linke_rectified_history = 1); linke_rectification_of_history if linke_relation >= 40 and linke_rectified_history = 0; linke_2 if linke_coalition_success >= 1 and linke_rectified_history = 1
 
 @linke_1
 on-arrival: linke_relation += 6*(1 - dissent); linke_coalition += 1 if linke_inter_party_seen <= 1; reformist_dissent += 2; cdu_relation -= 2; fdp_relation -= 3
 
-The communists are suspicious of our overtures, especially the Stalinist leadership, who persist in calling us "social fascists". However, connections are made at the grassroots and local levels.
+The Linke's leaders are suspicious, but our members meet theirs at union events and in local councils, where SPD and Linke have governed together for years in Berlin, Bremen and Mecklenburg-Western Pomerania.
 
 @linke_rectification_of_history
 
-One stumbling block for our relations with the KPD is our history of conflict, dating back to 1918 and 1919. The KPD is especially contemptuous of Gustav Noske, the SPD "bloodhound" who reportedly ordered the violent suppression of the Spartacist uprising and other KPD revolts. They also blame us for the deaths of Rosa Luxemburg and Karl Liebknecht, two SPD-turned-KPD leaders who were killed during the suppression of the uprising.
+One obstacle remains: the Linke was founded in protest against Agenda 2010 and the Hartz reforms of Gerhard Schröder's government. For many of its members, an SPD that does not break with that legacy cannot be trusted.
 
-For further improvements in KPD relations, it might be necessary to expel Noske, and hold some sort of commemoration for Luxemburg and Liebknecht.
-
-- @yes_history: Yes, we must apologize for our past actions.
-- @no_history: No, we have no need to apologize.
+- @yes_history: Yes, we must admit that Hartz IV was a mistake.
+- @no_history: No, the reforms were necessary at the time.
 
 @yes_history
-on-arrival: reformist_dissent += 12; reformist_strength -= 2; neorevisionist_dissent += 5; left_dissent -= 6; left_strength += 5; linke_rectified_history = 1; cdu_relation -= 6; fdp_relation -= 6; greens_relation -= 4; linke_relation += 8*(1-dissent); coalition_dissent += 1
+on-arrival: reformist_dissent += 12; reformist_strength -= 2; center_dissent += 5; left_dissent -= 6; left_strength += 5; linke_rectified_history = 1; cdu_relation -= 4; fdp_relation -= 6; linke_relation += 8*(1-dissent); workers_spd += 2*(1-dissent); unemployed_spd += 2*(1-dissent); coalition_dissent += 1 if cdu_in_government or fdp_in_government
 
-As part of normalizing relations with the KPD, we have to acknowledge the wrongdoings of our past. We have expelled Noske, and have held public commemorations for those killed by troops during the uprisings.
-
-This leads to tensions with the moderates and reformists within our party, and criticism from the conservative and liberal parties.
+A party congress resolution says plainly that the Hartz reforms hurt millions of people and broke the trust of our voters. Gerhard Schröder's old allies are furious, and the business press calls it a turn to the left.
 
 @no_history
-on-arrival: linke_relation -= 3
+on-arrival: linke_relation -= 3; reformist_dissent -= 3
 
-We have no need to apologize for the actions of Ebert and Noske; it is the Communists' fault for launching a violent insurrection.
-
+We will not apologise for reforms that brought Germany out of mass unemployment.
 
 @linke_2
 on-arrival: linke_relation += 8*(1 - dissent); linke_coalition += 1 if linke_inter_party_seen <= 1; reformist_dissent += 2; cdu_relation -= 3; fdp_relation -= 3
 
-After the success of the coalition government with the KPD, they are much more amenable to us.
-
-@linke_blutmai
-on-arrival: linke_relation += 3*(1 - dissent); reformist_dissent += 1
-
-After the events of Blütmai, reconciling with the Communists is difficult, if not impossible. Nevertheless, we must try.
+After our successful time in government together, the Linke trusts us much more.
 
 @center
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; cdu_relation += 2 if cdu_leader == "Joos"
-go-to: center_op if cdu_in_government = 1 and spd_in_government = 0 and chancellor != "Brüning"; center_coalition if spd_in_government = 1 and cdu_in_government = 1; center_bruning if chancellor = "Brüning"
+on-arrival: resources -= 1
+go-to: center_op if cdu_in_government = 1 and spd_in_government = 0; center_coalition if spd_in_government = 1 and cdu_in_government = 1; center_other if cdu_in_government = 0
 
 @center_op
 on-arrival: cdu_relation += 5*(1 - dissent)
 
-We are currently in opposition to the Center-led government, but that does not preclude the general building of feelings of good will.
+We are in opposition to the Union's government, but that does not stop us from building goodwill.
 
 @center_coalition
 on-arrival: cdu_relation += 8*(1 - dissent)
 
-We are currently coalition partners with them, so improving relations comes naturally.
+We govern together, so building trust comes naturally.
 
-@center_bruning
+@center_other
 on-arrival: cdu_relation += 5*(1 - dissent)
 
-The Brüning semi-autocratic regime makes building friendly relations difficult, but not impossible.
+We keep in touch with the Union's leaders and its social wing, the CDA.
 
 @liberals
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 on-arrival: resources -= 1; greens_relation += 5*(1 - dissent)
-go-to: fdp_stresemann if stresemann_dead = 0; fdp_loss if stresemann_dead = 1 and year <= 1930; fdp_moribund if year > 1930
+go-to: fdp_in if fdp_r >= 5; fdp_out if fdp_r < 5
 
-The Greens has been one of our closest allies through the course of the Republic.
+The Grüne are our natural partners in most of the Länder.
 
-@fdp_stresemann
-on-arrival: fdp_relation += 8*(1 - dissent)
+@fdp_in
+on-arrival: fdp_relation += 6*(1 - dissent)
 
-Gustav Stresemann, the leader of the DVP, is one of the best foreign policy leaders of the republic, and while he has previously expressed monarchist tendencies, he has been friendly towards us.
+The FDP has not forgotten the collapse of the traffic light in 2024, but its leaders are pragmatic.
 
-@fdp_loss
-on-arrival: fdp_relation += 5*(1 - dissent)
+@fdp_out
+on-arrival: fdp_relation += 4*(1 - dissent)
 
-With the death of Gustav Stresemann, the DVP is much less likely to be accommodating of us. In addition, the liberal parties are electorally in decline, so perhaps our efforts are best spent elsewhere.
+The FDP is not in the Bundestag, so perhaps our efforts are best spent elsewhere. Still, it governs in some Länder, and may come back.
 
-However, given the influence of the DVP among the other right-leaning parties [? if president == "Hindenburg": and with President Hindenburg ?], it can still be helpful to influence them.
+@bsw
+subtitle: -1 resources
+choose-if: resources >= 1
+unavailable-subtitle: Not enough resources.
+on-arrival: resources -= 1; bsw_relation += 6*(1 - dissent); reformist_dissent += 4; greens_relation -= 2
 
-@fdp_moribund
-on-arrival: fdp_relation += 5*(1 - dissent)
-
-The liberal parties (both the Greens and DVP) are electorally moribund, so perhaps our efforts are best spent elsewhere.
-
-However, given the influence of the DVP among the other right-leaning parties[? if president == "Hindenburg": and with President Hindenburg ?], it can still be helpful to influence them.
+The BSW shares many of our social goals, but not our foreign policy. Our minister-president in Brandenburg has governed with it. The Seeheimer are not pleased.
 
 @spd_alone
 

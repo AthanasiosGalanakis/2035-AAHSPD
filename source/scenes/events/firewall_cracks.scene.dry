@@ -1,0 +1,19 @@
+title: The Firewall Cracks
+subtitle: CDU/CSU and AfD pass a motion together in the Bundestag.
+new-page: true
+on-arrival: firewall_cracks_seen = 1; old_middle_afd += 3; unemployed_afd += 3; rural_afd += 3; catholics_afd += 2; afd_urgency += 1; cdu_relation -= 5
+tags: event
+view-if: firewall_erosion >= 6 and afd_in_government = 0
+max-visits: 1
+
+= The Firewall Cracks
+
+For the second time since January 2025, a CDU/CSU motion has passed the Bundestag only because the AfD voted for it. This time the Union leadership did not even pretend to regret it: "We will not let the AfD decide what we may vote for," said a deputy party leader. The AfD is celebrating it as the beginning of the end of the "Brandmauer".
+
+- @strategy: We must develop a coherent strategy to defend the firewall.
+
+@strategy
+view-if: afd_urgency < 3
+on-arrival: afd_urgency += 1
+
+We do not yet have a coherent strategy against the far right. We must develop one as soon as possible.

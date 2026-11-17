@@ -1,0 +1,8 @@
+title: 2032
+subtitle: A new year
+tags: event
+view-if: year = 2032 and month = 1
+priority: 2
+max-visits: 1
+
+A new year begins. [? if unemployment_rate >= 8 : Unemployment is still far too high, and many people no longer believe that politics can change it. ?][? if unemployment_rate < 8 and unemployment_rate >= 6 : The economy is moving, but slowly. ?][? if unemployment_rate < 6 : The labour market is in good shape, and companies are once again complaining about a shortage of skilled workers. ?]

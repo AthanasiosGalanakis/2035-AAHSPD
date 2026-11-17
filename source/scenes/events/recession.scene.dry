@@ -1,0 +1,26 @@
+title: The Downturn Arrives
+subtitle: Germany slides into a recession...
+new-page: true
+on-arrival: recession_seen = 1; workers_linke += 3; workers_afd += 3; new_middle_afd += 2; old_middle_afd += 3; rural_afd += 3; unemployed_afd += 3; unemployment_rate += 0.6; budget -= 1 if budget > 0; dues -= 1 if dues > 2; inflation -= 0.5; economic_growth -= 1;
+tags: event
+view-if: (time >= 6 and economic_growth <= 0.3) or time >= 15
+max-visits: 1
+face-image: img/bankrun.jpg
+
+= The Downturn Arrives
+
+The figures from the Federal Statistical Office leave no room for doubt: the German economy has shrunk for two quarters in a row. New US tariffs, weak demand from China and expensive energy have hit the export industries hardest. Car suppliers in Baden-Württemberg and chemical plants along the Rhine are announcing short-time work, and the Bundesagentur expects unemployment to keep rising for months.
+
+As always, it is the workers who carry the cost of a crisis they did not cause.
+
+- @cap: Recessions come and go. We must keep our nerve.
+- @do_something: We must act to protect jobs and incomes.
+
+@cap
+
+Perhaps this is just another turn of the business cycle. Short-time work (Kurzarbeit) will cushion the worst of it, and the downturn may pass on its own.
+
+@do_something
+on-arrival: crisis_urgency += 1
+
+How to protect jobs and incomes is quickly becoming the most hotly debated question in the party.

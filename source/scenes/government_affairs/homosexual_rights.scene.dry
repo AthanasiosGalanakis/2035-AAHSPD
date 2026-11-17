@@ -1,4 +1,4 @@
-title: Homosexual Rights
+title: Queer Rights
 new-page: true
 is-card: true
 card-image: img/hirschfeld.jpg
@@ -8,51 +8,42 @@ view-if: spd_in_government == 1 and (progressive_coalition >= 50) and chancellor
 on-arrival: homosexual_rights_timer += 11; month_actions += 1
 tags: govt_affairs, cabinet
 
-= Homosexual Rights
+= Queer Rights
 
-There is a constellation of different groups that have grown up around divergences in gender and sexuality, including homosexuals, lesbians, transsexuals, transvestites, inverts, etc. Our party's policy is to support their right to live freely and free from persecution; Magnus Hirschfeld, the founder of the Institut für Sexualwissenschaft, is a member of our party and a major advocate for homosexual rights. 
+Marriage for all has been law since 2017, and the self-determination law since 2024. But attacks on Pride events and queer people are rising, especially in the East, and the AfD has promised to repeal what it can. Activists want rights that a future majority cannot easily take away.
 
-- @repeal_175: Repeal Paragraph 175.
-- @reform_183: Reform Paragraph 183.
-- @change_sex: Create a legal process for changing sex.
+- @repeal_175: Add sexual identity to Article 3 of the Basic Law.
+- @reform_183: Reform family law for children with two mothers.
+- @change_sex: Start a national action plan against queer-hostile violence.
 - @return: Do not enact any changes for now.
 - @easy_discard
 - @cancel_advisor_action
 
-# economic growth due to gay tourism, and creating a new economic niche for the gay populace.
-
 @repeal_175
-subtitle: Paragraph 175 currently criminalizes homosexual acts. We can pass a law to change that.
-unavailable-subtitle: We do not have majority support for this policy.
+subtitle: Needs a two-thirds majority, and so the votes of the Union.
+unavailable-subtitle: We do not have the support for this.
 view-if: repealed_175 == 0
-choose-if: progressive_coalition >= 50 
-on-arrival: repealed_175 = 1; homosexual_rights += 1; cdu_relation -= 5; linke_relation += 4*(1-dissent); greens_relation += 4*(1-dissent); coalition_dissent += 1 if (in_grand_coalition or in_weimar_coalition); catholics_spd -= 4; economic_growth += 0.1;
-audio: shuffle music/1928_1933/Das_lila_lied_normalized.mp3
+choose-if: progressive_coalition >= 50 and cdu_relation >= 40
+on-arrival: repealed_175 = 1; homosexual_rights += 1; cdu_relation -= 3; linke_relation += 4*(1-dissent); greens_relation += 4*(1-dissent); coalition_dissent += 1 if (in_grand_coalition or in_weimar_coalition); catholics_spd -= 2; new_middle_spd += 2*(1-dissent)
 
-Together with the progressives in the KPD and Greens, we have effectively decriminalized homosexual sex in Germany. Persecution of homosexuals for their private acts will stop, as long as the police are loyal to the republic.
-
-Of course, conservatives and the far right accuse us of "degeneracy".
-
+The Basic Law now protects people from discrimination for their sexual identity, alongside sex, origin and faith. After long talks, enough of the Union votes yes. The AfD votes against.
 
 @reform_183
-subtitle: Paragraph 183 criminalizes public homosexual displays and cross-dressing. We can change that.
-unavailable-subtitle: We do not have majority support for this policy.
+subtitle: Today the second mother has to adopt her own child.
+unavailable-subtitle: We do not have majority support for this.
 view-if: reformed_183 == 0
-choose-if: progressive_coalition >= 50 
-on-arrival: reformed_183 = 1; homosexual_rights += 1; cdu_relation -= 5; linke_relation += 4*(1-dissent); greens_relation += 4*(1-dissent); coalition_dissent += 1 if (in_grand_coalition or in_weimar_coalition); catholics_spd -= 4; economic_growth += 0.1;
-audio: shuffle music/1928_1933/Das_lila_lied_normalized.mp3
+choose-if: progressive_coalition >= 50
+on-arrival: reformed_183 = 1; homosexual_rights += 1; cdu_relation -= 3; linke_relation += 4*(1-dissent); greens_relation += 4*(1-dissent); coalition_dissent += 1 if (in_grand_coalition or in_weimar_coalition); catholics_spd -= 2
 
-Voting together with the progressives in the KPD and Greens, we have reformed Paragraph 183 so that it no longer criminalizes public homosexuality and cross-dressing.
-
+The second mother of a child is now its parent from birth, without a long adoption process.
 
 @change_sex
-subtitle: We can create a legal process for individuals to change their sex, making their lives easier.
-unavailable-subtitle: We do not have majority support for this policy.
+subtitle: Protection for Pride events, training for police, and support for victims.
+unavailable-subtitle: We do not have majority support for this.
 view-if: trans_rights == 0
 choose-if: progressive_coalition >= 50
-on-arrival: trans_rights = 1; homosexual_rights += 1; cdu_relation -= 5; linke_relation += 4*(1-dissent); greens_relation += 4*(1-dissent); coalition_dissent += 1 if (in_grand_coalition or in_weimar_coalition); catholics_spd -= 4; economic_growth += 0.1
-audio: shuffle music/1928_1933/Das_lila_lied_normalized.mp3
+on-arrival: trans_rights = 1; homosexual_rights += 1; budget -= 1 if budget > 0; linke_relation += 4*(1-dissent); greens_relation += 4*(1-dissent); trust_in_democracy += 1
 
-We have passed a bill to allow legal recognition of transsexual and transvestite individuals as the sex in which they live, and allow them to change their name, dress as they wish without police persecution, and undergo medical treatment.
+We fund protection for Pride events, train police and prosecutors to record queer-hostile crimes, and support counselling centres in rural areas.
 
-Of course, conservatives and the far right accuse us of "degeneracy".
+Of course, the far right accuses us of "gender ideology".

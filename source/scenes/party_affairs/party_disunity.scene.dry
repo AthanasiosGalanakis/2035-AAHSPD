@@ -7,8 +7,6 @@ card-image: img/Reichstagsfraktion_der_SPD.jpg
 frequency: 200
 tags: party_affairs
 
-# TODO: party dissent events for every faction, have a good image for this... 
-
 = Party Disunity
 
 The party is being torn apart by internal dissent. Upset at the leadership and general direction, factions have started sabotaging their rivals, hampering our efforts to win votes and carry out our policies.
@@ -43,28 +41,28 @@ title: Give concessions to the Seeheimer Kreis.
 view-if: reformist_dissent > 30
 on-arrival: reformist_dissent -= 7; left_dissent += 5
 
-We have promised to adopt a more reformist posture. This may alienate the left, however.
+We have promised to listen more to the Seeheimer Kreis. This may alienate the left, however.
 
 @concessions_center
 title: Give concessions to Netzwerk Berlin.
 view-if: center_dissent > 30
-on-arrival: center_dissent -= 7; reformist_dissent += 2; left_dissent += 2; neorevisionist_dissent += 2
+on-arrival: center_dissent -= 7; reformist_dissent += 2; left_dissent += 2
 
-We have promised to take more policy suggestions from the centrists. Both the left and reformist wings of the party might be displeased.
+We have promised to take more policy suggestions from Netzwerk Berlin. Both the left and the Seeheimer might be displeased.
 
 @concessions_left
 title: Give concessions to the Parlamentarische Linke.
 view-if: left_dissent > 30
 on-arrival: left_dissent -= 7; reformist_dissent += 5
 
-We have promised that we will listen to the left wing of the party. Of course, this leads to increased dissent from the centrists.
+We have promised that we will listen to the left wing of the party. Of course, this angers the Seeheimer.
 
 @concessions_labor
 title: Give concessions to the AfA.
 view-if: labor_dissent > 30
 on-arrival: labor_dissent -= 7; center_dissent += 5
 
-The trade unions will be granted more influence in party decision making. This upsets the centrists, who would prefer to centralize political decision making within the party.
+The trade unions will be granted more influence in party decision making. This upsets Netzwerk Berlin, who would prefer decisions to be made by the party leadership.
 
 @do_nothing
 title: Let the factions argue with themselves.

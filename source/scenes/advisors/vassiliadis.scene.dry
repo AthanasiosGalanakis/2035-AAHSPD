@@ -1,0 +1,41 @@
+title: Michael Vassiliadis
+is-pinned-card: true
+tags: advisor, labor
+view-if: vassiliadis_advisor = 1
+new-page: true
+
+= Michael Vassiliadis
+
+Michael Vassiliadis has led IG BCE for many years. He speaks for the workers in chemicals, energy and heavy industry, and he wants the climate transition to keep their jobs in Germany.
+
+- @organizing
+- @depression
+- @moderate_economic_plan
+- @root: Return to main
+
+@organizing
+title: Organising workers
+subtitle: Campaign in the workplaces with the unions.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer <= 0
+on-arrival: advisor_action_timer = 6; workers_spd += 4*(1-dissent); workers_spd += 3*(1-dissent) if investment_adopted == 1; labor_strength += 2
+
+Union shop stewards campaign for us in the factories, hospitals and warehouses.
+
+@depression
+title: Addressing the economic crisis
+subtitle: Argue for the Zukunftsprogramm.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if recession_seen == 0 : There is no economic crisis. ?][? if investment_adopted : The party has already adopted the plan. ?]
+choose-if: advisor_action_timer <= 0 and investment_adopted = 0 and recession_seen
+on-arrival: advisor_action_timer = 6; investment_support += 2; center_dissent += 10; labor_strength += 1
+
+We publish studies showing that public investment pays for itself over time. The idea is gaining ground in the party, though Netzwerk Berlin is unconvinced.
+
+@moderate_economic_plan
+title: Support the targeted jobs plan
+subtitle: Argue for the Seeheimer plan.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if recession_seen == 0 : There is no economic crisis. ?][? if moderate_plan_adopted : The party has already adopted the plan. ?]
+choose-if: advisor_action_timer = 0 and moderate_plan_adopted = 0 and recession_seen = 1
+on-arrival: advisor_action_timer = 6
+go-to: crisis_program.support_moderate
+

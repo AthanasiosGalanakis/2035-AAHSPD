@@ -1,0 +1,56 @@
+title: Hubertus Heil
+is-pinned-card: true
+tags: advisor, center
+view-if: heil_advisor = 1
+new-page: true
+
+= Hubertus Heil
+
+Hubertus Heil from Peine co-founded Netzwerk Berlin, served twice as general secretary and was labour minister for seven years. He knows how to hold the party together and how to win a campaign.
+
+- @clear_agenda
+- @party_discipline
+- @emergency_fundraising
+- @snap_election
+- @root: Return to main
+
+@clear_agenda
+title: Clear the agenda
+subtitle: Removes all cards from the hand.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: {!
+Q.advisor_action_timer = 6;
+window.dendryUI.dendryEngine.state.currentHands['main'] = [];
+!}
+
+All items have been cleared from our agenda.
+
+@party_discipline
+title: Party discipline
+subtitle: Reduce dissent across the party.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; left_dissent -= 5; labor_dissent -= 10; center_dissent -= 10; reformist_dissent -= 10
+
+We remind every faction that a divided party loses elections.
+
+@emergency_fundraising
+title: Emergency fundraising
+subtitle: An emergency infusion of resources.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; resources += dues
+
+We have gained +[+ dues +] resources.
+
+@snap_election
+title: Snap election
+subtitle: Ask the confidence question and go for new elections.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if chancellor_party != "SPD" : The SPD must hold the chancellery. ?]
+choose-if: advisor_action_timer == 0 and chancellor_party == "SPD" and spd_in_government
+on-arrival: advisor_action_timer = 6; time_to_election = 3
+call: set_next_election_time
+
+The chancellor loses the confidence question on purpose, and the president dissolves the Bundestag. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+

@@ -1,0 +1,102 @@
+title: Social Insurance Crisis
+subtitle: The unemployment and pension funds are running out of money.
+new-page: true
+view-if: spd_in_government = 1 and time >= 9 and month >= 3 and unemployment_insurance_timer = 0 and (unemployment_rate >= unemployment_insurance_threshold + 1 or (time >= 24 and unemployment_insurance_crisis = 0))
+on-arrival: unemployment_insurance_crisis += 1; budget -= 1 if budget >= 1; unemployment_insurance_timer = 10; crisis_urgency += 1; unemployment_insurance_threshold = unemployment_rate
+tags: event
+max-visits: 2
+go-to: ultimatum if in_grand_coalition = 1 and coalition_leader_party = "CDU"; own_choice if in_grand_coalition = 0 or coalition_leader_party != "CDU"
+face-image: img/Kollwitz_Arbeitslosigkeit.jpg
+
+= Social Insurance Crisis
+
+More people are out of work, and the baby-boomers are retiring in record numbers. The Bundesagentur's reserves are gone, and the pension fund needs a much larger federal subsidy to keep the 48% pension level that runs until 2031. Something has to give: benefits, contributions or the budget.
+
+@ultimatum
+go-to: ultimatum_menu
+
+Our partners in the CDU/CSU have a plan: cut the Grundsicherung, raise the retirement age, and lower taxes on companies to "get the economy moving". They say there is no room for compromise, and hint that the coalition will not survive a refusal.
+
+[? if unemployment_insurance_crisis = 2 : This is the second such ultimatum. It is beginning to look as if the Union wants us out of the government. ?]
+
+@ultimatum_menu
+
+- @tax_rich: Why can't we simply tax the rich?
+- @gift: This is a gift to the AfD and the Linke.
+
+@tax_rich
+max-visits: 1
+go-to: what_do
+
+A wealth tax is out of the question for the Union, which represents the business associations and the better-off.
+
+@gift
+go-to: what_do
+
+Cuts like these are a gift to the AfD and the Linke, who will say that parliamentary democracy never delivers for working people.
+
+@what_do
+
+But the question remains: what can we do?
+
+- @destroy: Fine. We will end this coalition.
+- @accept: For the sake of stability, we must accept the Union's demands.
+- @compromise: Surely there is some compromise to be had?
+
+@destroy
+call: apply_government
+on-arrival: coalition = "cdu_alone"; cdu_relation -= 8; fdp_relation -= 5; welfare -= 1; budget += 1; spd_no_confidence = 1; trust_in_democracy -= 3; old_middle_spd -= 3; new_middle_spd -= 2; rural_spd -= 2; pensioners_spd += 2; economic_growth -= 0.3; firewall_erosion += 1
+
+Fine. If the Union wants to end the coalition over this, let it. Social democrats will not cut pensions and benefits while the richest pay less.
+
+Our ministers resign. Chancellor [+ chancellor +] carries on with a CDU/CSU minority government, which will need votes from somewhere to pass its budget. Many fear those votes will come from the AfD.
+
+@accept
+on-arrival: workers_spd -= 0.12*workers_spd; unemployed_spd -= 0.25*unemployed_spd; pensioners_spd -= 3; workers_linke += 5; workers_afd += 5; unemployed_linke += 4; unemployed_afd += 4; left_dissent += 15; center_dissent += 8; labor_dissent += 15; reformist_dissent += 5; welfare -= 2; budget += 1; unemployment_rate += 0.3; trust_in_democracy -= 3; linke_relation -= 8; inflation -= 0.3; economic_growth -= 0.3
+
+We accept the ultimatum to keep the coalition alive. The AfD and the Linke are only waiting for us to fail.
+
+The unions are furious, and so is a large part of our membership in every faction. Our loss is the Linke's and the AfD's gain.
+
+
+@compromise
+unavailable-subtitle: Our relations with the Union are too poor.
+choose-if: cdu_relation >= 45
+
+Thanks to our good relations, the Union offers a compromise: a smaller cut to the Grundsicherung, a top-rate surcharge for the highest earners, and a pension commission instead of a higher retirement age. Our members are divided. The Seeheimer and Netzwerk Berlin want to keep the government together, while the AfA rejects any cuts and the Parlamentarische Linke rejects any deal with the Union.
+
+- @accept_compromise: Accept the compromise.
+- @destroy: Reject the compromise and let this government fall.
+
+@accept_compromise
+on-arrival: workers_spd -= 4; unemployed_spd -= 5; workers_linke += 4; unemployed_linke += 3; unemployed_afd += 3; left_dissent += 10; labor_dissent += 8; center_dissent += 3; welfare -= 1; budget += 1; linke_relation -= 4; inflation -= 0.2; economic_growth -= 0.2
+
+We accept the compromise. Many workers and unemployed people see it as a betrayal, but we present it as having prevented something much worse.
+
+@own_choice
+
+As the leading party in the government, the decision is ours. We have to either raise more money or cut benefits.
+
+- @cut_benefits: Cut benefits.
+- @increase_employers: Raise employer contributions.
+- @balance: Raise both employer and employee contributions.
+
+@cut_benefits
+subtitle: The workers will regard this as a betrayal.
+on-arrival: workers_spd -= 0.1*workers_spd; unemployed_spd -= 0.2*unemployed_spd; workers_linke += 5; workers_afd += 5; unemployed_linke += 4; unemployed_afd += 4; left_dissent += 15; center_dissent += 8; labor_dissent += 15; reformist_dissent += 3; welfare -= 2; budget += 1; unemployment_rate += 0.3; trust_in_democracy -= 3; linke_relation -= 8; inflation -= 0.2; unemployment_insurance_threshold = unemployment_rate; unemployment_insurance_timer = 10; economic_growth -= 0.2;
+
+For budgetary reasons, we cut benefits. Our voters do not care about our reasons. The unions and much of the membership are furious, and the Linke and the AfD gain.
+
+
+@increase_employers
+subtitle: Employers are strongly against this. [? if fdp_in_government or cdu_in_government: Our coalition partners will be furious. ?]
+on-arrival: capital_strike_progress += 2; coalition_dissent += 1; coalition_dissent += 1 if fdp_in_government; welfare += 1; workers_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); old_middle_spd -= 5*(1-dissent); new_middle_spd -= 2*(1-dissent); unemployment_insurance_threshold = unemployment_rate; unemployment_insurance_timer = 10; economic_growth -= 0.2;
+
+We raise the employers' share of contributions, so the funds can keep paying without cuts. The business associations are furious, while the unions and the unemployed are pleased.
+
+
+@balance
+subtitle: Neither workers nor employers will be fully satisfied or fully angry. [? if fdp_in_government and fdp_relation < 30: The FDP will likely find even this unacceptable. ?]
+on-arrival: workers_spd -= 3; unemployed_spd -= 4; workers_linke += 3; unemployed_linke += 2; unemployed_afd += 2; left_dissent += 8; labor_dissent += 6; center_dissent += 3; welfare -= 1; budget += 1; linke_relation -= 4; inflation -= 0.1; unemployment_insurance_threshold = unemployment_rate; unemployment_insurance_timer = 10; coalition_dissent += 1 if fdp_in_government and fdp_relation < 30; economic_growth -= 0.1;
+
+Nobody is happy with our compromise, but nobody is outraged either. We present it as a fair sharing of the burden.

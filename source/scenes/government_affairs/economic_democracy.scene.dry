@@ -6,13 +6,12 @@ view-if: spd_in_government and (economic_minister_party == "SPD" or finance_mini
 card-image: img/portraits/HilferdingRudolf.jpg
 max-visits: 8
 tags: govt_affairs, cabinet
-#subtitle: How can we give workers more control over the means of production?
 
 = Economic Democracy
 
-A key part of the social democratic platform is that workers should have more control over the economy. This can be done either directly at the enterprise level, by giving works councils greater influence over management, or indirectly via the democratic government, by acquiring key industries from the capitalist class and placing them under democratic control.
+Codetermination is one of the great achievements of German social democracy: in large companies, workers elect half of the supervisory board. But fewer and fewer companies are covered, as firms stay just under the thresholds or move their legal seat abroad.
 
-As we control the Labor [? if economic_minister_party == "SPD" : and Economic ?][? if finance_minister_party == "SPD" : and Finance ?] ministries, we can finally begin to implement our long-standing goals. [? if in_grand_coalition: Our bourgeois coalition partners might not agree, however. ?]
+As we control the labour [? if economic_minister_party == "SPD" : and economics ?][? if finance_minister_party == "SPD" : and finance ?] ministries, we can do something about it. [? if in_grand_coalition: Our partners on the centre-right may not agree, however. ?]
 
 - @expand_councils
 - @expand_councils_2
@@ -24,49 +23,46 @@ As we control the Labor [? if economic_minister_party == "SPD" : and Economic ?]
 - @cancel_advisor_action
 
 @expand_councils
-title: Support works councils.
-subtitle: Give works councils a greater influence in managing enterprises.
+title: Close the codetermination loopholes.
+subtitle: Stop companies from escaping codetermination through European company law.
 view-if: works_councils == 0
-on-arrival: economic_democracy += 1; workers_spd += 7*(1-dissent); capital_strike_progress += 1; works_councils += 1; labor_dissent -= 6; labor_strength += 8; fdp_relation -= 5; coalition_dissent +=1 if in_grand_coalition
+on-arrival: economic_democracy += 1; workers_spd += 5*(1-dissent); capital_strike_progress += 1; works_councils += 1; labor_dissent -= 6; labor_strength += 8; fdp_relation -= 5; coalition_dissent +=1 if in_grand_coalition
 max-visits: 1
 
-The works councils, elected by workers at each major business, have been in place since the German Revolution of 1918, but they have been largely powerless in the face of capital. Now, we will have worker representation on the boards of companies, giving them more influence in management decisions.
-
+Companies that converted into a European company to avoid codetermination now have to give their workers seats on the board.
 
 @expand_councils_2
-title: Support national and sectorial works councils.
-subtitle: This is a step towards workers' control over the entire economy.
+title: Extend codetermination to more companies.
+subtitle: Parity on the board from 1,000 employees instead of 2,000.
 view-if: works_councils == 1
-on-arrival: economic_democracy += 1; workers_spd += 7*(1-dissent); capital_strike_progress += 1; works_councils += 1; labor_dissent -= 6; labor_strength += 8; fdp_relation -= 5; coalition_dissent +=1 if in_grand_coalition; economic_growth += 0.1 if economic_growth < 3
+on-arrival: economic_democracy += 1; workers_spd += 6*(1-dissent); capital_strike_progress += 1; works_councils += 1; labor_dissent -= 6; labor_strength += 8; fdp_relation -= 5; coalition_dissent +=1 if in_grand_coalition; economic_growth += 0.1 if economic_growth < 3
 max-visits: 1
 
-National and sectorial workers councils have been part of the Weimar Constitution, but they were disempowered in the past, acting as nothing more than advisory bodies. We can change that.
-
+Hundreds more companies now have workers on their supervisory boards. Business associations warn that Germany is becoming less attractive to investors.
 
 @expand_councils_3
-title: Empower sectorial works councils.
-subtitle: Give works councils a role in setting wage and price policy for entire industrial sectors.
+title: Give works councils a say over investment and relocation.
+subtitle: Workers must agree before a plant is closed or moved abroad.
 view-if: works_councils == 2
-on-arrival: economic_democracy += 1; workers_spd += 7*(1-dissent); capital_strike_progress += 1; works_councils += 1; labor_dissent -= 6; labor_strength += 8; fdp_relation -= 5; coalition_dissent +=1 if in_grand_coalition; unemployed -= 2 if unemployed > 5; workers += 2; economic_growth += 0.1 if economic_growth < 3
+on-arrival: economic_democracy += 1; workers_spd += 7*(1-dissent); capital_strike_progress += 2; works_councils += 1; labor_dissent -= 6; labor_strength += 8; fdp_relation -= 5; cdu_relation -= 3; coalition_dissent +=1 if in_grand_coalition; unemployment_rate -= 0.3 if unemployment_rate > 5; economic_growth += 0.1 if economic_growth < 3
 max-visits: 1
 
-Sectorial works councils can now negotiate wage and price policies for entire economic sectors, helping to both give workers more of a voice, and to rationalize the economy, smoothing over the anarchy of the market.
-
+Works councils can now block plant closures and relocations unless the company offers a plan for the site and its workers. The unions call it the biggest advance since 1976.
 
 @nationalize_1
-title: Begin to socialize key industries.
-subtitle: -1 budget - we should buy out industries and govern them together with workers and consumers.
-on-arrival: economic_democracy += 1; capital_strike_progress += 1; budget -= 1; socializations += 1; workers_spd += 6*(1-dissent); unemployed_spd += 3*(1-dissent); coalition_dissent += 1 if in_grand_coalition; capital_strike_progress += 1 if black_thursday_seen; unemployed -= 1 if unemployed > 9; economic_growth += 0.2 if economic_growth < 5
+title: Bring key infrastructure into public ownership.
+subtitle: -1 budget. Buy back the power grids, railway infrastructure and large housing companies.
+on-arrival: economic_democracy += 1; capital_strike_progress += 1; budget -= 1; socializations += 1; workers_spd += 5*(1-dissent); unemployed_spd += 2*(1-dissent); coalition_dissent += 1 if in_grand_coalition; capital_strike_progress += 1 if recession_seen; unemployment_rate -= 0.3 if unemployment_rate > 6; economic_growth += 0.1 if economic_growth < 5; economy_goal_completed += 1
 choose-if: budget >= 1
 max-visits: 3
 
-We have begun to socialize key industries by buying out the capitalist owners, and creating coordinated governing boards consisting of worker, consumer, and state representatives. The capitalists are not pleased at our intrusion into the economy.
+[? if socializations == 1 : The federal government buys the transmission grid operators, so that the energy transition is planned in public hands. ?][? if socializations == 2 : Following the Berlin referendum of 2021, we buy the largest housing companies and put their flats under public and tenant control. ?][? if socializations >= 3 : The rail network, the hospitals and the water companies return to public ownership. ?] Business groups warn of a return to state socialism.
 
 @cooperatives_1
-title: Support worker and consumer cooperatives.
-subtitle: -1 budget
-on-arrival: economic_democracy += 1; cooperatives += 1; workers_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent); budget -= 1; unemployed -= 1 if unemployed > 9; economic_growth += 0.2
+title: Support cooperatives.
+subtitle: -1 budget. Energy, housing and worker cooperatives.
+on-arrival: economic_democracy += 1; cooperatives += 1; workers_spd += 3*(1-dissent); unemployed_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); budget -= 1; unemployment_rate -= 0.2 if unemployment_rate > 6; economic_growth += 0.2
 choose-if: budget >= 1
 max-visits: 3
 
-We have enacted legislation that makes it easier to create cooperative enterprises of all sorts, and provide financial support to struggling cooperatives.
+We make it easier to found cooperatives and give them cheap loans, from village wind parks to housing cooperatives in the cities.

@@ -8,13 +8,13 @@ card-image: img/portraits/SeveringCarl.jpg
 
 = Internal Security
 
-The Interior Ministry controls internal security throughout the German Republic. While most police work is delegated to the states, the national security agency can perform special investigations.
+The federal interior ministry runs the Federal Police, the Federal Criminal Police Office and the Verfassungsschutz, the domestic intelligence service. Most police work belongs to the Länder, but federal investigators can take on the big cases.
 
-As with the state police units and the Reichswehr, the internal police tends to be reactionary, and has serious issues with loyalty to the elected government of the Republic.
+The Verfassungsschutz has a history of its own: it missed the NSU murders for years, and one of its former presidents now sits close to the far right.
 
-- @loyalty: Improve the loyalty of the Interior Ministry forces.
-- @investigate_corruption: Investigate corruption by big businesses.
-- @investigate_far_right: Investigate illegal activity among the far right.
+- @loyalty: Reform the security services.
+- @investigate_corruption: Go after tax fraud and money laundering.
+- @investigate_far_right: Investigate right-wing extremist networks.
 - @root: Take no action for now.
 - @easy_discard
 - @cancel_advisor_action
@@ -22,38 +22,35 @@ As with the state police units and the Reichswehr, the internal police tends to 
 @loyalty
 on-arrival: verfassungsschutz_loyalty += 0.1
 
-As with the Prussian state police, there are measures we can take to root out reactionary and anti-democratic sentiment in the police. We can improve training and recruiting procedures, and identify and remove known fascists and the like.
+We tighten parliamentary oversight, vet new recruits more carefully, and remove officers with links to extremist groups. It is slow work.
 
-Current interior police loyalty: [+ verfassungsschutz_loyalty : loyalty +]
-
+Current loyalty of the security services: [+ verfassungsschutz_loyalty : loyalty +]
 
 @investigate_corruption
 go-to: investigate_corruption_success if verfassungsschutz_loyalty >= 0.5; investigate_corruption_failure if verfassungsschutz_loyalty < 0.5
 
 @investigate_corruption_success
-on-arrival: investigate_corruption += 1; workers_spd += 5*(1-dissent); inflation -= 0.1 if inflation > 3; inflation -= 0.2 if inflation >= 8
+on-arrival: investigate_corruption += 1; workers_spd += 5*(1-dissent); budget += 1 if investigate_corruption <= 2
 
-Corruption in big business is rampant, of course. We have uncovered a number of scandals, and publicizing them brings new attention to the work of Interior Minister [+ interior_minister +], building up his popular appeal and that of the SPD.
-
+A new federal financial crimes office brings cases against Cum-Ex bankers and money launderers in the property market. The money recovered goes into the budget, and Interior Minister [+ interior_minister +] is in every newspaper.
 
 @investigate_corruption_failure
 
-Unfortunately, our investigations have failed to turn up anything. Rumors are that the targets of our investigation were tipped off by infiltrators within the police.
+Our investigations come to nothing. The suspects seem to have known what was coming.
 
 @investigate_far_right
 go-to: investigate_far_right_success if verfassungsschutz_loyalty >= 0.55; investigate_far_right_failure if verfassungsschutz_loyalty < 0.55
 
 @investigate_far_right_success
-on-arrival: investigate_far_right += 1; workers_afd -= 3; new_middle_afd -= 3; afd_urgency += 1 if investigate_far_right == 2; afd_urgency += 2 if investigate_far_right == 3; workers_afd -= 3 if investigate_far_right == 3; new_middle_afd -= 3 if investigate_far_right == 3; old_middle_afd -= 3 if investigate_far_right == 3; unemployed_spd -= 3 if investigate_far_right == 3; firewall_erosion -= 1 if firewall_erosion >= 7
+on-arrival: investigate_far_right += 1; workers_afd -= 3; new_middle_afd -= 3; afd_urgency += 1 if investigate_far_right == 2; afd_urgency += 2 if investigate_far_right == 3; workers_afd -= 3 if investigate_far_right == 3; new_middle_afd -= 3 if investigate_far_right == 3; old_middle_afd -= 3 if investigate_far_right == 3; firewall_erosion -= 1 if firewall_erosion >= 7
 
-[? if investigate_far_right == 1 : We have discovered collusion between Hjalmar Schacht, president of the Reichsbank, and the Nazis. This is very useful information. ?]
-[? if investigate_far_right == 2 : We have discovered illegal weapons caches held by a far-right network. ?]
-[? if investigate_far_right == 3 : We have discovered a secret cache of documents from the NSDAP detailing their plan to violently take over the country if they enter into power. This is an anti-constitutional plot, and will be publicized and persecuted. ?]
-[? if investigate_far_right > 3 : Of course the Nazis are doing crimes; everyone knows that. Now, we finally have proof. ?]
+[? if investigate_far_right == 1 : We uncover a Reichsbürger network that was planning attacks on members of parliament. ?]
+[? if investigate_far_right == 2 : We find illegal weapons caches held by a far-right network with members in the police and the army reserve. ?]
+[? if investigate_far_right == 3 : Leaked chats show AfD officials planning mass deportations of German citizens with a migrant background. The party says the chats are taken out of context. ?]
+[? if investigate_far_right > 3 : Everyone knew what these networks were planning. Now there is proof that will stand up in court. ?]
 
-[? if firewall_erosion >= 6: There are reports of an imminent coup by the far-right. We have attempted to disrupt some of these plans, but the threat is still present. ?]
-
+[? if firewall_erosion >= 6: Some in the Union still say that the AfD is a normal conservative party. These findings make that harder to argue. ?]
 
 @investigate_far_right_failure
 
-Unfortunately, our investigations have failed to turn up anything. Rumors are that the targets of our investigation were tipped off by infiltrators within the police.
+Our investigations come to nothing. The suspects seem to have known what was coming.

@@ -162,6 +162,12 @@ if (c == 'groko') {
     Q.timeline = 1;
     members = ['cdu'];
     give(ministries, 'CDU');
+} else if (c == 'cdu_alone') {
+    // CDU/CSU minority without SPD toleration; it looks for votes case by case
+    Q.coalition_name = 'CDU/CSU-Minderheitsregierung';
+    Q.timeline = 1;
+    members = ['cdu'];
+    give(ministries, 'CDU');
 } else if (c == 'schwarz_gruen') {
     Q.coalition_name = 'Schwarz-Grün (CDU/CSU, Grüne)';
     Q.timeline = 1;
@@ -197,7 +203,10 @@ if (c == 'groko') {
 
 // party flags and the strongest partner. Ties go to the SPD.
 var labels = {'spd': 'SPD', 'cdu': 'CDU', 'greens': 'Grüne', 'linke': 'Linke', 'fdp': 'FDP', 'bsw': 'BSW', 'afd': 'AfD'};
-var leaders = {'spd': 'Klingbeil', 'cdu': Q.cdu_leader, 'greens': 'Brantner', 'linke': 'Reichinnek', 'fdp': 'Dürr', 'bsw': 'Wagenknecht', 'afd': 'Weidel'};
+// the CDU/CSU's chancellor is the surname of its first leader
+var cdu_names = [].concat(Q.cdu_leader || ['Merz']);
+Q.cdu_chancellor = String(cdu_names[0]).split(' ').slice(-1)[0];
+var leaders = {'spd': 'Klingbeil', 'cdu': Q.cdu_chancellor, 'greens': 'Brantner', 'linke': 'Reichinnek', 'fdp': 'Dürr', 'bsw': 'Wagenknecht', 'afd': 'Weidel'};
 var leader = members[0];
 for (var m of members) {
     Q[m + '_in_government'] = 1;
@@ -217,8 +226,11 @@ for (var m of members) {
 if (members.length > 0) {
     Q.coalition_leader_party = labels[leader];
     Q.coalition_leader = leaders[leader];
+    // a chancellor whose party still leads the government stays in office
+    if (Q.chancellor_party != labels[leader] || !Q.chancellor) {
+        Q.chancellor = leaders[leader];
+    }
     Q.chancellor_party = labels[leader];
-    Q.chancellor = leaders[leader];
     Q.coalition_leader_label = labels[leader];
     if (leader == 'cdu' && !Q.csu_split) {
         Q.coalition_leader_label = 'CDU/CSU';

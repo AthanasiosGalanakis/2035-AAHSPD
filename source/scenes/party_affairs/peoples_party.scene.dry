@@ -1,4 +1,4 @@
-title: Building a People's Party
+title: A Volkspartei Again?
 new-page: true
 is-card: true
 card-image: img/poster_0.jpg
@@ -6,56 +6,53 @@ view-if: peoples_party_support >= 3 and peoples_party = 0 and peoples_party_time
 on-arrival: peoples_party_timer = 6
 tags: party_affairs
 max-visits: 4
-#subtitle: Can the SPD move beyond the working class?
 
-= Building a People's Party
+= A Volkspartei Again?
 
-Contrary to orthodox Marxist predictions, the industrial proletariat is not constantly increasing in size. The rapid growth of the "new middle class" of white-collar workers and the persistence of small farmers and the peasantry confound predictions of a working-class majority.
+Since Bad Godesberg in 1959, the SPD has seen itself as a people's party for all who work for a living. But at 16% in 2025, it is hard to call it a Volkspartei any longer. The industrial working class is shrinking, the educated middle class votes Grüne, and many workers now vote AfD.
 
-In order to build a socialist majority, many reformists and neorevisionists are calling for our party to move beyond the urban working class, to embrace the concerns of the middle class, farmers, and women of all classes. We can create a new and inclusive vision of the party that encompasses all people who work for a living, which is almost everyone in the country save the aristocrats and top capitalists.
+Netzwerk Berlin and the Seeheimer Kreis want a new opening to the centre: to the self-employed, to the suburbs, to the countryside and to the East, with a programme that is less about the party's traditions and more about everyday problems. The Parlamentarische Linke and the AfA warn that the party would lose its soul and its last core voters.
 
-- @support_peoples_party: Yes, we must become a people's party!
-- @build_support: We must build additional support before becoming a people's party.
-- @support_peoples_party_hard: Despite strong opposition from the Center and Left factions, we will become a people's party.
-- @no_new_ideas: No, we will always be a party of the working class.
+- @support_peoples_party: Yes, we must become a big-tent party again!
+- @build_support: We must build more support in the party first.
+- @support_peoples_party_hard: Despite the opposition of the left and the AfA, we will open the party to the centre.
+- @no_new_ideas: No, we must first win back our core voters.
 - @root: Perhaps we can discuss this at a later time.
 - @easy_discard
 - @cancel_advisor_action
 
 @build_support
-view-if: (neorevisionist_strength + reformist_strength < left_strength + center_strength) or peoples_party_support < 5
-on-arrival: peoples_party_support += 1; neorevisionist_strength += 5; left_strength -= 5; left_dissent += 5
+view-if: (center_strength + reformist_strength < left_strength + labor_strength) or peoples_party_support < 5
+on-arrival: peoples_party_support += 1; center_strength += 5; left_strength -= 5; left_dissent += 5
 
-Within our party, we are pushing forward proposals for a people's party against the Left and Center.
-
+We push the idea in the party's commissions and regional associations, against the resistance of the left.
 
 @support_peoples_party
-choose-if: (neorevisionist_strength + reformist_strength >= left_strength + center_strength) and peoples_party_support >= 4
+choose-if: (center_strength + reformist_strength >= left_strength + labor_strength) and peoples_party_support >= 4
 unavailable-subtitle: The opposition is too strong.
-on-arrival: neorevisionist_strength += 15; reformist_strength += 15; neorevisionist_dissent -= 10; reformist_dissent -= 10; peoples_party = 1; workers_spd -= 12; rural_spd += 10; new_middle_spd += 10; old_middle_spd += 8; catholics_spd += 8; left_dissent += 25; center_dissent += 20; linke_relation -= 10; linke_coalition_dissent += 1; coalition_dissent -= 1; cdu_relation += 5*(1-dissent); fdp_relation += 5*(1-dissent)
+on-arrival: center_strength += 15; reformist_strength += 15; center_dissent -= 10; reformist_dissent -= 10; peoples_party = 1; workers_spd -= 6; rural_spd += 6; new_middle_spd += 6; old_middle_spd += 5; catholics_spd += 4; pensioners_spd += 2; left_dissent += 25; labor_dissent += 15; linke_relation -= 10; linke_coalition_dissent += 1; coalition_dissent -= 1; cdu_relation += 5*(1-dissent); fdp_relation += 5*(1-dissent)
 achievement: volkspartei
 
-In an emergency conference, we have decided to become a people's party that encompasses all of the regular people of Germany, not just the workers and urban poor. The Left and Center claim that our new party platform is a betrayal of our founding principles, a turn away from Marxism towards bourgeois opportunism. Whatever the case, we are now a party representing all of the people, not just the proletariat.
+A party congress adopts a new programme for a broad Social Democracy of the centre. The left calls it a second Agenda 2010, and some union leaders leave in protest. But the party is reaching voters it has not reached in years.
 
-Should we run a new campaign to publicize our new platform?
+Should we run a campaign to present our new programme?
 
 - @campaign_workers
 - @campaign_middle
 - @campaign_rural
 - @campaign_unemployed
 - @campaign_women
-
-
+- @campaign_catholics
 
 @support_peoples_party_hard
 subtitle: This will increase dissent.
-view-if: (neorevisionist_strength + reformist_strength < left_strength + center_strength) or (peoples_party_support < 4)
-on-arrival: neorevisionist_strength += 10; reformist_strength += 8; peoples_party = 1; workers_spd -= 15; rural_spd += 10; new_middle_spd += 10; old_middle_spd += 8; catholics_spd += 8; left_dissent += 40; center_dissent += 40; linke_relation -= 10; linke_coalition_dissent += 1; coalition_dissent -= 1
+view-if: (center_strength + reformist_strength < left_strength + labor_strength) or (peoples_party_support < 4)
+on-arrival: center_strength += 10; reformist_strength += 8; peoples_party = 1; workers_spd -= 8; rural_spd += 6; new_middle_spd += 6; old_middle_spd += 5; catholics_spd += 4; pensioners_spd += 2; left_dissent += 40; labor_dissent += 30; linke_relation -= 10; linke_coalition_dissent += 1; coalition_dissent -= 1
 achievement: volkspartei
 
-It is an arduous and contentious process, but we have pushed through the proposal to become a people's party. The Left and Center claim that our new party platform is a betrayal of our founding principles, a turn away from Marxism towards bourgeois opportunism. Whatever the case, we are now a party representing all of the people, not just the proletariat.
+After a bitter fight, the leadership pushes the new programme through the party congress. The left calls it a second Agenda 2010. But the party is reaching voters it has not reached in years.
 
-Should we run a new campaign to publicize our new platform?
+Should we run a campaign to present our new programme?
 
 - @campaign_workers
 - @campaign_middle
@@ -65,46 +62,44 @@ Should we run a new campaign to publicize our new platform?
 - @campaign_catholics
 
 @campaign_workers
-title: Campaign among the workers, to assuage their doubts about our changes.
+title: Campaign among workers, to ease their doubts about our changes.
 on-arrival: workers_spd += 6*(1-dissent);
 
-The workers are still a key part of our constituency, and we must not alienate them in the transformation of our party.
+Workers are still the heart of our voters, and we must not lose them while we reach out to others.
 
 @campaign_middle
 title: Campaign among the middle classes.
 on-arrival: old_middle_spd += 5*(1-dissent); new_middle_spd += 6*(1-dissent)
 
-As a people's party, we represent the employees and small businesspeople of the middle class, and they are becoming receptive to our messages.
+Employees, public servants and small business owners are listening to us again.
 
 @campaign_rural
-title: Campaign in rural areas.
+title: Campaign in small towns and the countryside.
 choose-if: rural_policy > 0
 unavailable-subtitle: We have not enacted any rural policies yet.
 on-arrival: rural_spd += 7*(1-dissent)
 
-As a people's party, we represent farmers and rural workers as well, and they are becoming receptive to our messages.
+With our rural policies to show, people in the countryside are more willing to listen.
 
 @campaign_unemployed
 title: Campaign among the unemployed.
 on-arrival: unemployed_spd += 6*(1-dissent);
 
-As a people's party, the urban poor are still a key part of our constituency.
+The unemployed and the working poor are still a key part of our voters.
 
 @campaign_women
-title: Campaign among women of all classes.
+title: Campaign among women.
 on-arrival: workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 3*(1-dissent); rural_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent);
 
-As a people's party, we represent women of all classes.
+Women of every background are a majority of the electorate, and many of them vote for us.
 
 @campaign_catholics
-title: Campaign among political Catholics.
-on-arrival: catholics_spd += 7*(1-dissent);
+title: Campaign in the East.
+on-arrival: catholics_spd += 6*(1-dissent);
 
-Catholics have historically been tied to the Center Party, but there is no reason why our party cannot appeal to them. The Prussian Concordat in particular is a sign of our friendship with Catholicism.
-
+Across the East, many people have given up on the old western parties. We send our best people to listen.
 
 @no_new_ideas
-on-arrival: neorevisionist_strength -= 6; neorevisionist_dissent += 5; center_strength += 8; left_strength += 3; peoples_party = 0; peoples_party_support -= 3
+on-arrival: center_strength -= 6; center_dissent += 5; labor_strength += 5; left_strength += 3; peoples_party = 0; peoples_party_support -= 3
 
-The Social Democrats have been and will always be a party of the working class.
-
+Before we chase new voters, we must win back the ones we lost: the workers, the pensioners and the people in the old industrial regions.

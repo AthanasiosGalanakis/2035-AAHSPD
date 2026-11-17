@@ -9,14 +9,14 @@ tags: party_affairs
 
 = Campaigning
 
-Whether or not we are in an electoral campaign, the party is always trying to broaden its voter base. Who should we focus our campaign efforts on?
+Election or not, the party is always trying to win new voters. Who should we focus our campaign on?
 
-- @workers: The urban working class, our traditional support base.
-- @new_middle: The "new middle class" of government employees and white-collar workers.
-- @old_middle: The "old middle class" of small independent businessmen and artisans.
-- @rural: Rural workers and small farmers, who have felt neglected by us in the past.
-- @unemployed: The unemployed.
-- @catholics: Catholics, who typically support the Center Party.
+- @workers: Workers and employees, our traditional base.
+- @new_middle: The educated urban middle class of professionals and public servants.
+- @old_middle: The self-employed, small business owners and craftspeople.
+- @rural: People in small towns and the countryside, who feel left behind.
+- @unemployed: The unemployed and people on Grundsicherung.
+- @catholics: East Germans, many of whom no longer trust any of the old parties.
 - @root: We either don't want to or cannot campaign right now.
 - @easy_discard
 
@@ -24,9 +24,9 @@ Whether or not we are in an electoral campaign, the party is always trying to br
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: workers_spd += 6*(1-dissent); workers_spd -= 2 if unemployed >= 15; workers_spd -= 2 if unemployed >= 25; workers_spd += 6*(1-dissent) if wtb_adopted = 1; resources -= 1; workers_spd += 3*(1-dissent) if nationalization_progress >= 1;
+on-arrival: workers_spd += 6*(1-dissent); workers_spd -= 2 if unemployment_rate >= 8; workers_spd -= 2 if unemployment_rate >= 11; workers_spd += 6*(1-dissent) if investment_adopted = 1; resources -= 1; workers_spd += 3*(1-dissent) if nationalization_progress >= 1;
 
-We have increased our campaigning among the workers. [? if unemployed >= 15: The high levels of unemployment make our campaign more difficult. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract workers. ?]
+We campaign at factory gates, in union halls and in the new logistics centres. [? if unemployment_rate >= 8: With unemployment this high, our message is a harder sell. ?][? if investment_adopted = 1 : The Zukunftsprogramm gives us something concrete to offer. ?]
 
 @new_middle
 subtitle: -1 resources
@@ -34,7 +34,7 @@ choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 on-arrival: new_middle_spd += 6*(1-dissent); new_middle_spd -= 4 if socialism <= 49 and peoples_party == 0; resources -= 1; peoples_party_support += 1;
 
-We have increased our campaigning among the new middle class. [? if socialism <= 49 and peoples_party == 0: The popular antipathy towards socialism among this group makes our campaign more difficult. ?] [? if peoples_party > 0: As a people's party, we have an easier time increasing support among the middle class than before. ?]
+We campaign in university towns and city neighbourhoods, where the Grüne are our main rivals. [? if socialism <= 49 and peoples_party == 0: Many here see us as old-fashioned. ?] [? if peoples_party > 0: Our broader image makes it easier. ?]
 
 @old_middle
 subtitle: -1 resources
@@ -42,7 +42,7 @@ choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 on-arrival: old_middle_spd += 5*(1-dissent); resources -= 1; old_middle_spd -= 3 if nationalism >= 51 and peoples_party == 0; peoples_party_support += 1
 
-We have increased our campaigning among the old middle class. [? if nationalism >= 51 and peoples_party == 0: The high levels of nationalism among this group make our campaign more difficult. ?] [? if peoples_party > 0: As a people's party, we have an easier time increasing support among the middle class than before. ?]
+We campaign among craftspeople and small business owners. [? if nationalism >= 51 and peoples_party == 0: Many of them have drifted to the AfD, and are hard to reach. ?] [? if peoples_party > 0: Our broader image makes it easier. ?]
 
 @rural
 subtitle: -1 resources
@@ -50,21 +50,20 @@ choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 on-arrival: rural_spd += 5*(1-dissent); rural_spd -= 3*(1-dissent) if peoples_party == 0; resources -= 1; peoples_party_support += 1; rural_spd += 3*(1-dissent) if rural_policy >= 2
 
-We have increased our campaigning among farmers. [? if peoples_party == 0: We have not historically campaigned much among the farmers, and they do not trust us. ?][? if peoples_party > 0: As a people's party, we have an easier time increasing support among farmers than before. ?][? if rural_policy >= 2 : Our rural policies have made it easier for us to build support among farmers. ?]
+We campaign in small towns and villages, where the bus comes twice a day and the last doctor has retired. [? if peoples_party == 0: Many here see us as a party of the cities. ?][? if peoples_party > 0: Our broader image makes it easier. ?][? if rural_policy >= 2 : Our rural policies give us something to show. ?]
 
 @unemployed
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: unemployed_spd += 6*(1-dissent); resources -= 1; unemployed_spd -= 3 if welfare < 0; unemployed_spd += 6*(1-dissent) if wtb_adopted = 1; unemployed_spd += 3*(1-dissent) if welfare >= 2;
+on-arrival: unemployed_spd += 6*(1-dissent); resources -= 1; unemployed_spd -= 3 if welfare < 0; unemployed_spd += 6*(1-dissent) if investment_adopted = 1; unemployed_spd += 3*(1-dissent) if welfare >= 2;
 
-We have increased our campaigning among the unemployed. [? if welfare < 0: The welfare cuts and resultant poverty make our campaign more difficult, since we are associated with the government that enacted these cuts, and our campaign may even backfire. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract support from the unemployed. ?]
+We campaign in job centres and poorer neighbourhoods, where turnout is lowest. [? if welfare < 0: After the benefit cuts, many here see us as part of the problem. ?][? if investment_adopted = 1 : The Zukunftsprogramm gives us something concrete to offer. ?]
 
 @catholics
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-view-if: peoples_party == 1
-on-arrival: catholics_spd += 6*(1-dissent); resources -= 1
+on-arrival: catholics_spd += 5*(1-dissent); resources -= 1; catholics_spd += 2*(1-dissent) if spd_states
 
-We have increased our campaigning among Catholics.
+We campaign across the East, from Rostock to the Erzgebirge. [? if spd_states : Our minister-presidents in Brandenburg and Mecklenburg-Western Pomerania help. ?]

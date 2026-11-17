@@ -1,0 +1,67 @@
+title: Coalition Crisis
+subtitle: Our partners threaten to leave the government.
+new-page: true
+on-arrival: coalition_crisis_seen += 1
+view-if: spd_in_government = 1 and ((in_grand_coalition = 1 and coalition_dissent >= 3) or (in_weimar_coalition = 1 and coalition_dissent >= 4))
+tags: event
+go-to: crisis_menu
+
+# Under Article 67 the Bundestag can only remove a chancellor by electing a new one,
+# so a coalition ends when a partner walks out, not with a simple vote of no confidence.
+
+= Coalition Crisis
+
+Our partners in the [+ coalition_name +] have had enough of our policies. At a late-night meeting of the coalition committee, they tell us that they will leave the government unless something changes.
+
+@crisis_menu
+
+- @try_assuage: Try to keep the coalition together.
+- @confidence_question: Ask the Bundestag the confidence question and go for new elections.
+- @let_it_happen: Let them walk out.
+
+@try_assuage
+
+What can we offer our partners?
+
+- @austerity: Agree to their demands for cuts.
+- @resources: Use our resources to smooth things over.
+- @crisis_menu: Never mind.
+
+@austerity
+view-if: welfare >= 0
+on-arrival: coalition_dissent = 0; workers_spd -= 6; unemployed_spd -= 6; workers_linke += 4; workers_afd += 2; unemployed_linke += 3; unemployed_afd += 3; left_dissent += 15; center_dissent += 8; labor_dissent += 15; reformist_dissent += 3; welfare -= 1; budget += 1; linke_relation -= 5
+
+We accept a package of spending cuts and a tighter budget, which is what our partners have demanded for months. The coalition survives, but the unions and our left wing are furious.
+
+@resources
+choose-if: resources >= 3
+unavailable-subtitle: We do not have enough resources.
+subtitle: -3 resources
+on-arrival: resources -= 3; coalition_dissent -= 1
+
+Patient talks, a few concessions in the ministries and some favours in the Länder calm our partners down, at least for now.
+
+@confidence_question
+view-if: chancellor_party = "SPD"
+on-arrival: time_to_election = 3; trust_in_democracy -= 2; coalition_dissent = 0; reformist_dissent += 3; left_dissent -= 3
+call: set_next_election_time
+
+[+ chancellor +] asks the Bundestag for a vote of confidence and loses it on purpose, as Gerhard Schröder did in 2005 and Olaf Scholz in 2024. The president dissolves the Bundestag. Until the election, we stay in office.
+
+New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+
+@let_it_happen
+on-arrival: coalition_dissent = 0; trust_in_democracy -= 3; old_middle_spd -= 2; new_middle_spd -= 2
+go-to: spd_minority_left if chancellor_party = "SPD"; spd_out if chancellor_party != "SPD"
+
+@spd_minority_left
+on-arrival: coalition = "spd_minority"
+call: apply_government
+
+Our partners resign from the cabinet. Chancellor [+ chancellor +] carries on with an SPD minority government, which now needs a majority for every law and every budget. The opposition can only remove us by electing a new chancellor, and for now it cannot agree on one.
+
+@spd_out
+on-arrival: coalition = "cdu_alone"; cdu_relation -= 5
+call: apply_government
+
+Our partners have decided to govern without us. Our ministers leave the cabinet, and Chancellor [+ chancellor +] carries on with a CDU/CSU minority government. We are back in opposition.

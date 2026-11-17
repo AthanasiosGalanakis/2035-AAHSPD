@@ -1,0 +1,27 @@
+title: The Firewall Falls
+subtitle: The AfD enters the federal government.
+view-if: afd_in_government = 1 and spd_in_government = 0
+max-visits: 1
+on-arrival: afd_urgency += 3; trust_in_democracy -= 10; afd_relation -= 20; firewall_erosion = 10
+tags: event
+new-page: true
+
+= The Firewall Falls
+
+For the first time in the history of the Federal Republic, a party that the Verfassungsschutz classes as right-wing extremist sits in the federal cabinet. The AfD has taken the interior and justice ministries. Its first announcements are a "remigration" programme, a review of public broadcasting and an end to funding for civil-society projects "against the right".
+
+Hundreds of thousands are already in the streets. What do we do now?
+
+- @fight: We take it to the streets and organise a broad protest movement.
+- @give_up: We fight this government in parliament, the Bundesrat and the courts.
+
+
+@fight
+on-arrival: left_strength += 5; trust_in_democracy += 3; resources -= 1 if resources > 0; afd_relation -= 10
+
+Together with the unions, the churches, the Greens and the Linke we call a national day of protest. More than a million people take part. It will not bring the government down on its own, but it shows that the republic has defenders.
+
+@give_up
+on-arrival: reformist_strength += 5; trust_in_democracy += 1
+
+We use every tool the Basic Law gives us. Our Länder block the government in the Bundesrat, and we take its first laws to the Federal Constitutional Court. It is slow work, but the institutions still stand.

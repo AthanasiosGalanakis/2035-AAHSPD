@@ -1,20 +1,19 @@
-title: Military Policy
+title: Defence Policy
 new-page: true
 is-card: true
 tags: govt_affairs, cabinet
 on-arrival: military_policy_timer += 6; month_actions += 1
 view-if: spd_in_government = 1 and reichswehr_minister_party = "SPD" and military_policy_timer <= 0
 card-image: img/portraits/LeberJulius.jpg
-#subtitle: Dealing with the Reichswehr.
 
-= Military Policy
+= Defence Policy
 
-The Reichswehr is a deeply reactionary institution that has been generally hostile to any notion of socialism or democracy. However, we now control the military as part of the government. What should we do to reform it?
+We run the defence ministry. The Bundeswehr is short of soldiers, its procurement office is slow, and the military counterintelligence keeps finding right-wing extremists in the ranks. Our allies want more, and our members want less. What should we do?
 
-- @increase_funding: Increase funding for the military to purchase its loyalty.
-- @decrease_funding: Reduce funding for the military so we have more for social spending.
-- @reform: Conduct a thorough reform of the ranks, reducing the influence of reactionaries and making it more hospitable to us.
-- @root: No change to military policy.
+- @increase_funding: Increase the defence budget.
+- @decrease_funding: Cut the defence budget so that we have more for social spending.
+- @reform: Reform the Bundeswehr: faster procurement, democratic leadership, and no tolerance for extremists in the ranks.
+- @root: No change to defence policy.
 - @easy_discard
 - @cancel_advisor_action
 
@@ -22,24 +21,22 @@ The Reichswehr is a deeply reactionary institution that has been generally hosti
 subtitle: -1 budget
 choose-if: budget >= 1
 unavailable-subtitle: We do not have the budget.
-on-arrival: budget -= 1; coalition_dissent -= 1 if coalition_dissent > 0; bundeswehr_loyalty += 0.07 if bundeswehr_loyalty < 1; bundeswehr_strength += 20; left_dissent += 5; linke_coalition_dissent += 1; west_relation -= 1; east_relation -= 1; reparations_negotiation -= 1; eu_progress -= 1; economic_growth += 0.1
+on-arrival: budget -= 1; coalition_dissent -= 1 if coalition_dissent > 0; bundeswehr_loyalty += 0.05 if bundeswehr_loyalty < 1; bundeswehr_strength += 10; left_dissent += 5; linke_coalition_dissent += 1; linke_relation -= 3; east_relation += 1; nationalism += 1; economic_growth += 0.1
 
-The military and the center-right parties are pleasantly surprised that we would increase military funding. Our membership tends to be anti-military, and is less enthused. Germany's neighbors are watching our military buildup with worry. [? if reparations >= 0 : This is not good for the reparations negotiations. ?]
+The Bundeswehr, our allies and the centre-right parties are pleased. Our members, many of whom grew up in the peace movement, are less enthusiastic.
 
 @decrease_funding
 subtitle: +1 budget
 unavailable-subtitle: There is nothing left to cut.
 choose-if: bundeswehr_strength > 0
-on-arrival: budget += 1; coalition_dissent += 1 if in_grand_coalition == 1; fdp_relation -= 8; bundeswehr_militancy -= 1; bundeswehr_strength -= 20; bundeswehr_loyalty -= 0.05 if bundeswehr_loyalty > 0; firewall_erosion += 1; firewall_erosion += 1 if bundeswehr_loyalty < 0.2; firewall_erosion += 1 if bundeswehr_loyalty < 0.1; firewall_erosion += 1 if bundeswehr_loyalty <= 0; reichswehr_goal_completed = 1; economic_growth -= 0.1; hindenburg_dissent += 1; hindenburg_relation -= 5
+on-arrival: budget += 1; coalition_dissent += 1 if in_grand_coalition == 1; fdp_relation -= 6; cdu_relation -= 4; bundeswehr_strength -= 10; bundeswehr_loyalty -= 0.03 if bundeswehr_loyalty > 0; east_relation -= 2; west_relation -= 1; pacifism += 1; reichswehr_goal_completed = 1; reformist_dissent += 5; left_dissent -= 3; economic_growth -= 0.1
 
-The military has fewer guns and fewer soldiers. There is no hint of a coup yet, but we do not know where the line will be drawn. The center-right parties are committed to the military and deeply opposed to our budget cuts.
+We stretch the procurement plans over more years and put the money into the budget. Warsaw, Vilnius and Washington ask whether Germany is still a reliable ally, and the Union calls it a security risk.
 
 @reform
 subtitle: -1 budget
 choose-if: budget >= 1 and bundeswehr_loyalty < 1
-unavailable-subtitle: [? if budget < 1 : We do not have the budget. ?][? if bundeswehr_loyalty >= 1 : The Reichswehr is already fully loyal to the democratic government. ?]
-on-arrival: coalition_dissent += 1 if in_grand_coalition == 1; bundeswehr_loyalty += 0.15; bundeswehr_militancy -= 0.5 if bundeswehr_loyalty < 0.5; budget -= 1; firewall_erosion += 1; fdp_relation -= 5; pacifism += 1; democratization += 1; hindenburg_dissent += 1; hindenburg_relation -= 5
+unavailable-subtitle: [? if budget < 1 : We do not have the budget. ?][? if bundeswehr_loyalty >= 1 : The Bundeswehr is already firmly rooted in democracy. ?]
+on-arrival: coalition_dissent += 1 if in_grand_coalition == 1; bundeswehr_loyalty += 0.1; budget -= 1; bundeswehr_strength += 3; democratization += 1; afd_relation -= 3
 
-Our efforts are at least somewhat successful; we have changed the recruiting and training patterns so that more soldiers from non-reactionary backgrounds can join, hopefully changing the culture of the forces. We have also removed some of the officers who supported the previous Kapp putsch.
-
-The center-right parties are committed to the military and deeply suspicious of our efforts to reform it.
+We speed up procurement, strengthen the parliamentary commissioner for the armed forces, and dismiss soldiers with links to extremist groups. The AfD accuses us of purging patriots, but most soldiers welcome the clarity.

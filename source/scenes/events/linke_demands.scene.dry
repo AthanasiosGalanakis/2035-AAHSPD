@@ -1,0 +1,23 @@
+title: The Linke Presents Its Demands
+view-if: in_left_front = 1 and linke_demands_seen = 0 and next_election_time - time > 12 and spd_in_government
+on-arrival: linke_demands_seen = 1; welfare_goal = 0; finance_goal = 0; foreign_goal = 0; economy_goal = 0; labor_goal = 0; reichswehr_goal = 0; welfare_goal_completed = 0; economy_goal_completed = 0; finance_goal_completed = 0; labor_goal_completed = 0; foreign_goal_completed = 0; reichswehr_goal_completed = 0; welfare_goal = 1 if linke_coalition_success = 0; finance_goal = 1 if linke_coalition_success = 0; foreign_goal = 1 if linke_coalition_success > 0; agriculture_goal = 0; economy_goal = 1 if economic_minister_party != "Linke"; labor_goal = 1 if labor_minister_party != "Linke"; reichswehr_goal = 1 if reichswehr_minister_party != "Linke" and linke_coalition_success = 0; linke_review_timer = 12; linke_review_timer = 16 if linke_relation >= 60; linke_review_timer = 20 if linke_coalition_success > 0; linke_review_timer = next_election_time - time - 1 if next_election_time - time <= 12
+new-page: true
+tags: event
+
+= The Linke's Demands
+
+[? if linke_coalition_success = 0 : The Linke did not enter this government to manage the status quo. Its parliamentary group presents us with a list of demands for the coalition: ?][? if linke_coalition_success > 0 : The Linke presents us with a new list of demands for the rest of the term: ?]
+
+[? if welfare_goal = 1 : - Raise the Grundsicherung and the pension level. ?]
+
+[? if economy_goal = 1 : - Bring housing and energy companies into public ownership. ?]
+
+[? if finance_goal = 1 : - Bring back the wealth tax and raise the top rate. ?]
+
+[? if labor_goal = 1 : - Raise the minimum wage and strengthen collective bargaining. ?]
+
+[? if foreign_goal = 1 : - Push for peace talks and stop new arms exports. ?]
+
+[? if reichswehr_goal = 1 : - Freeze the growth of the defence budget. ?]
+
+They expect to see these demands met within [+ linke_review_timer +] months. Otherwise, they will leave the coalition.

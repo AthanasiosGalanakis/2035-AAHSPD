@@ -1,0 +1,30 @@
+title: Karl Lauterbach
+is-pinned-card: true
+tags: advisor
+view-if: lauterbach_advisor = 1
+new-page: true
+
+= Karl Lauterbach
+
+Prof. Dr. Karl Lauterbach is an epidemiologist and was federal health minister from 2021 to 2025. He is the party's best-known voice on health and research.
+
+- @science_funding
+- @womens_rights_
+- @root: Return to main
+
+@science_funding
+title: Research funding
+subtitle: Fund research.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if economic_minister_party != "SPD" or chancellor_party != "SPD" : We need the chancellery and the economics ministry. ?]
+choose-if: advisor_action_timer = 0 and spd_in_government and economic_minister_party = "SPD" and chancellor_party = "SPD"
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1
+go-to: education_science.increase_science
+
+@womens_rights_
+title: Women's rights
+subtitle: Use the government for women's rights.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if spd_in_government = 0 : We are not in government. ?]
+choose-if: advisor_action_timer = 0 and spd_in_government
+on-arrival: advisor_action_timer = 6; womens_rights_timer -= 10; last_advisor_action = 1
+go-to: womens_rights
+

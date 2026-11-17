@@ -1,0 +1,30 @@
+title: Stefanie Hubig
+is-pinned-card: true
+tags: advisor
+view-if: hubig_advisor = 1
+new-page: true
+
+= Stefanie Hubig
+
+Dr. Stefanie Hubig, a lawyer and former education minister of Rhineland-Palatinate, became federal minister of justice in 2025.
+
+- @judiciary_
+- @constitutional_reform_
+- @root: Return to main
+
+@judiciary_
+title: Justice and the rule of law
+subtitle: Use the justice ministry.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if justice_minister_party != "SPD" or spd_in_government == 0 : The SPD does not hold the justice ministry. ?]
+choose-if: advisor_action_timer = 0 and spd_in_government and justice_minister_party = "SPD"
+on-arrival: advisor_action_timer = 6; judiciary_timer -= 6; last_advisor_action = 1
+go-to: judiciary
+
+@constitutional_reform_
+title: Constitutional reform
+subtitle: Prepare a change to the Basic Law.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if justice_minister_party != "SPD" or spd_in_government == 0 : The SPD does not hold the justice ministry. ?][? if judicial_reform < 2 : We must reform the justice system first. ?]
+choose-if: advisor_action_timer = 0 and spd_in_government and justice_minister_party = "SPD" and judicial_reform >= 2
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; constitutional_reform_timer -= 12
+go-to: constitutional_reform
+

@@ -1,0 +1,31 @@
+title: Bernd Rützel
+is-pinned-card: true
+tags: advisor, labor
+view-if: ruetzel_advisor = 1
+new-page: true
+
+= Bernd Rützel
+
+Bernd Rützel from Lower Franconia is one of the party's leading labour policy experts in the Bundestag. He campaigns for workers in offices, shops, care homes and hospitals.
+
+- @white_collar
+- @labor_rights_
+- @root: Return to main
+
+@white_collar
+title: Organising office and service workers
+subtitle: Reach out to employees in offices, shops and care.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer <= 0
+on-arrival: advisor_action_timer = 6; new_middle_spd += 5*(1-dissent); workers_spd += 1*(1-dissent)
+
+We campaign with ver.di in hospitals, care homes, shops and offices.
+
+@labor_rights_
+title: Workers' rights
+subtitle: Use the labour ministry.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if labor_minister_party != "SPD" or spd_in_government = 0 : The SPD does not hold the labour ministry. ?]
+choose-if: advisor_action_timer <= 0 and spd_in_government and labor_minister_party = "SPD"
+on-arrival: advisor_action_timer = 6; labor_rights_timer -= 10; last_advisor_action = 1
+go-to: labor_rights
+

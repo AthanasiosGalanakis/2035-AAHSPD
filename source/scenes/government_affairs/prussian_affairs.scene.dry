@@ -1,23 +1,22 @@
-title: The Prussian Bulwark
+title: The SPD in the Länder
 new-page: true
 is-card: true
-view-if: spd_prussia = 1 and prussian_affairs_timer <= 0
+view-if: spd_states = 1 and prussian_affairs_timer <= 0
 on-arrival: prussian_affairs_timer += 6; month_actions += 1
 tags: govt_affairs
 card-image: img/braun.jpg
-#subtitle: The state government of Prussia is a bulwark of democracy...
 
-= Prussian Affairs
+= The SPD in the Länder
 
-Prussia, by far the largest and most important state in Germany, is governed by our party, in a coalition with the Center and Democratic parties. It is the most stable and democratic state government in Germany, led by the able Otto Braun.
+Our minister-presidents govern Lower Saxony, Brandenburg, Rhineland-Palatinate, Mecklenburg-Western Pomerania, Hamburg, Bremen and the Saarland. In the Bundesrat, the Länder can block federal laws, and at home they run the police, the schools and the civil service.
 
-We can enact policies in Prussia.
+What should our Länder governments do?
 
-- @police_loyalty: Bolster the loyalty of the police.
-- @police_strength: Recruit additional police.
-- @bureaucracy: Purge the bureaucracy of reactionary elements.
-- @negotiate_concordat: Negotiate a concordat with the Vatican.
-- @sign_concordat: Sign a concordat with the Vatican.
+- @police_loyalty: Remove extremists from the state police.
+- @police_strength: Hire more police officers.
+- @bureaucracy: Pass a law to defend democracy in the civil service.
+- @negotiate_concordat: Negotiate an end to the state payments to the churches.
+- @sign_concordat: Sign the agreement with the churches.
 - @root: No new policies are needed.
 - @easy_discard
 - @cancel_advisor_action
@@ -26,29 +25,28 @@ We can enact policies in Prussia.
 view-if: federal_police_loyalty < 1
 on-arrival: federal_police_loyalty += 0.1
 
-# increase police loyalty
-The police have historically been overrun with reactionaries, and we are trying to change this, little by little. We have improved the training and recruitment process to select for a broader demographic than the traditional conservatives, and to put a tighter leash on their political activity. In addition, we set up committees to investigate the ranks of the police and remove those with far-right sympathies. It is a slow and arduous work.
+Chat groups with racist and far-right content have been found in police forces across the country. Our interior ministers set up independent police commissioners, vet recruits and dismiss officers who share extremist content.
 
 Current police loyalty: [+ federal_police_loyalty : loyalty +].
 
 @police_strength
 on-arrival: federal_police_strength += 20
 
-We have increased the size of the Prussian police.
+We hire more police officers in our Länder, especially in rural areas where people feel left alone by the state.
 
 @bureaucracy
-on-arrival: federal_police_loyalty += 0.05; nationalism -= 5; pacifism += 1; democratization += 1; pro_republic += 3*(1-dissent); new_middle_spd += 2*(1-dissent) if democratization >= 3; new_middle_spd += 2*(1-dissent) if democratization >= 4; firewall_erosion += 0.5
+on-arrival: federal_police_loyalty += 0.05; democratization += 1; trust_in_democracy += 3*(1-dissent); new_middle_spd += 2*(1-dissent) if democratization >= 3; afd_relation -= 3; firewall_erosion += 0.5
 
-The bureaucracy is deeply reactionary, and many abuse their power to favor the political right. By removing the pro-monarchy and pro-dictatorship elements, we can democratize it. Some of our opponents claim that we are infringing on individual freedoms, but perhaps the security of the republic requires it.
+Applicants for the civil service are now checked against the files of the Verfassungsschutz, and members of groups rated as extremist can be dismissed. The AfD calls it a witch hunt against its members. Civil liberties groups are uneasy too.
 
 @negotiate_concordat
 view-if: prussian_concordat_progress < 1
 on-arrival: prussian_concordat_progress += 1; cdu_relation += 2*(1-dissent);
 
-We are making progress towards negotiating a concordat between Prussia and the Catholic church.
+The Basic Law has demanded an end to the state's historic payments to the churches since 1919, but no government has ever done it. Our Länder begin talks with the churches about a one-off settlement.
 
 @sign_concordat
 view-if: prussian_concordat_progress >= 1 and prussian_concordat = 0
-on-arrival: prussian_concordat = 1; cdu_relation += 5; catholics_spd += 3*(1-dissent)
+on-arrival: prussian_concordat = 1; cdu_relation += 3; pensioners_spd += 1*(1-dissent); budget -= 1 if budget > 0
 
-We have signed a Concordat between the Free State of Prussia and the Roman Catholic Church, guaranteeing religious freedom for Catholics in Prussia. This sets the stage for the negotiation of a national Concordat covering all of Germany.
+After a century, the Länder and the churches agree on a settlement. The churches receive a final payment over twenty years, and the yearly payments end. Both sides call it fair.

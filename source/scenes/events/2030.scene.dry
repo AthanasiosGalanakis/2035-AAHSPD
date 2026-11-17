@@ -1,0 +1,9 @@
+title: 2030
+subtitle: A new year
+tags: event
+view-if: year = 2030 and month = 1
+priority: 2
+max-visits: 1
+on-arrival: budget -= 1 if budget > 0
+
+A new year begins. The government has promised to cut emissions by 65% compared to 1990 by 2030, and that deadline has now arrived. [? if economic_growth < 1 : Industry warns that it cannot afford the transition in a weak economy. ?][? if economic_growth >= 1 : The economy is growing again, which makes the climate targets easier to defend. ?]

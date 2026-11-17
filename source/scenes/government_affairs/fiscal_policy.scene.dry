@@ -6,18 +6,16 @@ on-arrival: fiscal_policy_timer += 6; month_actions += 1
 view-if: spd_in_government = 1 and finance_minister_party = "SPD" and fiscal_policy_timer = 0
 card-image: img/portraits/HilferdingRudolf.jpg
 go-to: fiscal_menu
-#subtitle: Issues of taxation, budget, and tariffs.
 
 = Fiscal Policy
 
-Fiscal policy involves issues of taxation and budget.
-
+We run the finance ministry. Taxes, the budget and the debt brake are ours to shape.
 
 @fiscal_menu
 
-Upper-income tax rates: [+ upper_tax_rates : taxation +]
+Taxes on high incomes and wealth: [+ upper_tax_rates : taxation +]
 
-Lower-income tax rates: [+ lower_tax_rates : taxation +]
+Taxes on low incomes and consumption: [+ lower_tax_rates : taxation +]
 
 - @raise_rich: Increase taxes on the rich.
 - @raise_poor
@@ -33,107 +31,88 @@ Lower-income tax rates: [+ lower_tax_rates : taxation +]
 - @cancel_advisor_action
 
 @raise_progressive
-subtitle: This does not change overall revenue. [? if lower_tax_rates < -5 : Lower-class tax rates are too low to cut anymore. ?] [? if upper_tax_rates > 5 : Upper-class tax rates are too high to increase. ?]
+subtitle: This does not change overall revenue. [? if lower_tax_rates < -5 : Taxes on low incomes are too low to cut any further. ?] [? if upper_tax_rates > 5 : Taxes on the rich are too high to increase. ?]
 choose-if: lower_tax_rates >= -5 and upper_tax_rates <= 5
 on-arrival: workers_spd += 6*(1-dissent); old_middle_spd -= 4; new_middle_spd -= 4; coalition_dissent += 1 if in_grand_coalition; fdp_relation -= 4; finance_goal_completed += 1; upper_tax_rates += 1; lower_tax_rates -= 1; capital_strike_progress += 1; capital_strike_progress += 1 if upper_tax_rates > 1; capital_strike_progress += 1 if upper_tax_rates > 3; new_middle_spd -= 2 if upper_tax_rates > 1; old_middle_spd -= 2 if upper_tax_rates > 1
 
-Making the tax system more progressive is popular among our base, but it upsets our bourgeois coalition partners, as well as our minimal number of bourgeois voters.
+We raise the top rate and cut income tax for low and middle earners. Our base is pleased, while our partners on the centre-right and the better-off are not.
 
 @raise_rich
 subtitle: +2 budget
 unavailable-subtitle: Tax rates are already too high.
 choose-if: upper_tax_rates <= 5
-on-arrival: upper_tax_rates += 1; capital_strike_progress += 1; capital_strike_progress += 1 if upper_tax_rates > 1; capital_strike_progress += 1 if upper_tax_rates > 3; workers_spd += 4*(1-dissent); old_middle_spd -= 4; new_middle_spd -= 4; coalition_dissent += 1 if in_grand_coalition; coalition_dissent += 1 if capital_strike_progress >= 5; budget += 2; fdp_relation -= 4; unemployed += 1; finance_goal_completed += 1; inflation -= 0.6; economic_growth -= 0.4; new_middle_spd -= 2 if upper_tax_rates > 1; old_middle_spd -= 2 if upper_tax_rates > 1; left_dissent -= 3; labor_dissent -= 3
+on-arrival: upper_tax_rates += 1; capital_strike_progress += 1; capital_strike_progress += 1 if upper_tax_rates > 1; capital_strike_progress += 1 if upper_tax_rates > 3; workers_spd += 4*(1-dissent); old_middle_spd -= 4; new_middle_spd -= 4; coalition_dissent += 1 if in_grand_coalition; coalition_dissent += 1 if capital_strike_progress >= 5; budget += 2; fdp_relation -= 4; unemployment_rate += 0.2; finance_goal_completed += 1; inflation -= 0.2; economic_growth -= 0.2; new_middle_spd -= 2 if upper_tax_rates > 1; old_middle_spd -= 2 if upper_tax_rates > 1; left_dissent -= 3; labor_dissent -= 3
 
-Raising taxes on the rich is popular among our base, but it alienates the bourgeoisie. Increasing taxes also decreases economic demand, which may lead to more unemployment.
-
+[? if upper_tax_rates == 1 : We raise the top rate of income tax. ?][? if upper_tax_rates == 2 : We reform the inheritance tax, so that large company fortunes no longer pass on tax-free. ?][? if upper_tax_rates >= 3 : We bring back the wealth tax, suspended since 1997. ?] Our base is pleased. Business groups warn of capital flight.
 
 @raise_poor
-title: Raise consumption taxes, which disproportionately affect the poor.
-subtitle: +2 budget
+title: Raise VAT.
+subtitle: +2 budget. This falls hardest on people with low incomes.
 unavailable-subtitle: Tax rates are already too high.
 choose-if: lower_tax_rates <= 5
-on-arrival: budget += 2; workers_spd -= 4; linke_coalition_dissent += 1; lower_tax_rates += 1; workers_spd -= 5 if lower_tax_rates >= 2; labor_dissent += 3; left_dissent += 3
+on-arrival: budget += 2; workers_spd -= 4; linke_coalition_dissent += 1; lower_tax_rates += 1; workers_spd -= 5 if lower_tax_rates >= 2; labor_dissent += 3; left_dissent += 3; inflation += 0.3
 
-We have raised taxes for the poor and working class. This hurts our support among the workers.
-
+We raise VAT. It brings in money quickly, but people with low incomes spend all they earn and so pay the most, as our voters notice.
 
 @cut_overall
 subtitle: -3 budget
 unavailable-subtitle: -3 budget - [? if upper_tax_rates < -5 or lower_tax_rates < -5 : Tax rates are already too low. ?]
 choose-if: budget >= 3 and upper_tax_rates >= -5 and lower_tax_rates >= -5
-on-arrival: budget -= 3; upper_tax_rates -= 1; lower_tax_rates -= 1; new_middle_spd += 5*(1-dissent); old_middle_spd += 4*(1-dissent); workers_spd += 3*(1-dissent); fdp_relation += 5*(1-dissent); cdu_relation += 5*(1-dissent); unemployed -= 1.5 if unemployed >= 5; capital_strike_progress -= 1 if upper_tax_rates < 0; inflation += 1; economic_growth += 0.6;
+on-arrival: budget -= 3; upper_tax_rates -= 1; lower_tax_rates -= 1; new_middle_spd += 5*(1-dissent); old_middle_spd += 4*(1-dissent); workers_spd += 3*(1-dissent); fdp_relation += 5*(1-dissent); cdu_relation += 5*(1-dissent); unemployment_rate -= 0.4 if unemployment_rate >= 5; capital_strike_progress -= 1 if upper_tax_rates < 0; inflation += 0.3; economic_growth += 0.3;
 
-Cutting taxes benefits most the rich and middle-class, who pay more taxes than the working class. Our coalition partners are happy at our orthodox economic course.
+A broad tax cut helps the middle class and the better-off most, since they pay the most tax. Our partners on the centre-right are pleased.
 
 @cut_poor
-title: Cut consumption taxes for the poor.
+title: Cut taxes for low and middle incomes.
 subtitle: -2 budget
 unavailable-subtitle: -2 budget - [? if lower_tax_rates < -5: Tax rates are already too low. ?]
 choose-if: budget >= 2 and lower_tax_rates >= -5
-on-arrival: budget -= 2; lower_tax_rates -= 1; workers_spd += 5*(1-dissent); unemployed -= 0.7 if unemployed >= 5; inflation += 0.6; economic_growth += 0.4; finance_goal_completed += 1; labor_dissent -= 3; left_dissent -= 3;
+on-arrival: budget -= 2; lower_tax_rates -= 1; workers_spd += 5*(1-dissent); unemployment_rate -= 0.2 if unemployment_rate >= 5; inflation += 0.2; economic_growth += 0.2; finance_goal_completed += 1; labor_dissent -= 3; left_dissent -= 3;
 
-Our tax cuts disproportionately benefit the poor and working class.
-
+We raise the basic tax allowance and cut social contributions for low earners.
 
 @cut_rich
-title: Cut income taxes for the rich.
+title: Cut taxes for high earners and companies.
 subtitle: -2 budget
 unavailable-subtitle: -2 budget - [? if upper_tax_rates < -5: Tax rates are already too low. ?]
 choose-if: budget >= 2 and upper_tax_rates >= -5
-on-arrival: budget -= 2; upper_tax_rates -= 1; new_middle_spd += 5*(1-dissent); old_middle_spd += 4*(1-dissent); fdp_relation += 4*(1-dissent); cdu_relation += 4*(1-dissent); unemployed -= 0.7 if unemployed >= 5; capital_strike_progress -= 1 if upper_tax_rates < 0; inflation += 0.6; economic_growth += 0.4; labor_dissent += 3; left_dissent += 3
+on-arrival: budget -= 2; upper_tax_rates -= 1; new_middle_spd += 5*(1-dissent); old_middle_spd += 4*(1-dissent); fdp_relation += 4*(1-dissent); cdu_relation += 4*(1-dissent); unemployment_rate -= 0.2 if unemployment_rate >= 5; capital_strike_progress -= 1 if upper_tax_rates < 0; inflation += 0.2; economic_growth += 0.2; labor_dissent += 3; left_dissent += 3
 
-We have reduced income and property taxes for the rich and middle class. The bourgeois parties approve of this orthodox economic course.
-
+We cut corporate tax and abolish the remaining solidarity surcharge. The Union and the FDP approve.
 
 @raise_overall
 subtitle: +3 budget
 unavailable-subtitle: Tax rates are already too high.
 choose-if: upper_tax_rates <= 5 and lower_tax_rates <= 5
-on-arrival: budget += 3; new_middle_spd -= 4; old_middle_spd -= 4; workers_spd -= 4; unemployed += 2; linke_coalition_dissent += 1; lower_tax_rates += 1; upper_tax_rates += 1; capital_strike_progress += 1 if upper_tax_rates > 1; capital_strike_progress += 1 if upper_tax_rates > 2; workers_spd -= 5 if lower_tax_rates > 1; inflation -= 1.1; economic_growth -= 0.6; new_middle_spd -= 2 if upper_tax_rates > 1; old_middle_spd -= 2 if upper_tax_rates > 1;
+on-arrival: budget += 3; new_middle_spd -= 4; old_middle_spd -= 4; workers_spd -= 4; unemployment_rate += 0.4; linke_coalition_dissent += 1; lower_tax_rates += 1; upper_tax_rates += 1; capital_strike_progress += 1 if upper_tax_rates > 1; capital_strike_progress += 1 if upper_tax_rates > 2; workers_spd -= 5 if lower_tax_rates > 1; inflation -= 0.4; economic_growth -= 0.3; new_middle_spd -= 2 if upper_tax_rates > 1; old_middle_spd -= 2 if upper_tax_rates > 1;
 
-Raising taxes hurts our support among all those who pay taxes. [? if in_grand_coalition or in_weimar_coalition : However, our coalition partners are more supportive of the idea of "shared sacrifice" than simply taxing the rich. ?] Increasing taxes also decreases economic demand, which may lead to more unemployment.
+Raising taxes hurts our support among everyone who pays them. [? if in_grand_coalition or in_weimar_coalition : Our partners prefer this kind of "shared sacrifice" to simply taxing the rich, however. ?] Higher taxes also mean less demand, and perhaps more unemployment.
 
 @regressive
-title: Lower taxes on the rich, while increasing consumption taxes (which affect the working class more).
-subtitle: This does not change overall revenue. [? if upper_tax_rates < -5 : Rich tax rates are too low to cut anymore. ?] [? if lower_tax_rates > 5 : Lower-class tax rates are too high to increase. ?]
+title: Cut taxes on the rich and raise VAT.
+subtitle: This does not change overall revenue. [? if upper_tax_rates < -5 : Taxes on the rich are too low to cut any further. ?] [? if lower_tax_rates > 5 : Taxes on low incomes are too high to increase. ?]
 choose-if: lower_tax_rates <= 5 and upper_tax_rates >= -5
 on-arrival: workers_spd -= 6; new_middle_spd += 5*(1-dissent); old_middle_spd += 5*(1-dissent); fdp_relation += 5; cdu_relation += 4; coalition_dissent -= 1 if in_grand_coalition and coalition_dissent > 0; linke_coalition_dissent += 1; upper_tax_rates -= 1; lower_tax_rates += 1; workers_spd -= 5 if lower_tax_rates >= 2; capital_strike_progress -= 1 if upper_tax_rates < 0; labor_dissent += 5; left_dissent += 5
 
-Our regressive taxation policy benefits the rich while hurting the poor and working-class. Our bourgeois coalition partners approve of this orthodox economic course.
-
+This helps the better-off at the expense of low earners. Our partners on the centre-right approve.
 
 @tariffs
-title: Change tariffs instead.
+title: Deal with the debt brake instead.
 
-Tariffs, or taxes on international imports, are another way to finance our government.
+The debt brake in the Basic Law limits new federal borrowing to 0.35% of GDP. Since 2025, defence spending and the infrastructure fund are exempt, but everything else is still bound by it. Changing it needs a two-thirds majority.
 
-Historically, socialists have been in favor of free trade and a low-tariff regime. Workers in export-oriented industries benefit from free trade, and they also benefit from lower prices for imported necessities. Do the present economic circumstances change these calculations?
-
-Current tariff level: [+ tariffs : taxation +]
-
-- @raise_tariffs
-- @lower_tariffs
-- @fiscal_menu: Change domestic taxes instead of tariffs.
-- @root: Do not change tariffs or taxes.
+- @reform_debt_brake
+- @fiscal_menu: Change taxes instead.
+- @root: Leave the debt brake as it is.
 - @easy_discard
 
-@raise_tariffs
-title: Raise tariffs on imports.
-subtitle: +2 budget. Other countries will retaliate by increasing tariffs of their own. [? if tariffs > 5 : Further increases in tariffs will not raise revenue, as we have already nearly reached econonmic autarky. ?]
-choose-if: tariffs <= 5
-on-arrival: tariffs += 1; inflation += 1 if inflation > 0; inflation += 0.5 if inflation <= 0; unemployed += 1.5; budget += 2; workers_spd -= 5; unemployed_spd -= 5; rural_spd += 4*(1-dissent); old_middle_spd += 3*(1-dissent); greens_relation -= 5; fdp_relation -= 2; west_relation -= 1; east_relation -= 1; reparations_negotiation -= 2; eu_progress -= 1 if eu_progress > 0; peoples_party_support += 1; economic_growth -= 0.4; capital_strike_progress += 1 if tariffs >= 3
+@reform_debt_brake
+title: Reform the debt brake to allow borrowing for public investment.
+subtitle: +3 budget. Needs a two-thirds majority in the Bundestag and the Bundesrat.
+unavailable-subtitle: [? if cdu_in_government = 0 and cdu_relation < 50 : Without the Union, there is no two-thirds majority. ?]
+choose-if: cdu_in_government = 1 or cdu_relation >= 50
+view-if: debt_brake_reformed = 0
+on-arrival: debt_brake_reformed = 1; budget += 3; fdp_relation -= 10; cdu_relation -= 3; greens_relation += 3; left_dissent -= 5; labor_dissent -= 5; reformist_dissent += 3; inflation += 0.2; economic_growth += 0.3
+max-visits: 1
 
-Increasing tariffs leads to higher prices for basic goods, increasing inflation and hurting consumption among the working class. Retaliatory tariffs reduce the competitiveness of German exports, raising unemployment among workers. They also lead to an atmosphere of international suspicion, reducing our ability to negotiate with other countries.
-
-On the other hand, agricultural producers and some small businesses benefit from higher tariffs, as farmers can now command higher prices for grain, and formerly uncompetitive businesses are now able to function.
-
-@lower_tariffs
-title: Lower tariffs on imports.
-choose-if: budget >= 2 and tariffs > -5
-subtitle: -2 budget. [? if tariffs <= -5 : There are no tariffs left to cut. ?]
-on-arrival: tariffs -= 1; budget -= 2; inflation -= 0.5; workers_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent); rural_spd -= 5; old_middle_spd -= 3; west_relation += 1; east_relation += 1; eu_progress += 1 if eu_progress > 0; economic_growth += 0.4;
-
-Lowering tariffs helps workers and the urban poor by reducing prices for basic necessities. In addition, other countries are pleased by lower tariffs, and are more willing to negotiate on many issues.
-
-Farmers are hurt by this policy, as cheap imported grain leads to ruin for some small producers. In general, cheap imports are detrimental for small-scale industries aimed at the domestic market.
+After months of negotiations, the debt brake is reformed: borrowing for schools, rail and climate is now allowed within strict limits. The FDP calls it the end of fiscal responsibility, and the Bundesbank is sceptical.

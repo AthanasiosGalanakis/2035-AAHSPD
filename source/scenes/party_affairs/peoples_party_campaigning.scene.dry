@@ -1,6 +1,4 @@
-title: Campaigning (People's Party)
-
-# basically, we can campaign as part of the people's party...
+title: Campaigning as a Big-Tent Party
 
 - @campaign_workers
 - @campaign_middle
@@ -10,41 +8,39 @@ title: Campaigning (People's Party)
 - @campaign_catholics
 
 @campaign_workers
-title: Campaign among the workers, to assuage their doubts about our changes.
+title: Campaign among workers, to ease their doubts about our changes.
 on-arrival: workers_spd += 5*(1-dissent);
 
-The workers are still a key part of our constituency, and we must not alienate them in the transformation of our party.
+Workers are still the heart of our voters, and we must not lose them while we reach out to others.
 
 @campaign_middle
 title: Campaign among the middle classes.
 on-arrival: old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent)
 
-As a people's party, we represent the employees and small businesspeople of the middle class, and they are becoming receptive to our messages.
+Employees, public servants and small business owners are listening to us again.
 
 @campaign_rural
-title: Campaign in rural areas.
+title: Campaign in small towns and the countryside.
 choose-if: rural_policy > 0
 unavailable-subtitle: We have not enacted any rural policies yet.
 on-arrival: rural_spd += 6*(1-dissent)
 
-As a people's party, we represent farmers and rural workers as well, and they are becoming receptive to our messages.
+With our rural policies to show, people in the countryside are more willing to listen.
 
 @campaign_unemployed
 title: Campaign among the unemployed.
 on-arrival: unemployed_spd += 5*(1-dissent);
 
-As a people's party, the urban poor are still a key part of our constituency.
+The unemployed and the working poor are still a key part of our voters.
 
 @campaign_women
-title: Campaign among women of all classes.
+title: Campaign among women.
 on-arrival: workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 3*(1-dissent); rural_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent);
 
-As a people's party, we represent women of all classes.
+Women of every background are a majority of the electorate, and many of them vote for us.
 
 @campaign_catholics
-title: Campaign among political Catholics.
+title: Campaign in the East.
 on-arrival: catholics_spd += 5*(1-dissent);
 
-Catholics have historically been tied to the Center Party, but there is no reason why our party cannot appeal to them. The Prussian Concordat in particular is a sign of our friendship with Catholicism.
-
-
+Across the East, many people have given up on the old western parties. We send our best people to listen.

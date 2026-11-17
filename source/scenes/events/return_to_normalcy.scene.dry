@@ -1,25 +1,24 @@
 title: Return to Normalcy
 subtitle: Have we finally found our way out of the crisis?
 new-page: true
-view-if: ((year = 1933 and month > 7) or (year >= 1934)) and pro_republic >= 50 and unemployed <= 13 and inflation < 7 and chancellor != "Papen" and chancellor != "Schleicher" and firewall_erosion < 9
+view-if: time >= 24 and recession_seen = 1 and trust_in_democracy >= 50 and unemployment_rate <= 6.5 and inflation < 4 and economic_growth >= 1 and firewall_erosion < 9 and afd_in_government = 0
 max-visits: 1
-on-arrival: return_to_normalcy = 1; workers_afd -= 8; new_middle_afd -= 8; old_middle_afd -= 8; rural_afd -= 8; unemployed_afd -= 8; firewall_erosion -= 4 if firewall_erosion > 4; new_middle_greens += 5; new_middle_fdp += 3; old_middle_greens += 3; old_middle_fdp += 5; old_middle_bsw += 3; rural_bsw += 6; rural_greens += 2; rural_fdp += 2; unemployed_linke += 3; unemployed_spd += 3
+on-arrival: return_to_normalcy = 1; workers_afd -= 5; new_middle_afd -= 5; old_middle_afd -= 5; rural_afd -= 5; unemployed_afd -= 5; catholics_afd -= 3; firewall_erosion -= 3 if firewall_erosion > 3; new_middle_greens += 3; new_middle_fdp += 2; old_middle_greens += 2; old_middle_fdp += 3; old_middle_bsw += 2; rural_bsw += 3; rural_greens += 2; rural_fdp += 2; unemployed_linke += 2; unemployed_spd += 3
 tags: event
 
 = Return to Normalcy
 
-Germany is finally recovering from the Great Depression. As the economy gradually improves, the political crisis begins to unravel as well.
+The recession is over. Growth is back, unemployment is falling and prices are stable again. As the economy recovers, some of the political fever breaks with it.
 
-Finally, the internal contradictions of the NSDAP have caught up to it. With the improving economic conditions, many business leaders are less interested in supporting them. Tensions between their remaining big capitalist funders and their lower middle class frontliners have come to a head, leading to desertions and public spats. This all saps Hitler's aura of strength, weakening Nazi support across a variety of demographics.
+The AfD has lost momentum. Its leaders are fighting each other in public, a donations scandal is in the news, and many protest voters who backed it during the crisis are drifting back to other parties or staying at home.
 
 - @celebrate: This is an occasion to celebrate.
-- @complacency: The Nazis are still a threat. We must not be too complacent.
+- @complacency: The far right is still a threat. We must not grow complacent.
 
 @celebrate
 
-This is an occasion to celebrate! Hopefully he Nazis will no longer be a threat to the Republic.
+This is an occasion to celebrate! Perhaps the worst is behind us.
 
 @complacency
 
-Even in their weakened state, the Nazis are still a threat. We must not be too complacent.
-
+Even weakened, the AfD is still the second- or third-strongest force in the country. We must not grow complacent.

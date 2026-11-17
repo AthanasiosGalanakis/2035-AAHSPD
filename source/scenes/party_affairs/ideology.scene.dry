@@ -6,18 +6,17 @@ view-if: ideology_timer = 0
 on-arrival: month_actions += 1; old_ideology = ideology; ideology_timer = 18
 card-image: img/arbeiterbew.jpg
 max-visits: 3
-#subtitle: Setting the party's ideological direction.
 
 = Questions of Ideology
 
-The SPD is torn between many different ideological currents. What should be our primary ideological guidance for now?
+The SPD has always held many currents of thought. Which one should guide the party for now?
 
 [? if ideology != 0 : We have previously chosen a [+ ideology +] ideology. Changing it will likely have drawbacks. ?]
 
-- @class_struggle: Class struggle and preparing the proletariat for the revolution are our primary goals.
-- @centrist: The Center Marxism of Karl Kautsky remains the best way to resolve our internal contradictions.
-- @labor: We should work with the trade unions to improve the lives of workers.
-- @reform: Following Eduard Bernstein, we should work for ethical socialism, strengthen democracy, and expand the party's electorate.
+- @class_struggle: Democratic socialism: we must overcome capitalism, not just manage it.
+- @centrist: A modern, pragmatic social democracy of the centre, as Netzwerk Berlin argues.
+- @labor: We should work with the trade unions to improve the lives of working people.
+- @reform: A Social Democracy of the centre that is fiscally sound, firm on security, and open to the middle classes, as the Seeheimer Kreis argues.
 - @easy_discard
 
 @class_struggle
@@ -29,7 +28,7 @@ if (Q.ideology && Q.ideology != "left") {
 go-to: changed if changed = 1
 on-departure: ideology = "left"; left_strength += 10; linke_coalition += 1; left_dissent -= 5; cdu_relation -= 3; fdp_relation -= 5; nationalization_support += 1; linke_relation += 3
 
-The radical left of the party supports a course of class struggle, and potentially a reconcilliation with the Communists.
+The Parlamentarische Linke and the Jusos want to shift wealth and power, and are open to working with the Linke.
 
 @centrist
 on-arrival: {!
@@ -40,7 +39,7 @@ if (Q.ideology && Q.ideology != "centrist") {
 go-to: changed if changed = 1
 on-departure: ideology = "centrist"; center_strength += 10; center_dissent -= 10; left_dissent -= 5; reformist_dissent -= 5
 
-The Center Marxists, represented by Kautsky and Hilferding, support a middle course of preparing for revolution while building up the consciousness of the working class.
+Netzwerk Berlin wants a modern, open party that can hold the centre ground and still keep the left and the right of the party together.
 
 @labor
 on-arrival: {!
@@ -49,9 +48,9 @@ if (Q.ideology && Q.ideology != "labor") {
 }
 !}
 go-to: changed if changed = 1
-on-departure: ideology = "labor"; labor_strength += 10; wtb_support += 1; labor_dissent -= 5; linke_relation -= 3
+on-departure: ideology = "labor"; labor_strength += 10; investment_support += 1; labor_dissent -= 5; linke_relation -= 3
 
-The labor wing of the party supports continued particpation in government in order to provide benefits to the workers, and the creation of public works programs for employment.
+The AfA and the union wing want the party to stay in government to deliver for working people: good wages, secure jobs and public investment.
 
 @reform
 on-arrival: {!
@@ -62,7 +61,7 @@ if (Q.ideology && Q.ideology != "reformist") {
 go-to: changed if changed = 1
 on-departure: ideology = "reformist"; reformist_strength += 10; democratization += 1; reformist_dissent -= 5; cdu_relation += 5; fdp_relation += 5; linke_relation -= 8; moderate_plan_support += 1
 
-The reformist wing of the party seeks to preserve the Republic and the democratic system of government, and is most supportive of coalitions with the other pro-democracy parties.
+The Seeheimer Kreis wants a party of the centre that is trusted on the economy and on security, and is ready to govern with the Union.
 
 @changed
 on-arrival: left_dissent += 5; center_dissent += 5; labor_dissent += 5; reformist_dissent += 5

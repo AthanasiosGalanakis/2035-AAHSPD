@@ -1,0 +1,53 @@
+title: The Defence Budget
+subtitle: NATO's 3.5% target comes due
+tags: event, govt_affairs
+is-card: true
+on-arrival: defence_spending_seen = 1
+face-image: img/panzerkreuzer.jpg
+view-if: defence_spending_seen = 0 and time >= 7 and spd_in_government = 1
+new-page: true
+go-to: ministry if reichswehr_minister_party = "SPD"; partners if reichswehr_minister_party != "SPD"
+
+= The Defence Budget
+
+The 2025 special fund for the Bundeswehr is almost spent, and Germany promised NATO that core defence spending would reach 3.5% of GDP by 2035. The defence ministry wants a new multi-year procurement plan: air defence, ammunition, a brigade in Lithuania and new frigates. Many of our members ask why there is money for tanks but not for schools and pensions.
+
+@partners
+
+Our coalition partners are united in support, and the plan will be voted on in the Bundestag. Voting against it could cost us the coalition.
+
+- @vote_yes: Vote yes for the procurement plan.
+- @vote_no: Vote no.
+- @abstain: Abstain from the vote.
+
+@ministry
+
+Since we run the defence ministry, the size of the plan is our decision.
+
+- @build: Back the full plan.
+- @trim: Trim the plan and put the savings into the budget.
+
+@vote_yes
+on-arrival: left_dissent += 10; labor_dissent += 3; center_dissent += 2; defence_funded = 1; linke_coalition_dissent += 1; linke_relation -= 6; workers_spd -= 2; bundeswehr_strength += 5
+
+Our grassroots members are angry, and the Parlamentarische Linke votes against the plan in the parliamentary group. But the plan passes with a large majority, and our partners see us as reliable on security.
+
+@vote_no
+on-arrival: fdp_relation -= 8; cdu_relation -= 6; greens_relation -= 3; pacifism += 1; nationalism -= 3*(1-dissent); coalition_dissent += 2; defence_funded = 1; reformist_dissent += 10
+
+Our partners are shocked. The plan still passes, with votes from the Union, the Greens and the FDP, while the SPD votes no together with the Linke, the BSW and the AfD. The Seeheimer Kreis is furious, and the press asks whether the SPD can be trusted with the country's security.
+
+@abstain
+on-arrival: fdp_relation -= 4; cdu_relation -= 3; left_dissent += 5; reformist_dissent += 5; defence_funded = 1; linke_relation -= 3
+
+Nobody is pleased by our abstention. The plan passes anyway, and both our left wing and our partners feel let down.
+
+@build
+on-arrival: left_dissent += 10; labor_dissent += 5; reformist_dissent -= 5; bundeswehr_loyalty += 0.05; bundeswehr_strength += 6; defence_funded = 1; budget -= 1; nationalism += 2
+
+The full plan goes ahead. The Bundeswehr and our allies are pleased, and so is the Seeheimer Kreis. Our left wing is not.
+
+@trim
+on-arrival: coalition_dissent += 1; bundeswehr_loyalty -= 0.03; left_dissent -= 8; labor_dissent -= 5; reformist_dissent += 8; pacifism += 1; cdu_relation -= 4; fdp_relation -= 4; workers_spd += 3*(1-dissent); budget += 1; east_relation -= 1
+
+We cut the frigates and stretch the ammunition orders over more years. The savings go into the federal budget. Our allies in Warsaw and Vilnius are unhappy, but many of our members feel that we have kept our promise to protect social spending.

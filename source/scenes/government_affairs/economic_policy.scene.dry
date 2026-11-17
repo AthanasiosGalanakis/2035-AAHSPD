@@ -2,14 +2,13 @@ title: Economic Policy
 new-page: true
 is-card: true
 tags: govt_affairs, cabinet
-on-arrival: economic_policy_timer += 12; month_actions += 1; nationalize_budget = 4; nationalize_budget -= 1 if works_councils >= 2; nationalize_budget -= 1 if works_councils >= 3; nationalize_budget -= 1 if socializations + nationalization_progress >= 2; wtb_budget = 4; wtb_budget -= 1 if works_councils >= 2 or socializations >= 1 or pro_labor >= 2
+on-arrival: economic_policy_timer += 12; month_actions += 1; nationalize_budget = 4; nationalize_budget -= 1 if works_councils >= 2; nationalize_budget -= 1 if works_councils >= 3; nationalize_budget -= 1 if socializations + nationalization_progress >= 2; wtb_budget = 4; wtb_budget -= 1 if works_councils >= 2 or socializations >= 1 or pro_labor >= 2 or debt_brake_reformed
 view-if: spd_in_government = 1 and (economic_minister_party == "SPD" or finance_minister_party == "SPD") and economic_policy_timer <= 0 and economic_plan > 0
 card-image: img/portraits/SchmidtRobert.jpg
-#subtitle: Policies to address the economic crisis.
 
 = Economic Policy
 
-We have already formulated an economic plan. Now we have to implement it.
+The party has adopted an economic plan. Now we have to put it into practice.
 
 - @wtb_2
 - @wtb_2_deficit
@@ -20,185 +19,148 @@ We have already formulated an economic plan. Now we have to implement it.
 - @nationalize_2
 - @moderate_plan
 - @moderate_plan_limited_budget
-- @root: Do not implement the economic plan.
+- @root: Do not carry out the economic plan.
 - @easy_discard
 - @cancel_advisor_action
 
+####################### the Zukunftsprogramm (public investment)
+
 @wtb_2
-title: Continue the implementation of the WTB-Plan.
+title: Continue the Zukunftsprogramm.
 subtitle: -3 budget
-unavailable-subtitle: Unemployment is low enough that the time for the WTB-Plan has passed.
-view-if: wtb_implemented > 2 and budget >= 3 
-choose-if: unemployed > 8
-on-arrival: works_program += 1; budget -= 3; workers_spd += 7*(1-dissent); workers += 1 if works_program <= 4; unemployed -= 3 if unemployed > 8; unemployed_spd += 7*(1-dissent); workers_linke -= 3; workers_afd -= 3; wtb_implemented += 1; linke_coalition_dissent += 1; linke_relation -= 5 if in_popular_front or in_left_front; inflation += 2; economic_growth += 1.6; economic_growth -= 0.6 if economic_growth > 5
+unavailable-subtitle: Unemployment is low enough that the programme is no longer needed.
+view-if: investment_implemented > 2 and budget >= 3
+choose-if: unemployment_rate > 6
+on-arrival: works_program += 1; budget -= 3; workers_spd += 5*(1-dissent); unemployment_rate -= 0.7 if unemployment_rate > 6; unemployed_spd += 5*(1-dissent); workers_linke -= 2; workers_afd -= 2; investment_implemented += 1; linke_coalition_dissent += 1; inflation += 0.4; economic_growth += 0.5; economic_growth -= 0.2 if economic_growth > 3
 
-[? if works_program == 4 : We have commenced Phase 2 of the WTB-Plan. ?][? if works_program > 4 :  We have continued our implementation of the WTB-Plan. ?] In addition to public works, we are now focusing on rebuilding our industries.
-
+[? if works_program == 4 : The second phase of the Zukunftsprogramm begins. ?][? if works_program > 4 : The Zukunftsprogramm continues. ?] After rail and schools, the money now goes into the industries of the future: battery plants, heat pumps and hydrogen.
 
 @wtb_2_deficit
-title: Continue the implementation of the WTB-Plan.
-subtitle: -3 budget - we will enter a deficit.
-unavailable-subtitle: Unemployment is low enough that we should not do deficit spending.
-view-if: wtb_implemented > 2 and budget < 3 and budget >= -3
-choose-if: unemployed > 10
-on-arrival: works_program += 1; budget -= 3; workers_spd += 6*(1-dissent); workers += 1 if works_program <= 4; unemployed -= 3 if unemployed > 8; unemployed_spd += 6*(1-dissent); workers_linke -= 2; workers_afd -= 2; coalition_dissent += 1; capital_strike_progress += 1; wtb_implemented += 1; linke_coalition_dissent += 1; linke_relation -= 5 if in_popular_front or in_left_front; inflation += 3; economic_growth += 1.6; economic_growth -= 0.6 if economic_growth > 5
+title: Continue the Zukunftsprogramm.
+subtitle: -3 budget. We will run a deficit.
+unavailable-subtitle: Unemployment is low enough that we should not borrow for this.
+view-if: investment_implemented > 2 and budget < 3 and budget >= -3
+choose-if: unemployment_rate > 7
+on-arrival: works_program += 1; budget -= 3; workers_spd += 4*(1-dissent); unemployment_rate -= 0.7 if unemployment_rate > 6; unemployed_spd += 4*(1-dissent); workers_linke -= 1; workers_afd -= 1; coalition_dissent += 1; capital_strike_progress += 1; investment_implemented += 1; linke_coalition_dissent += 1; inflation += 0.6; economic_growth += 0.5; economic_growth -= 0.2 if economic_growth > 3
 
-We have continued our implementation of the WTB-Plan, despite the continued deficit spending. In addition to public works, we are now focusing on rebuilding our industries.
-
+We keep the Zukunftsprogramm going on borrowed money. After rail and schools, the money now goes into the industries of the future.
 
 @wtb_continuation
-title: Look back on our results, and continue our implementation...
-view-if: wtb_implemented >= 1 and wtb_implemented <= 2
-on-arrival: budget += 1 if works_program <= 2; unemployed -= 5 if (works_program <= 2 and unemployed > 15) else unemployed -= 3; unemployed += 3 if unemployed < 5; unemployed += 3 if unemployed < 0; workers += 2 if works_program <= 2 else workers += 1; workers_spd += 8*(1-dissent); unemployed_spd += 8*(1-dissent); workers_linke -= 3; workers_afd -= 5; works_program += 1; cdu_relation += 3; fdp_relation += 3; coalition_dissent -= 1 if coalition_dissent >= 1; wtb_implemented += 1; capital_strike_progress -= 1 if capital_strike_progress >= 3; inflation += 1.5; inflation += 1 if unemployed < 10; economic_growth += 1.2; economic_growth -= 0.5 if economic_growth > 5
+title: Take stock of the results, and carry on.
+view-if: investment_implemented >= 1 and investment_implemented <= 2
+on-arrival: budget += 1 if works_program <= 2; unemployment_rate -= 0.8 if unemployment_rate > 5; unemployment_rate -= 0.4 if works_program <= 2 and unemployment_rate > 8; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); workers_linke -= 2; workers_afd -= 3; works_program += 1; cdu_relation += 3; fdp_relation += 2; coalition_dissent -= 1 if coalition_dissent >= 1; investment_implemented += 1; capital_strike_progress -= 1 if capital_strike_progress >= 3; inflation += 0.3; inflation += 0.2 if unemployment_rate < 5; economic_growth += 0.4; economic_growth -= 0.2 if economic_growth > 3
 
-Our spending on public works has resulted in a lower need for unemployment insurance and welfare, and increased tax receipts through the multiplier effect as the new money courses through the economy, recuperating some of our spending. We continue to invest most of the new revenue into the program.
+Construction sites are busy, fewer people claim benefits and tax revenue is up, which pays back part of the cost. We put most of it back into the programme.
 
-The economy is doing better, finally. Even the bourgeois parties are beginning to see the light.
-
-[? if in_popular_front or in_left_front: The KPD, however, still opposes our policy of "rescuing" capitalism. ?]
+The economy is doing better at last. Even some in the Union admit that the money is well spent.
 
 @implement_wtb_no_deficit
-title: Implement the WTB plan.
-subtitle: -[+ wtb_budget +] budget. [? if wtb_budget == 3 : Our pro-labor policies have reduced the cost of the plan. ?]
-unavailable-subtitle: Unemployment is low enough that the time for the WTB-Plan has passed.
-view-if: budget >= wtb_budget and wtb_implemented == 0 and wtb_adopted == 1
-choose-if: unemployed > 8
-on-arrival: budget -= wtb_budget; works_program += 1; unemployed -= 4; workers_spd += 8*(1-dissent); unemployed_spd += 8*(1-dissent); wtb_implemented += 1; linke_coalition_dissent += 1; linke_relation -= 5 if in_popular_front or in_left_front; inflation += 2; economic_growth += 2.8; pro_republic += 3*(1-dissent);
+title: Launch the Zukunftsprogramm.
+subtitle: -[+ wtb_budget +] budget. [? if wtb_budget == 3 : Our earlier reforms have lowered the cost. ?]
+unavailable-subtitle: Unemployment is low enough that the programme is no longer needed.
+view-if: budget >= wtb_budget and investment_implemented == 0 and investment_adopted == 1
+choose-if: unemployment_rate > 6
+on-arrival: budget -= wtb_budget; works_program += 1; unemployment_rate -= 1; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); investment_implemented += 1; linke_coalition_dissent += 1; inflation += 0.4; economic_growth += 0.8; trust_in_democracy += 3*(1-dissent);
 achievement: wirtschaftspolitik
 
-We have started to enact the WTB plan. Money is beginning to flow through the economy via investments in large-scale public works.
-
-[? if in_popular_front or in_left_front: The KPD opposes the WTB plan, seeing it as a rescue of capitalism rather than a step towards real socialism. ?]
+The Zukunftsprogramm begins. Money flows into rail lines, power grids, school buildings and social housing across the country.
 
 @implement_wtb_deficit
-title: Implement the WTB plan.
-subtitle: -[+ wtb_budget +] budget - we will enter deficit spending. [? if wtb_budget == 3 : Our pro-labor policies have reduced the cost of the plan. ?]
-unavailable-subtitle: Unemployment is low enough that the time for the WTB-Plan has passed.
-view-if: budget < wtb_budget and wtb_implemented == 0 and wtb_adopted == 1
-choose-if: unemployed > 8
-on-arrival: coalition_dissent += 1; coalition_dissent += 1 if historical_mode; coalition_dissent += 1 if chancellor == "Brüning"; works_program += 1; budget -= wtb_budget; unemployed -= 4; workers += 2; workers_spd += 8*(1-dissent); unemployed_spd += 8*(1-dissent); capital_strike_progress += 1; wtb_implemented += 1; linke_coalition_dissent += 1; linke_relation -= 5 if in_popular_front or in_left_front; inflation += 3; economic_growth += 3; pro_republic += 3*(1-dissent);
+title: Launch the Zukunftsprogramm.
+subtitle: -[+ wtb_budget +] budget. We will run a deficit. [? if wtb_budget == 3 : Our earlier reforms have lowered the cost. ?]
+unavailable-subtitle: Unemployment is low enough that the programme is no longer needed.
+view-if: budget < wtb_budget and investment_implemented == 0 and investment_adopted == 1
+choose-if: unemployment_rate > 6
+on-arrival: coalition_dissent += 1; coalition_dissent += 1 if fdp_in_government; works_program += 1; budget -= wtb_budget; unemployment_rate -= 1; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); capital_strike_progress += 1; investment_implemented += 1; linke_coalition_dissent += 1; inflation += 0.6; economic_growth += 0.8; trust_in_democracy += 3*(1-dissent);
 achievement: wirtschaftspolitik
 
-We have entered the realm of deficit spending. Our coalition partners are disgusted, but the works plan is enacted anyway. Money is beginning to flow through the economy via investments in large-scale public works.
+We borrow to pay for it. [? if fdp_in_government or cdu_in_government : Our partners are horrified, but the programme goes ahead. ?] Money flows into rail lines, power grids, school buildings and social housing across the country.
 
-[? if in_popular_front or in_left_front: The KPD opposes the WTB plan, seeing it as a rescue of capitalism rather than a step towards real socialism. ?]
-
-
-####################### left economic policies (socializations)
+####################### the left plan (public ownership)
 
 @nationalize_1
-title: Implement the Left plan for the transformation of the economy.
-subtitle: -[+ nationalize_budget +] budget. [? if works_councils >= 3 : Our works councils have reduced the budget necessary for this program. ?] [? if socializations >= 2: Our existing socialization policies have reduced the budget necessary for this program. ?]
+title: Begin the transformation of industry.
+subtitle: -[+ nationalize_budget +] budget. [? if works_councils >= 3 : Strong works councils have lowered the cost. ?] [? if socializations >= 2: Our earlier public ownership has lowered the cost. ?]
 view-if: nationalization_adopted == 1 and nationalization_progress == 0
 go-to: nationalize_deficit if budget < nationalize_budget; nationalize_no_deficit if budget >= nationalize_budget
 
-
 @nationalize_no_deficit
-on-arrival: nationalization_progress += 1; capital_strike_progress += 2; unemployed -= 3.5 if unemployed >= 6; unemployed -= 1.2 if works_councils >= 3; workers += 2 if nationalization_progress < 2; budget -= nationalize_budget; works_program += 1; workers_spd += 8*(1-dissent); unemployed_spd += 5*(1-dissent); coalition_dissent += 1; fdp_relation -= 4; left_dissent -= 5; new_middle_spd -= 2; old_middle_spd -= 3; economy_goal_completed += 1; inflation += 2; economic_growth += 1.7 if economic_growth < 5;
+on-arrival: nationalization_progress += 1; capital_strike_progress += 2; unemployment_rate -= 0.8 if unemployment_rate >= 5; unemployment_rate -= 0.3 if works_councils >= 3; budget -= nationalize_budget; works_program += 1; workers_spd += 6*(1-dissent); unemployed_spd += 4*(1-dissent); coalition_dissent += 1; fdp_relation -= 4; left_dissent -= 5; new_middle_spd -= 2; old_middle_spd -= 3; economy_goal_completed += 1; inflation += 0.4; economic_growth += 0.5 if economic_growth < 3;
 achievement: wirtschaftspolitik
 
-[? if nationalization_progress == 1 : We have begun purchasing idling enterprises from the capitalists[? if works_councils >= 1: , and running them in coordination with empowered works councils ?]. By keeping production going, we can stave off the rising unemployment. ?]
+[? if nationalization_progress == 1 : A new federal transformation fund takes stakes in steelworks and car suppliers that were about to close[? if works_councils >= 1: , and runs them with their works councils ?]. The plants keep running while they switch to green steel and new products. ?]
 
-[? if nationalization_progress == 1 : The Left argues that this should only be a first step in the socialist transformation of the economy. Eventually, much of the economy must be brought under popular control. ?]
+[? if nationalization_progress == 1 : The left of the party says that this must only be the beginning. ?]
 
-[? if nationalization_progress > 1 : We purchase additional underutilized enterprises and run them in a coordinated socialist fashion with the works councils, hiring formerly laid off workers. A significant portion of the economy is now under public control. ?]
+[? if nationalization_progress > 1 : The fund takes stakes in more companies. A significant part of German industry is now in public hands. ?]
 
 @nationalize_deficit
 
-Unfortunately, we do not have the budget to begin buying out industrial facilities. Some are urging for deficit spending in order to purchase factories, while others are encouraging (currently illegal) factory takeovers by workers, or nationalization without compensation. Taking any of these actions would require a vast departure from our previous party stances.
+We do not have the money to buy into the plants. Some want us to borrow for it. Others want us to use Article 15 of the Basic Law, which allows the socialisation of land and the means of production with compensation below market value. Either would be a sharp break with our past.
 
 - @nationalize_deficit_1
 - @nationalize_without_compensation
 - @empower_workers
 - @return: No, we should not do this.
 
-
 @nationalize_deficit_1
-title: Take a budget deficit to fund the nationalization program.
-choose-if: left_strength > reformist_strength + center_strength or woytinsky_advisor == 1
-subtitle: [? if woytinsky_advisor: Woytinsky can bring us around to supporting a budget deficit. ?]
-unavailable-subtitle: [? if left_strength <= reformist_strength + center_strength: The party does not yet support budget deficits for this purpose. ?] [? if not woytinsky_advisor : Perhaps bringing on an advisor might help make this action palatable? ?]
-on-arrival: nationalization_progress += 1; capital_strike_progress += 3; unemployed -= 3 if unemployed >= 6; unemployed -= 1.2 if works_councils >= 3; budget -= nationalize_budget; works_program += 1; workers_spd += 8*(1-dissent); unemployed_spd += 5*(1-dissent); coalition_dissent += 2; fdp_relation -= 6; cdu_relation -= 4; new_middle_spd -= 3; old_middle_spd -= 3; economy_goal_completed += 1; inflation += 3; economic_growth += 2 if economic_growth < 5;
+title: Borrow to pay for the transformation fund.
+choose-if: left_strength > reformist_strength + center_strength or fahimi_advisor == 1
+subtitle: [? if fahimi_advisor: Yasmin Fahimi can win the party over to borrowing for this. ?]
+unavailable-subtitle: [? if left_strength <= reformist_strength + center_strength: The party does not yet support borrowing for this. ?] [? if not fahimi_advisor : Perhaps an economic advisor could help win the party over? ?]
+on-arrival: nationalization_progress += 1; capital_strike_progress += 3; unemployment_rate -= 0.7 if unemployment_rate >= 5; unemployment_rate -= 0.3 if works_councils >= 3; budget -= nationalize_budget; works_program += 1; workers_spd += 6*(1-dissent); unemployed_spd += 4*(1-dissent); coalition_dissent += 2; fdp_relation -= 6; cdu_relation -= 4; new_middle_spd -= 3; old_middle_spd -= 3; economy_goal_completed += 1; inflation += 0.6; economic_growth += 0.6 if economic_growth < 3;
 achievement: wirtschaftspolitik
 
-[? if woytinsky_advisor: Most of the party, even on the left, are opposed to budget deficits for any purpose, with the exception of Wladimir Woytinsky. While he did not originally support the left's "transformational" plan, he has come around, and has persuaded the party and the Finance Ministry to support budget deficits in limited cases, for the purpose of exiting from the depression. ?]
-
-[? if nationalization_progress == 1 : We have begun purchasing idling enterprises from the capitalists[? if works_councils >= 1: , and running them in coordination with empowered works councils ?]. By keeping production going, we can stave off the rising unemployment. ?]
-
-[? if nationalization_progress == 1 : The Left argues that this should only be a first step in the socialist transformation of the economy. Eventually, much of the economy must be brought under popular control. ?]
-
-[? if nationalization_progress > 1 : We purchase additional underutilized enterprises and run them in a coordinated socialist fashion with the works councils, hiring formerly laid off workers. A significant portion of the economy is now under public control. ?]
+We borrow to fill the transformation fund. [? if nationalization_progress == 1 : It takes stakes in steelworks and car suppliers that were about to close[? if works_councils >= 1: , and runs them with their works councils ?]. ?][? if nationalization_progress > 1 : The fund takes stakes in more companies. A significant part of German industry is now in public hands. ?]
 
 @nationalize_without_compensation
-title: Nationalize without compensation.
-subtitle: There is no reason why we should not simply take over idle factories. This is likely to provoke a confrontation with the capitalists.
-unavailable-subtitle: [? if left_strength <= reformist_strength + center_strength: The bulk of the party does not support this quasi-legal action. ?] [? if judicial_reform < 3 : The judiciary would oppose this action. ?]
-choose-if: left_strength > reformist_strength + center_strength and judicial_reform >= 3
-on-arrival: nationalization_progress += 1; capital_strike_progress += 7; firewall_erosion += 3; unemployed -= 2.5 if unemployed >= 6; unemployed -= 1.2 if works_councils >= 3 and unemployed >= 3; works_program += 1; workers_spd += 8*(1-dissent); unemployed_spd += 6*(1-dissent); coalition_dissent += 2; fdp_relation -= 10; cdu_relation -= 8; greens_relation -= 8; left_strength += 15; reformist_dissent += 10; left_dissent -= 10; new_middle_spd -= 5; old_middle_spd -= 8; economy_goal_completed += 1; linke_relation += 5*(1-dissent); inflation += 4; economic_growth += 1 if economic_growth < 4;
+title: Use Article 15 of the Basic Law.
+subtitle: Socialise the plants with compensation far below market value. This is sure to end up before the Constitutional Court.
+unavailable-subtitle: [? if left_strength <= reformist_strength + center_strength: Most of the party does not support this. ?] [? if judicial_reform < 2 : Without legal groundwork, the courts would stop this. ?]
+choose-if: left_strength > reformist_strength + center_strength and judicial_reform >= 2
+on-arrival: nationalization_progress += 1; capital_strike_progress += 7; firewall_erosion += 3; unemployment_rate -= 0.6 if unemployment_rate >= 5; unemployment_rate -= 0.3 if works_councils >= 3 and unemployment_rate >= 3; works_program += 1; workers_spd += 6*(1-dissent); unemployed_spd += 5*(1-dissent); coalition_dissent += 2; fdp_relation -= 10; cdu_relation -= 8; greens_relation -= 5; left_strength += 15; reformist_dissent += 10; left_dissent -= 10; new_middle_spd -= 5; old_middle_spd -= 8; economy_goal_completed += 1; linke_relation += 5*(1-dissent); inflation += 0.8; economic_growth += 0.3 if economic_growth < 3;
 achievement: wirtschaftspolitik
 
-The capitalists are, predictably, up in arms about our policy of nationalization without compensation. They call it illegal expropriation, and it is. Nevertheless, it is clear that they have failed by keeping their factories idle, and we must take radical action.
-
-[? if nationalization_progress == 1 : We have begun acquiring idling enterprises from the capitalists[? if works_councils >= 1: , and running them in coordination with empowered works councils ?]. By keeping production going, we can stave off the rising unemployment. ?]
-
-[? if nationalization_progress > 1 : We acquired additional underutilized enterprises and run them in a coordinated socialist fashion with the works councils, hiring formerly laid off workers. A significant portion of the economy is now under public control. ?]
+For the first time, a federal government uses Article 15. The owners call it expropriation, and the Union and the FDP file a complaint in Karlsruhe. But the plants keep running, and their workers keep their jobs.
 
 @empower_workers
-title: Empower workers to take over factories.
-subtitle: We can promise to legalize factory occupations, giving the factories over to worker unions. This is highly confrontational, and would likely provoke a reaction from right-wing militants as well as capitalists.
-unavailable-subtitle: [? if left_strength <= reformist_strength + neorevisionist_strength : The bulk of the party does not support this radical action. ?] [? if judicial_reform < 3 : The judiciary would oppose this action. ?] [? if works_councils < 1 : We need the support of the works councils first. ?]
-choose-if: left_strength > reformist_strength + neorevisionist_strength and judicial_reform >= 3 and works_councils >= 1
-on-arrival: nationalization_progress += 1; capital_strike_progress += 6; firewall_erosion += 5; unemployed -= 3 if unemployed >= 6; unemployed -= 1.5 if works_councils >= 3 and unemployed > 4; works_program += 1; workers_spd += 10*(1-dissent); unemployed_spd += 10*(1-dissent); coalition_dissent += 2; fdp_relation -= 10; cdu_relation -= 8; greens_relation -= 8; workers_afd -= 5*(1-dissent); unemployed_afd -= 5*(1-dissent); left_strength += 15; reformist_dissent += 10; left_dissent -= 10; new_middle_spd -= 5; old_middle_spd -= 10; factory_takeovers += 1; economy_goal_completed += 1; linke_relation += 5*(1-dissent); inflation += 3; economic_growth += 1 if economic_growth < 3;
+title: Hand closing plants to their workers.
+subtitle: Give the workforce of any plant that is to be closed the right to take it over as a cooperative, with state guarantees.
+unavailable-subtitle: [? if left_strength <= reformist_strength : Most of the party does not support this. ?] [? if judicial_reform < 2 : Without legal groundwork, the courts would stop this. ?] [? if works_councils < 1 : We need stronger works councils first. ?]
+choose-if: left_strength > reformist_strength and judicial_reform >= 2 and works_councils >= 1
+on-arrival: nationalization_progress += 1; capital_strike_progress += 6; firewall_erosion += 4; unemployment_rate -= 0.7 if unemployment_rate >= 5; unemployment_rate -= 0.3 if works_councils >= 3 and unemployment_rate > 4; works_program += 1; workers_spd += 8*(1-dissent); unemployed_spd += 6*(1-dissent); coalition_dissent += 2; fdp_relation -= 10; cdu_relation -= 8; greens_relation -= 5; workers_afd -= 4*(1-dissent); unemployed_afd -= 4*(1-dissent); left_strength += 15; reformist_dissent += 10; left_dissent -= 10; new_middle_spd -= 5; old_middle_spd -= 10; factory_takeovers += 1; economy_goal_completed += 1; linke_relation += 5*(1-dissent); inflation += 0.6; economic_growth += 0.3 if economic_growth < 3;
 achievement: wirtschaftspolitik
 
-The capitalists are, predictably, up in arms about our policy of legalizing factory occupations. They call it illegal expropriation, and it is. Nevertheless, it is clear that they have failed, and we must take radical action.
-
-Fascists have been taking increasingly violent actions around the occupied factories, calling us thieves and looters. However, the some of the working-class supporters of the fascists have been peeled off, or at least the ones with a sense of class solidarity.
-
+Workers at closing plants can now take them over, backed by state loans. The business associations call it the end of the social market economy, and the AfD calls it theft. But in the industrial towns of the Ruhr and Saxony, some of its own voters cheer.
 
 @nationalize_2
-title: Continue the Left plan for the transformation of the economy.
-subtitle: -[+ nationalize_budget +] budget. [? if works_councils >= 3 : Our works councils have reduced the budget necessary for this program. ?] [? if socializations + nationalization_progress >= 2: Our existing socialization policies have reduced the budget necessary for this program. ?]
+title: Continue the transformation of industry.
+subtitle: -[+ nationalize_budget +] budget. [? if works_councils >= 3 : Strong works councils have lowered the cost. ?] [? if socializations + nationalization_progress >= 2: Our earlier public ownership has lowered the cost. ?]
 view-if: nationalization_adopted == 1 and nationalization_progress >= 1
 go-to: nationalize_deficit if budget < nationalize_budget; nationalize_no_deficit if budget >= nationalize_budget
 
-#######################################
-# Moderate economic plan
+####################### the Seeheimer plan (targeted jobs)
 
 @moderate_plan
-title: Implement the Reformists' job-creation plan.
+title: Carry out the targeted jobs plan.
 subtitle: -2 budget.
-unavailable-subtitle: -2 budget. [? if budget < 2 : We do not have the necessary budget. ?] [? if unemployed < 8 : Unemployment is low enough that job creation is not necessary. ?]
+unavailable-subtitle: -2 budget. [? if budget < 2 : We do not have the money. ?] [? if unemployment_rate < 6 : Unemployment is low enough that this is not needed. ?]
 view-if: moderate_plan_adopted == 1
-choose-if: budget >= 2 and unemployed >= 8
-on-arrival: budget -= 2; works_program += 1; unemployed -= 3 if unemployed >= 8; inflation += 1.5; workers_spd += 6*(1-dissent); unemployed_spd += 4*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); moderate_plan_progress += 1; linke_coalition_dissent += 1; inflation += 1 if unemployed < 10; linke_relation -= 5 if in_popular_front or in_left_front; economic_growth += 1.6; pro_republic += 3*(1-dissent);
+choose-if: budget >= 2 and unemployment_rate >= 6
+on-arrival: budget -= 2; works_program += 1; unemployment_rate -= 0.7 if unemployment_rate >= 6; inflation += 0.3; workers_spd += 5*(1-dissent); unemployed_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); moderate_plan_progress += 1; linke_coalition_dissent += 1; inflation += 0.2 if unemployment_rate < 6; economic_growth += 0.5; trust_in_democracy += 3*(1-dissent);
 achievement: wirtschaftspolitik
 
-[? if moderate_plan_progress == 1 : We have started to implement the job-creation plan! Funds are sent to build public works projects across Germany, reducing unemployment. ?]
+[? if moderate_plan_progress == 1 : Short-time work is extended, companies that invest get a tax credit, and the hardest-hit regions get money for job programmes. ?][? if moderate_plan_progress > 1 : We extend the targeted jobs plan for another year. ?]
 
-[? if moderate_plan_progress > 1 : We have continued to fund the job-creation plan, using our funds to build public works throughout Germany. ?]
-
-[? if unemployed >= 10 : The bourgeois approve of this plan as the "least bad" alternative, seeing it as necessary to save Germany's economy. ?]
-
-[? if unemployed < 10 : Unemployment is low enough that the plan does not seem to have the intended effect. ?]
-
-[? if in_popular_front or in_left_front: The KPD opposes the economic plan, seeing it as a rescue of capitalism rather than a step towards real socialism. ?]
+[? if unemployment_rate >= 7 : The Union and the business associations support it as the least bad option. ?][? if unemployment_rate < 7 : Unemployment is already falling, and the plan seems to make little difference. ?]
 
 @moderate_plan_limited_budget
-title: Partially implement the Reformists' job-creation plan, with a lower cost.
+title: Carry out part of the targeted jobs plan, at a lower cost.
 subtitle: -1 budget.
-unavailable-subtitle: -1 budget. [? if budget < 1 : We do not have the necessary budget. ?] [? if unemployed < 8 : Unemployment is low enough that job creation is not necessary. ?]
+unavailable-subtitle: -1 budget. [? if budget < 1 : We do not have the money. ?] [? if unemployment_rate < 6 : Unemployment is low enough that this is not needed. ?]
 view-if: moderate_plan_adopted == 1
-choose-if: budget >= 1 and unemployed >= 8
-on-arrival: budget -= 1; works_program += 1; unemployed -= 2 if unemployed >= 8; inflation += 1; workers_spd += 4*(1-dissent); unemployed_spd += 2*(1-dissent); new_middle_spd += 2*(1-dissent); old_middle_spd += 1*(1-dissent); rural_spd += 1*(1-dissent); moderate_plan_progress += 1; linke_coalition_dissent += 1; inflation += 1 if unemployed < 10; linke_relation -= 5 if in_popular_front or in_left_front; economic_growth += 0.7; pro_republic += 3*(1-dissent);
+choose-if: budget >= 1 and unemployment_rate >= 6
+on-arrival: budget -= 1; works_program += 1; unemployment_rate -= 0.4 if unemployment_rate >= 6; inflation += 0.2; workers_spd += 3*(1-dissent); unemployed_spd += 2*(1-dissent); new_middle_spd += 2*(1-dissent); old_middle_spd += 1*(1-dissent); rural_spd += 1*(1-dissent); moderate_plan_progress += 1; linke_coalition_dissent += 1; inflation += 0.1 if unemployment_rate < 6; economic_growth += 0.2; trust_in_democracy += 2*(1-dissent);
 achievement: wirtschaftspolitik
 
-[? if moderate_plan_progress == 1 : We have started to implement the job-creation plan! Funds are sent to build public works projects across Germany, reducing unemployment. ?]
-
-[? if moderate_plan_progress > 1 : We have continued to fund the job-creation plan, using our funds to build public works throughout Germany. ?]
-
-[? if unemployed >= 10 : The bourgeois approve of this plan as the "least bad" alternative, seeing it as necessary to save Germany's economy. ?]
-
-[? if unemployed < 10 : Unemployment is low enough that the plan does not seem to have the intended effect. ?]
-
-[? if in_popular_front or in_left_front: The KPD opposes the economic plan, seeing it as a rescue of capitalism rather than a step towards real socialism. ?]
+[? if moderate_plan_progress == 1 : Short-time work is extended and the hardest-hit regions get money for job programmes. ?][? if moderate_plan_progress > 1 : We extend part of the targeted jobs plan for another year. ?]

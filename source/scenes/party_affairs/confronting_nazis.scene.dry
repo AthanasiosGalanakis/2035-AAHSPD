@@ -1,4 +1,4 @@
-title: Confronting the Nazis
+title: Confronting the Far Right
 new-page: true
 is-card: true
 view-if: (afd_r >= 10 and afd_urgency > 1) and confronting_nazis_timer == 0
@@ -6,29 +6,27 @@ on-arrival: confronting_nazis_seen += 1; confronting_nazis_timer = 5; month_acti
 card-image: img/iron_front.png
 tags: party_affairs; antifascism
 
-The Nazis' strength is gaining, as shown by their recent election results and their violent presence in the streets. Their fascism threatens to plunge Germany once again into the abyss.
+The AfD is growing, and its most radical wing sets the tone. The Verfassungsschutz rates it as a confirmed right-wing extremist party, and in parts of the East it is the strongest party by far.
 
-Many in our party are calling for urgent action. The "neorevisionist" faction, led by young socialists like Carlo Mierendorff and Julius Leber, have formed specifically around this cause. But many in all factions of the party are calling for action.
+Many in our party, above all the Jusos and the Parlamentarische Linke, are calling for urgent action. Others warn that attacking the AfD only makes it stronger.
 
-- @not_a_big_deal: The Nazis' moment will pass. Let's not get too hasty.
+- @not_a_big_deal: The AfD will fall apart over its own contradictions. Let's not overreact.
 - @economic_crisis
-- @major_crisis: We must do something to confront the Nazis.
+- @major_crisis: We must do something to confront the far right.
 - @easy_discard
 
-
 @not_a_big_deal
-on-arrival: afd_urgency -= 1; left_dissent += 5; neorevisionist_dissent += 15
-view-if: mierendorff_advisor = 0 and leber_advisor = 0 and schumacher_advisor = 0
+on-arrival: afd_urgency -= 1; left_dissent += 10
 
-The Nazis are just another far-right movement that will die of its own contradictions sooner or later; we do not need to build a specific policy to combat them.
+We will not let the AfD set our agenda. The Jusos accuse the leadership of complacency.
 
 @economic_crisis
 title: We must address the economic crisis first.
-view-if: economic_plan == 0 and black_thursday_seen == 1
+view-if: economic_plan == 0 and recession_seen == 1
 go-to: crisis_program
 
 @major_crisis
 view-if: afd_urgency < 5
-on-arrival: afd_urgency += 1; neorevisionist_dissent -= 5; neorevisionist_strength += 5
+on-arrival: afd_urgency += 1; left_dissent -= 5; left_strength += 3
 
-The Nazis are one of the foremost threats to the German republic. However, we are still formulating a strategy to confront them, and still trying to build up consensus within our party for action. Check back on this later.
+The far right is one of the greatest threats to the republic. We are still working out a strategy and building agreement in the party. We will come back to this.

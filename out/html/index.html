@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta prefix="ifiction: http://babel.ifarchive.org/protocol/iFiction/"
-        property="ifiction:ifid" content="7FCDF039-2B77-4179-B795-CBAFA65253AA">
-    <title>Social Democracy: An Alternate History - Autumn Chen</title>
+        property="ifiction:ifid" content="6D26C0A2-B453-48B8-BF9C-E4A8D72C2896">
+    <title>Social Democracy: An Alternative History (2028)</title>
     <link rel="stylesheet" type="text/css" href="game.css">
     <script src="jquery-1.11.1.min.js"></script>
     <script src="d3.v7.min.js"></script>
@@ -46,24 +46,6 @@
         </div>
             <h3 id="settings_text">Settings</h3>
             <table>
-                <tr>
-                    <td id="language_text">Language (will restart game):</td>
-                    <td>
-                        <label id="english_label" for="english">English</label>
-                    </td>
-                    <td>
-                        <input type="radio" id="english" name="language" value="1" onclick="window.loadEnglish();">
-                    </td>
-                    <td>
-                        <label id="german_label" for="german">Deutsch</label>
-                    </td>
-                    <td>
-                        <input type="radio" id="german" name="language" value="0" onclick="window.loadGerman();">
-                    </td>
-                </tr>
-                <tr>
-                    <td> <hr> </td>
-                </tr>
                 <tr>
                     <td id="backgrounds_text">
                         Backgrounds:
@@ -343,20 +325,11 @@
         </table>
     </div>
 
-    <!-- Sprite stuff - feel free to comment out/remove if not using -->
-    <div id="contentSpriteContainer">
-        <div class="sprite" id="topLeftSprite"></div>
-        <div class="sprite" id="topRightSprite"></div>
-
-        <div class="sprite" id="bottomLeftSprite"></div>
-        <div class="sprite" id="bottomRightSprite"></div>
-    </div>
-
     <div id='page'>
         <div id="mid_panel">
             <header>
-                <h1 id="game-title">Social Democracy: An Alternate History</h1>
-                <h2 id="game-author">Autumn Chen</h2>
+                <h1 id="game-title">Social Democracy: An Alternative History</h1>
+                <h2 id="game-author">2028 &middot; based on the game by Autumn Chen</h2>
 
                 <div id="header-links">
                     <a id="stats-link" onclick="window.showStats();" href="#">Library</a>
@@ -386,18 +359,6 @@
 
             </div>
 
-            <footer>
-      <!--
-      <p>
-        <a onclick="window.showSaveSlots();" href="#">Save/Load</a>
-        <a onclick="window.quickSave();" href="#">Quick Save</a>
-        <a onclick="window.quickLoad();" href="#">Quick Load</a>
-      </p>
-
-      &copy; 2021 Autumn Chen.
-      Made with <a href="https://github.com/aucchen/dendry">Dendry</a>.
-      -->
-            </footer>
         </div>
     </div>
   </body>

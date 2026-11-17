@@ -54,12 +54,7 @@ for (var party of Q.parties) {
     } else {
         Q[party + '_r'] = Q[party + '_votes'];
     }
-    // if we use decimals, then we might want to truncate the numbers
-    if (Q.use_decimals) {
-        Q[party + '_r_disp'] = Q[party+'_r'].toFixed(1);
-    }  else {
-            Q[party + '_r_disp'] = Q[party+'_r'];
-    }
+    Q[party + '_r_disp'] = Q[party+'_r'].toFixed(1);
     Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
     var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
     Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
@@ -68,17 +63,9 @@ for (var party of Q.parties) {
 if (Q.electoral_threshold && Q.electoral_threshold > 0) {
     for (var party of Q.parties) {
         if (Q[party + '_r'] > 0) {
-            if (Q.use_decimals) {
-                Q[party + '_r'] = Math.round(Q[party + '_r']*1000/new_party_sum)/10;
-            } else {
-                Q[party + '_r'] = Math.round(Q[party + '_r']*100/new_party_sum);
-            }
+            Q[party + '_r'] = Math.round(Q[party + '_r']*1000/new_party_sum)/10;
         }
-        if (Q.use_decimals) {
-            Q[party + '_r_disp'] = Q[party+'_r'].toFixed(1);
-        } else {
-            Q[party + '_r_disp'] = Q[party+'_r'];
-        }
+        Q[party + '_r_disp'] = Q[party+'_r'].toFixed(1);
         Q['change_' + party + '_r'] = Math.round((Q[party + '_r'] - Q['old_' + party + '_r'])*10)/10;
         var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
         Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
@@ -93,7 +80,7 @@ if (Q.electoral_threshold && Q.electoral_threshold > 0) {
         }
     }
     Q[largest + '_r'] = Math.round((Q[largest + '_r'] + 100 - seat_sum)*10)/10;
-    Q[largest + '_r_disp'] = Q.use_decimals ? Q[largest + '_r'].toFixed(1) : Q[largest + '_r'];
+    Q[largest + '_r_disp'] = Q[largest + '_r'].toFixed(1);
     Q['change_' + largest + '_r'] = Math.round((Q[largest + '_r'] - Q['old_' + largest + '_r'])*10)/10;
     Q['str_change_' + largest] = (Q['change_' + largest + '_r'] > 0 ? '+' : '') + Q['change_' + largest + '_r'];
 }
@@ -162,8 +149,8 @@ Q.linke_coalition_dissent = 0;
 Q.coalition = 'none';
 
 // reset the goals of the Linke as a coalition partner
-Q.kpd_goals_seen = 0;
-Q.kpd_ultimatum_seen = 0;
+Q.linke_demands_seen = 0;
+Q.linke_review_seen = 0;
 Q.welfare_goal = 0;
 Q.agriculture_goal = 0;
 Q.economy_goal = 0;
@@ -208,8 +195,8 @@ data = [
 if (Q.sapd_formed && Q.sapd_r) {
     data.push({
             "id": "sapd",
-            "legend": "SAPD",
-            "name": "SAPD",
+            "legend": "Soziale Linke",
+            "name": "Soziale Linke",
             "seats": Math.round(Q.sapd_r*5),
             });
 }
@@ -224,8 +211,8 @@ data.push({
 if (Q.srpd_formed && Q.srpd_r) {
     data.push({
             "id": "srpd",
-            "legend": "SRPD",
-            "name": "SRPD",
+            "legend": "Soziale Mitte",
+            "name": "Soziale Mitte",
             "seats": Math.round(Q.srpd_r*5),
             });
 }
@@ -307,9 +294,9 @@ go-to: firewall_forced if firewall_erosion >= 8 and right_coalition >= 50 and sp
 {!<tr><td>Party</td><td>Seat share</td><td>% Change</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td><td>!} **[+ str_change_spd +]** {!</td></tr>!}
 
-[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td><td>!} [+ str_change_sapd +] {!</td></tr>!} ?]
+[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div> !}Soziale Linke: {!</td><td>!} [+ sapd_r +]% {!</td><td>!} [+ str_change_sapd +] {!</td></tr>!} ?]
 
-[? if srpd_formed : {!<tr><td><div class="box" style='background-color:#F4A460'> </div> !}SRPD: {!</td><td>!} [+ srpd_r +]% {!</td><td>!} [+ str_change_srpd +] {!</td></tr>!} ?]
+[? if srpd_formed : {!<tr><td><div class="box" style='background-color:#F4A460'> </div> !}Soziale Mitte: {!</td><td>!} [+ srpd_r +]% {!</td><td>!} [+ str_change_srpd +] {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#000'> </div> !} [? if csu_split = 0 : CDU/CSU ?][? if csu_split = 1 : CDU ?]: {!</td><td>!} [+ cdu_r +]% {!</td><td>!} [+ str_change_cdu +] {!</td></tr>!}
 
@@ -389,7 +376,7 @@ There are several ways in which a government could be formed.
 title: SPD-Alleinregierung
 subtitle: We have won an absolute majority, and will govern alone.
 view-if: spd_r >= 50
-on-arrival: coalition = "spd_allein"; pro_republic += 5
+on-arrival: coalition = "spd_allein"; trust_in_democracy += 5
 call: apply_government
 
 We have won an absolute majority in the Bundestag, something that no party has managed since 1957. We can govern alone.
@@ -406,7 +393,7 @@ subtitle: Govern alone without a majority, law by law, tolerated by other partie
 unavailable-subtitle: No other parties are willing to tolerate us. This needs decent relations with both the Grüne and the Linke, or very good relations with the CDU/CSU.
 view-if: largest_party = "SPD" and spd_r < 50
 choose-if: (left_coalition >= 50 and greens_relation >= 30 and linke_relation >= 30) or (grand_coalition >= 50 and cdu_relation >= 60)
-on-arrival: coalition = "spd_minority"; pro_republic -= 2
+on-arrival: coalition = "spd_minority"; trust_in_democracy -= 2
 call: apply_government
 
 We will form a minority government. Every law and every budget will need votes from outside the cabinet, and a single failed vote can bring us down. In return, every ministry is ours.
@@ -461,7 +448,7 @@ subtitle: SPD and Linke
 unavailable-subtitle: Our relations with the Linke are not good enough.
 view-if: red_red_coalition >= 50 and spd_r < 50
 choose-if: linke_relation >= 50
-on-arrival: coalition = "rot_rot"; linke_relation += 10; cdu_relation -= 10; firewall_erosion += 2; capital_strike_progress += 1; kpd_goals_seen = 0
+on-arrival: coalition = "rot_rot"; linke_relation += 10; cdu_relation -= 10; firewall_erosion += 2; capital_strike_progress += 1; linke_demands_seen = 0
 call: apply_government
 go-to: coalition_spd_lead if coalition_leader_party = "SPD"; coalition_other_lead if coalition_leader_party != "SPD"
 
@@ -495,7 +482,7 @@ on-arrival: resources -= 3
 go-to: left_coalition_success
 
 @left_coalition_success
-on-arrival: coalition = "r2g"; linke_relation += 10; greens_relation += 5; cdu_relation -= 10; firewall_erosion += 2; capital_strike_progress += 1; kpd_goals_seen = 0
+on-arrival: coalition = "r2g"; linke_relation += 10; greens_relation += 5; cdu_relation -= 10; firewall_erosion += 2; capital_strike_progress += 1; linke_demands_seen = 0
 call: apply_government
 go-to: coalition_spd_lead if coalition_leader_party = "SPD"; coalition_other_lead if coalition_leader_party != "SPD"
 
@@ -584,7 +571,7 @@ A coalition of the SPD with the AfD. Nobody in the party leadership has ever sai
 - @coalition_menu: No. Try a different governing arrangement.
 
 @red_blue_sure
-on-arrival: coalition = "rot_blau"; left_dissent += 40; center_dissent += 30; labor_dissent += 30; reformist_dissent += 20; greens_relation -= 40; linke_relation -= 40; cdu_relation -= 20; afd_relation += 30; pro_republic -= 15; firewall_erosion = 10; afd_urgency = 0; new_middle_spd -= 8; workers_spd -= 3; pensioners_spd -= 4; catholics_spd -= 2
+on-arrival: coalition = "rot_blau"; left_dissent += 40; center_dissent += 30; labor_dissent += 30; reformist_dissent += 20; greens_relation -= 40; linke_relation -= 40; cdu_relation -= 20; afd_relation += 30; trust_in_democracy -= 15; firewall_erosion = 10; afd_urgency = 0; new_middle_spd -= 8; workers_spd -= 3; pensioners_spd -= 4; catholics_spd -= 2
 call: apply_government
 go-to: coalition_spd_lead if coalition_leader_party = "SPD"; coalition_other_lead if coalition_leader_party != "SPD"
 
@@ -623,7 +610,7 @@ Who should be the chancellor?
 title: Let the CDU/CSU have the chancellorship.
 subtitle: This is unexpected and will cause internal dissent, but it gives us a better position in negotiating for the cabinet.
 view-if: cdu_in_government = 1
-on-arrival: left_dissent += 5; center_dissent += 5; labor_dissent += 5; cdu_relation += 10; chancellor = cdu_leader; chancellor_party = "CDU"; leverage += 10
+on-arrival: left_dissent += 5; center_dissent += 5; labor_dissent += 5; cdu_relation += 10; chancellor = cdu_chancellor; chancellor_party = "CDU"; leverage += 10
 go-to: ministries
 
 This is highly unexpected, and many in our party are criticizing this decision. [+ cdu_leader +] of the CDU will be chancellor.
@@ -647,7 +634,7 @@ subtitle: We stay out of the cabinet, but keep the government alive and the AfD 
 unavailable-subtitle: [? if cdu_relation < 25 : Our relations with the CDU/CSU are too poor. ?][? if neo_weimar_coalition < 50 : Even with our votes, such a government would have no majority. ?]
 view-if: spd_r < 50
 choose-if: cdu_relation >= 25 and neo_weimar_coalition >= 50
-on-arrival: coalition = "cdu_minority"; pro_republic -= 2; left_dissent += 3
+on-arrival: coalition = "cdu_minority"; trust_in_democracy -= 2; left_dissent += 3
 call: apply_government
 
 We have decided to tolerate a minority government under Chancellor [+ cdu_leader +]. This means that we will not take part in the cabinet, but that we will vote against any attempt to bring the government down, and negotiate the budget law by law. It keeps the AfD away from power without binding us to the CDU/CSU's programme.
@@ -698,7 +685,7 @@ go-to: join_junior
 The moderates in the CDU/CSU take our offer and win the argument inside their party, narrowly. The firewall is saved for another term. The price is ours to pay.
 
 @firewall_falls
-on-arrival: coalition = "schwarz_blau"; firewall_erosion = 10; pro_republic -= 10; afd_urgency = 5 if afd_urgency < 5; cdu_relation -= 20; greens_relation += 10; linke_relation += 10; new_middle_spd += 4; workers_spd += 2; pensioners_spd += 2; left_dissent -= 5; center_dissent -= 5
+on-arrival: coalition = "schwarz_blau"; firewall_erosion = 10; trust_in_democracy -= 10; afd_urgency = 5 if afd_urgency < 5; cdu_relation -= 20; greens_relation += 10; linke_relation += 10; new_middle_spd += 4; workers_spd += 2; pensioners_spd += 2; left_dissent -= 5; center_dissent -= 5
 call: apply_government
 go-to: firewall_afd_chancellor if chancellor_party = "AfD"; firewall_cdu_chancellor if chancellor_party != "AfD"
 
@@ -730,7 +717,7 @@ if (Q.next_election_month > 12) {
     Q.next_election_year = Q.year;
 }
 Q.in_election = 1;
-Q.pro_republic -= 5;
+Q.trust_in_democracy -= 5;
 Q.workers_spd -= 3;
 Q.new_middle_spd -= 3;
 Q.old_middle_spd -= 3;
@@ -743,7 +730,7 @@ Q.new_middle_afd += 3;
 Q.rural_afd += 3;
 Q.unemployed_afd += 3;
 Q.catholics_afd += 3;
-if (Q.pro_republic < 40) {
+if (Q.trust_in_democracy < 40) {
     Q.cdu_relation -= 5;
     Q.workers_afd += 4;
     Q.old_middle_afd += 4;

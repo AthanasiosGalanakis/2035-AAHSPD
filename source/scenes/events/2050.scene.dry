@@ -1,0 +1,17 @@
+title: 2050
+subtitle: A new year
+new-page: true
+tags: event
+priority: 2
+view-if: year >= 2050 and month >= 1
+max-visits: 1
+on-arrival: {!
+if (Q.unemployment_rate >= 20) {
+    Q.unemployment_rate -= 2;
+    Q.inflation += 1;
+}
+!}
+
+= 2050
+
+A new year begins, and with it the middle of the century. More than twenty years have passed since the autumn of 2028.

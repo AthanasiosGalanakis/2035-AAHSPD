@@ -1,46 +1,37 @@
-title: Agricultural Revolt
-subtitle: Small farmers are in revolt over debts and taxes...
-view-if: ((year = 1929 and month >= 2)) and spd_in_government and agricultural_finance < 2
+title: Tractors on the Autobahn
+subtitle: Farmers are blockading roads over costs and EU rules...
+view-if: time >= 3 and month >= 1 and month <= 3 and spd_in_government and agricultural_finance < 2
 max-visits: 1
-on-arrival: agricultural_crisis_seen = 1; rural_bsw -= 2; rural_spd -= 2; rural_afd += 2
+on-arrival: agricultural_crisis_seen = 1; rural_bsw += 1; rural_spd -= 2; rural_afd += 2
 new-page: true
 tags: event
 face-image: img/Kollwitz_bauernkrieg.jpg
 
-= Agricultural Revolt
+= Tractors on the Autobahn
 
-# Schleswig-Holstein Landvolk
-# sources: https://www.journals.uchicago.edu/doi/10.2307/2125668 
-# https://www.jstor.org/stable/1405576?seq=11 - Landvolk Revolt, centered in Schleswig-Holstein
-
-The German peasantry is beginning to wage a war against the Republic. Starting in the state of Schleswig-Holstein, the *Landvolkbewegung* (peasant's movement) has become increasingly brazen, conducting sabotage against local government offices. The peasants claim that they are being crushed by taxes and debts, and insofar that they have coherent demands, they demand unconditional economic relief. In addition, the movement is developing ties to the so-called "National Socialists", the Nazi party.
+For the second winter in a row, farmers are blocking motorway slip roads and city centres with their tractors. They are angry about the end of the diesel subsidy, the costs of new animal-welfare and fertiliser rules, and cheap imports under the EU's Mercosur agreement. Most protesters are peaceful, but far-right groups have joined the convoys, and some protests have turned on local SPD offices.
 
 What should we do?
 
 - @nothing: There is nothing we can do.
-- @suppress: The *Landvolkbewegung* must be suppressed!
-- @financing_1: We must increase financial support for the peasantry.
-- @financing_2: We must increase financial support for the peasantry.
-
-# options:
-# 1. There is nothing we can do.
-# 2. The Landvolk must be suppressed.
-# 3. Increase agricultural financing
+- @suppress: The blockades are illegal. Have the police clear the roads.
+- @financing_1: Extend the relief package for farms.
+- @financing_2: Offer a relief package for farms.
 
 @nothing
-on-arrival: rural_afd += 3; rural_spd -= 2; rural_greens -= 2; pro_republic -= 3
+on-arrival: rural_afd += 3; rural_spd -= 2; rural_greens -= 2; trust_in_democracy -= 3
 
-There is nothing we can do. The peasant unrest rages on, only tempered by its own internal dissention. More and more, the peasant movement is being coopted by the growing Nazi party, who channel their grievances into demands for the overthrow of the Republic.
+We wait for the protests to burn out. They do, slowly, but the AfD and the Freie Wähler are happy to channel the farmers' anger into a wider revolt against "Berlin".
 
 @suppress
-unavailable-subtitle: The police are largely unwilling to take the action needed.
+unavailable-subtitle: The police and the Länder are unwilling to break up the protests.
 choose-if: federal_police_loyalty >= 0.6 or verfassungsschutz_loyalty >= 0.6
-on-arrival: rural_spd -= 4; rural_greens -= 4; rural_afd -= 2
+on-arrival: rural_spd -= 4; rural_greens -= 3; rural_afd -= 2
 
-The police are able to suppress the farmer unrest, preventing them from threatening the state. However, the peasants' economic circumstances remain poor, and they will only curse the SPD more and more.
+The police clear the blockades, and the far-right hangers-on lose their stage. But the farmers' costs have not gone down, and many of them will not forgive the SPD.
 
 @financing_1
-subtitle: -1 budget - we have already funded agricultural credit, but more support is still needed.
+subtitle: -1 budget - we have already helped the farms, but more support is still needed.
 choose-if: budget >= 1
 unavailable-subtitle: -1 budget - we do not have the funds.
 view-if: agricultural_finance == 1
@@ -58,4 +49,4 @@ go-to: financing_done
 @financing_done
 on-arrival: rural_spd += 3*(1-dissent); rural_greens += 2 if greens_in_government
 
-In response to the unrest, we have substantially increased financial support for small farmers. On the one hand, the *Landvolkbewegung* is largely appeased by the increased funding, even if some Nazi infiltration remains. However, some in our coalition see it as an act of weakness and capitulation to terrorism, as well as a sign of budget indiscipline.
+We put together a relief package: cheaper agricultural diesel for three years, help with the cost of new barns, and a fairer share of the supermarket price for producers. Most farmers' associations accept it and call off the blockades. Some in the coalition see it as giving in to pressure from the street and as a blow to the budget.

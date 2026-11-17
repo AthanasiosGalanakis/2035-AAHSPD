@@ -1,0 +1,43 @@
+title: Katja Mast
+is-pinned-card: true
+tags: advisor, center
+view-if: mast_advisor = 1
+new-page: true
+
+= Katja Mast
+
+Katja Mast from Pforzheim is the first parliamentary manager of the SPD group in the Bundestag, and the one our partners call when a coalition crisis is brewing.
+
+- @coalition
+- @toleration
+- @snap_election
+- @root: Return to main
+
+@coalition
+title: Negotiating with the coalition
+subtitle: Calm our partners down.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if spd_in_government = 0 : We are not in government. ?]
+choose-if: advisor_action_timer <= 0 and spd_in_government = 1
+on-arrival: advisor_action_timer = 6; coalition_dissent -= 1 if coalition_dissent > 0; cdu_relation += 4; greens_relation += 4; fdp_relation += 4
+
+Long evenings in the coalition committee pay off. Our partners are calmer.
+
+@toleration
+title: Defending toleration
+subtitle: Explain why we keep the minority government alive.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_toleration: We are not tolerating a government. ?]
+choose-if: spd_in_government = 0 and spd_toleration = 1 and advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; left_dissent -= 10; center_dissent -= 5
+
+We have reduced dissent among the critics of toleration.
+
+@snap_election
+title: Snap election
+subtitle: Ask the confidence question and go for new elections.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if chancellor_party != "SPD" : The SPD must hold the chancellery. ?]
+choose-if: advisor_action_timer == 0 and chancellor_party == "SPD" and spd_in_government
+on-arrival: advisor_action_timer = 6; time_to_election = 3
+call: set_next_election_time
+
+The chancellor loses the confidence question on purpose, and the president dissolves the Bundestag. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+

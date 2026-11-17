@@ -1,0 +1,55 @@
+title: The Linke Reviews the Coalition
+view-if: in_left_front and (linke_review_timer = 0 or ((welfare_goal = 0 or welfare_goal_completed) and (economy_goal = 0 or economy_goal_completed) and (finance_goal = 0 or finance_goal_completed) and (labor_goal = 0 or labor_goal_completed) and (foreign_goal = 0 or foreign_goal_completed) and (reichswehr_goal = 0 or reichswehr_goal_completed))) and linke_demands_seen = 1 and linke_review_seen = 0 and spd_in_government
+on-arrival: {!
+Q.linke_review_seen = 1;
+Q.linke_demands_met = 1;
+Q.linke_score = 6;
+var goals = ['welfare', 'agriculture', 'economy', 'finance', 'labor', 'foreign', 'reichswehr'];
+for (var g of goals) {
+    if (Q[g + '_goal'] && !Q[g + '_goal_completed']) {
+        Q.linke_demands_met = 0;
+        Q.linke_score -= 1;
+    }
+}
+!}
+new-page: true
+tags: event
+go-to: goals_success if linke_demands_met; goals_failed if not linke_demands_met
+
+= The Linke Reviews the Coalition
+
+At the start of this government, the Linke set out its demands:
+
+[? if welfare_goal = 1 : - Raise the Grundsicherung and the pension level: [? if welfare_goal_completed : done ?][? if not welfare_goal_completed: not done ?] ?]
+
+[? if economy_goal = 1 : - Public ownership of housing and energy: [? if economy_goal_completed : done ?][? if not economy_goal_completed: not done ?] ?]
+
+[? if finance_goal = 1 : - A wealth tax and a higher top rate: [? if finance_goal_completed : done ?][? if not finance_goal_completed: not done ?] ?]
+
+[? if labor_goal = 1 : - A higher minimum wage: [? if labor_goal_completed : done ?][? if not labor_goal_completed: not done ?] ?]
+
+[? if foreign_goal = 1 : - Peace talks and no new arms exports: [? if foreign_goal_completed : done ?][? if not foreign_goal_completed: not done ?] ?]
+
+[? if reichswehr_goal = 1 : - A freeze of the defence budget: [? if reichswehr_goal_completed : done ?][? if not reichswehr_goal_completed: not done ?] ?]
+
+@goals_failed
+on-arrival: linke_relation -= 10; workers_spd -= 4; unemployed_spd -= 4
+
+We have not delivered what the Linke asked for. Its party congress votes to leave the coalition, and its leaders accuse us of betraying our own voters.
+
+- @appeal: Ask the Linke for more time.
+- @linke_leaves.new_partners: Look for new partners in the centre.
+- @linke_leaves.let_it_happen: Let them go.
+
+@appeal
+choose-if: linke_score >= 4 and linke_relation > 50 and linke_appeal_seen = 0
+unavailable-subtitle: [? if linke_score < 4: They do not believe that we are serious about the coalition's goals. ?] [? if linke_relation <= 50: Our relations are too poor. ?] [? if linke_appeal_seen = 1: We have already asked for more time once. ?]
+on-arrival: linke_review_seen = 0; linke_review_timer += 6; linke_appeal_seen = 1
+
+We argue that the laws are on their way and that a left government is worth saving. The Linke gives us six more months.
+
+@goals_success
+on-arrival: workers_spd += 4; unemployed_spd += 4; linke_relation += 10; workers_linke += 3; linke_coalition_success += 1; linke_demands_seen = 0; linke_review_seen = 0
+achievement: einheitsfront_2
+
+Against the expectations of most commentators, we have delivered on the Linke's demands. The coalition holds, and the Linke will stay in government, still watching for any backsliding.

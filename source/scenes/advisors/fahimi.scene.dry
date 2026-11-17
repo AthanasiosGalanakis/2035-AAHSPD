@@ -1,0 +1,40 @@
+title: Yasmin Fahimi
+is-pinned-card: true
+tags: advisor, labor
+view-if: fahimi_advisor = 1
+new-page: true
+
+= Yasmin Fahimi
+
+Yasmin Fahimi, a chemist from Hanover, was general secretary of the SPD before she became chair of the DGB, the German trade union confederation. She argues that borrowing to invest is not a sin but a duty.
+
+- @plan
+- @carry_out_policy
+- @union_unity
+- @root: Return to main
+
+@plan
+title: Adopt the Zukunftsprogramm!
+subtitle: Win the party over to the investment plan.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if investment_support < 3 : There is not enough support in the party yet. ?][? if recession_seen == 0 : There is no economic crisis. ?]
+choose-if: advisor_action_timer <= 0 and investment_adopted == 0 and investment_support >= 3 and recession_seen
+on-arrival: advisor_action_timer = 6
+go-to: crisis_program.plan_adopted
+
+@carry_out_policy
+title: Carry out the economic plan
+subtitle: Put the plan into practice.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not investment_adopted : The party has not adopted the plan. ?][? if spd_in_government = 0 : We are not in government. ?]
+choose-if: advisor_action_timer <= 0 and investment_adopted and spd_in_government and investment_implemented <= 1
+on-arrival: advisor_action_timer = 6; economic_policy_timer -= 12
+go-to: economic_policy
+
+@union_unity
+title: Union-party coordination
+subtitle: Bring the unions and the party closer together.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer <= 0
+on-arrival: advisor_action_timer = 6; labor_dissent -= 8; labor_strength += 3
+
+Regular meetings between the DGB unions and the party leadership calm the AfA.
+

@@ -9,21 +9,21 @@ max-visits: 1
 
 = Confronting Antisemitism
 
-Antisemitism has long been a latent feature of German society, but since the beginning of the economic depression, it has grown to a horrifying extent. The Nazis are the worst of it, but all the right-wing parties are deeply antisemitic. Regarding the SPD specifically, our right-wing enemies love to deploy their racist rhetoric against our many Jewish comrades, magnifying criticism of any minor transgression, and they call the entire SPD a Jewish party. We are a favorite target of their invectives.
+Since the Hamas attack of 7 October 2023, antisemitic incidents in Germany have reached record levels. They come from the far right, from Islamists and from parts of the left, and Jewish families ask whether they still have a future here. The AfD claims to protect Jews while its members play down the Holocaust.
 
-- @socialism_of_fools: Antisemitism is the "socialism of fools". We will defeat them with real socialism.
-- @if: Antisemitism is a crisis. Launch a dedicated party campaign against it.
-- @all: All Germans will suffer from fascism, not just the Jews. We do not need a separate policy for them.
+- @socialism_of_fools: Antisemitism is the "socialism of fools". We will defeat it with social justice.
+- @if: Antisemitism is a crisis. Launch a dedicated campaign against it.
+- @all: Fight all forms of hatred together, without a separate campaign.
 
 @socialism_of_fools
 
-The best policy to deal with this sort of irrational, senseless hatred is to ignore it. Few are swayed by racist rhetoric; the best way to combat it is to provide economic security so that people do not turn to antisemitism.
+The best answer to hatred is economic security, so that fewer people look for scapegoats. We focus on our social programme.
 
 @if
-on-arrival: confronting_antisemitism += 2; democratization += 1; pacifism += 1; nationalism -= 5*(1-dissent); workers_afd -= 6*(1-dissent);
+on-arrival: confronting_antisemitism += 2; democratization += 1; nationalism -= 3*(1-dissent); workers_afd -= 3*(1-dissent); new_middle_afd -= 2*(1-dissent); trust_in_democracy += 2
 
-We develop an entire campaign against antisemitism. Hopefully our campaign can sway the workers away from Nazism.
+We fund Jewish community security and education projects in schools, and make clear in every local party that antisemitism has no place in the SPD, whoever it comes from. Hopefully our campaign can win people back from the far right.
 
 @all
 
-We do not need any special treatment for minorities.
+We campaign against racism, antisemitism and hostility to Muslims together, as one fight for human dignity.

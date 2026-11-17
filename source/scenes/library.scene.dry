@@ -5,12 +5,12 @@ go-to: menu
 
 = The Library
 
-Herein contains relevant information about the government and politics of the German republic.
+Here you can find information about the government and politics of the Federal Republic.
 
 @menu
 
 - @government: Germany's system of government
-- @weimar_timeline: Timeline of the Weimar Republic before 1928
+- @weimar_timeline: How we got here: 2017 to 2028
 - @curr_gov: Current government details
 - @demographics: Demographics
 - @parties: Parties
@@ -23,42 +23,34 @@ Herein contains relevant information about the government and politics of the Ge
 @government
 go-to: menu
 
-The German Republic, called by some of our detractors as the "Weimar Republic", is a parliamentary republic with a somewhat weak president and a strong parliament, called the Reichstag. The Reichstag is responsible for governing, while the President has a largely ceremonial role but also has some important governing responsibilities.
+Germany is a federal parliamentary republic under the Basic Law of 1949. The Bundestag, elected every four years, elects the Chancellor, who leads the government and sets its guidelines. Half of the seats go to constituency winners and half to party lists; since the 2023 reform, a party needs 5% of the second votes, or three constituencies, to enter the Bundestag, and every seat is backed by the second vote.
 
-The Reichstag is elected based on a proportional representation system, giving parties seats roughly proportional to their vote share in each electoral district. The Reichstag then elects the Chancellor and the cabinet by a majority vote, who are responsible for government. A majority vote-of-no-confidence can remove the current government.
+The Bundestag can only remove a chancellor by electing a successor in a constructive vote of no confidence. If a chancellor loses a vote of confidence, the Federal President may dissolve the Bundestag, which leads to new elections within sixty days. This is how Gerhard Schröder in 2005 and Olaf Scholz in 2024 brought about early elections.
 
-The President is elected by a national direct vote, in two rounds. The second round is used if the first round does not result in a majority for one candidate; the candidate who receives a plurality in the second round becomes president (there is no obligation for weaker candidates to drop out). The role of the president is mostly to represent Germany, but he also has some crucial governing powers. The president and chancellor can together use emergency decrees to govern, bypassing the Reichstag. The president can also appoint or remove a chancellor when a parliamentary majority is unable to be established, and can thus influence the formation of a government.
+The Federal President is elected by the Federal Convention, made up of the Bundestag and delegates from the Länder, for five years. The office is mostly ceremonial, but the president signs laws, proposes the chancellor and decides whether to dissolve the Bundestag.
 
-Germany is divided into a number of states, each of which have their own governments with some responsibilities. By far the largest and most important state is Prussia.
+The sixteen Länder have their own governments and run the police, schools and most of the administration. Through the Bundesrat, they vote on many federal laws. Changing the Basic Law needs a two-thirds majority in both the Bundestag and the Bundesrat. The Federal Constitutional Court in Karlsruhe can strike down laws and ban parties.
 
 @weimar_timeline
 go-to: menu
 
-= Timeline of the SPD and the Republic (until 1928)
+= How We Got Here: 2017 to 2028
 
-**1875**: The SPD is formed as a merger of the General German Workers' Association, founded by Ferdinand Lassalle, and the Social Democratic Workers' Party of Germany, led by Wilhelm Liebknecht and August Bebel. Eventually, the SPD grows to become the largest party in the German Empire.
+**2017**: The AfD enters the Bundestag with 12.6%. After failed Jamaica talks, the SPD reluctantly joins another grand coalition under Angela Merkel.
 
-**1914**: The Great War begins. The SPD votes in favor of war credits, with substantial internal dissent. This begins a policy of *Burgfriedenspolitik*, a general peace between all political parties and trade unions.
+**2019**: Saskia Esken and Norbert Walter-Borjans win the party's members' vote. Klara Geywitz and Olaf Scholz, the establishment candidates, lose.
 
-**1917**: The USPD, a left-wing anti-war split from the SPD, is formed.
+**2021**: Against all expectations, Olaf Scholz leads the SPD to first place with 25.7%. The first federal traffic-light coalition of SPD, Grüne and FDP is formed.
 
-**1918**: Following defeats in the war and uprisings by soldiers, sailors, and workers, SPD leader Philip Scheidemann proclaims the German Republic, and Kaiser Wilhelm II abdicates from his throne. An armistice is declared, ending the Great War. Conflict between center-left social democrats and far-left radicals erupts in the streets of Berlin and elsewhere.
+**2022**: Russia invades Ukraine. Scholz announces a "Zeitenwende" and a 100 billion euro special fund for the Bundeswehr. Energy prices explode, and inflation reaches its highest level in seventy years.
 
-**1919**: The Spartacist Uprising, in which communist workers attempt to seize control of government, is launched. The uprising is defeated by the Social Democratic government, now led by President Friedrich Ebert and Chancellor Philipp Scheidemann, with the support of the far-right Freikorps militias. The two key leaders of the uprising, Rosa Luxemburg and Karl Liebknecht, are murdered by the Freikorps. The Treaty of Versailles is signed under great protest from all political factions in Germany, officially ending the Great War. The Weimar Constitution is signed. The first "Weimar Coalition" government is formed, led by the SPD, DDP, and Center (Z) parties.
+**2023**: The Constitutional Court strikes down the transfer of 60 billion euros of unused credit into the climate fund. The budget crisis haunts the coalition from then on.
 
-**1920**: The Kapp Putsch, an attempt by reactionary actors within the military to take power, is launched, and is defeated by the workers with a general strike. This is followed by left-wing uprisings in the Ruhr, which are defeated by the Reichswehr and Freikorps. The Weimar Coalition is defeated in the elections, with the right and far left increasing in vote share. Elected governments in this period are very unstable, often only lasting a matter of months. There is a split in the USPD, with the majority faction joining with the KPD and the Soviet Union's Communist International (Comintern) alliance.
+**2024**: Reports of a meeting of far-right activists planning mass deportations bring millions onto the streets against the AfD. In September, the AfD wins the Landtag election in Thuringia. In November, the traffic light collapses over the budget, and Scholz loses a vote of confidence in December.
 
-**1921**: Communist uprisings in Saxony and Hamburg are defeated. Matthias Erzberger, the Center Party leader who signed the Versailles Treaty, is assassinated.
+**2025**: In the February election, the CDU/CSU wins 28.5%, the AfD 20.8%, and the SPD only 16.4%, its worst result since 1887. The SPD joins a coalition under Friedrich Merz, which loosens the debt brake for defence and creates a 500 billion euro infrastructure fund. In May, the Verfassungsschutz rates the AfD as a confirmed right-wing extremist party.
 
-**1922**: The Treaty of Rapallo is signed, which normalized relations with the Soviet Union. Walther Rathenau, the DDP Foreign Minister, is assassinated. The SPD reunites with most of the remaining USPD.
-
-**1923**: Hyperinflation begins, largely due to the economic policy of "passive resistance" against the French occupation of the Ruhr and the Versailles reparations. The currency is rapidly devalued as prices for necessities rise to billions of Reichsmarks. The government launches a *Reichsexekution* against Saxony, which was led by a joint SPD-KPD government. The Nazi "Beer Hall Putsch" is launched in Munich, and fails, with the arrest of Hitler. Eventually, new policies manage to stabilize the currency, and the French occupation ends.
-
-**1924**: Parliamentary elections are held in May and December, the latter leading to the bourgeois-right governments that last until 1928. Hitler is released from prison. The Dawes Plan for the repayment of the Versailles reparations is negotiated, which reduces payments and increases economic growth. Germany begins to enter a period of relative stability, with the end of the hyperinflation crisis. 
-
-**1925**:  President Friedrich Ebert dies, and new presidential elections are held, leading to the narrow election of Paul von Hindenburg in the second round. Hindenburg is a war hero and a right-wing reactionary. The SPD adopts the Heidelberg Program as its party platform. The Locarno Treaties are signed, which confirmed Germany's post-war western borders.
-
-**1926**: A referendum on the expropriation of the princes, supported by the SPD and KPD, fails.
+**2026 to 2028**: The economy barely grows, as American tariffs and Chinese competition hit German industry. Car and chemical plants cut jobs. The AfD leads in many polls, and in several eastern Länder the Union struggles to govern without it. The Bundestag election is due in March 2029.
 
 @curr_gov
 go-to: cabinet if spd_in_government; menu if not spd_in_government
@@ -72,7 +64,9 @@ Chancellor: [+ chancellor +] ([+ chancellor_party +])
 Bundestag composition:
 
 SPD: [+ spd_r +]%
-[? if sapd_formed and sapd_r > 0: SAPD: [+ sapd_r +]% ?]
+[? if sapd_formed and sapd_r > 0: Soziale Linke: [+ sapd_r +]% ?]
+
+[? if srpd_formed and srpd_r > 0: Soziale Mitte: [+ srpd_r +]% ?]
 CDU/CSU: [+ cdu_r +]%
 AfD: [+ afd_r +]%
 Grüne: [+ greens_r +]%
@@ -115,26 +109,26 @@ go-to: menu
 
 **Demographic Groups**
 
-**Working Class**: The urban working class - blue-collar workers in factories, workshops, mines, and the like. Most are socialist, supporting either the SPD or KPD. They make up 40-50% of the population.
+**Workers**: employees in industry, logistics, retail and care. Once the SPD's heartland, they are now split between the SPD, the Union and the AfD.
 
-**Old Mittelstand**: The old middle class consists of independent artisans, shopkeepers, and small-time businesspeople. They tend to be conservative and are the strongest base for the far right. 10-15% of the population.
+**Old middle class**: the self-employed, small business owners and craftspeople. They lean towards the Union, the FDP and increasingly the AfD.
 
-**New Mittelstand**: The new middle class consists of white-collar workers and government employees. This is the base of liberalism. 10-15% of the population.
+**New middle class**: the educated urban middle class of professionals, public servants and students. The Grüne are strongest here.
 
-**Rural**: Small and large farmers and independent rural workers. Protestant farmers often support the DNVP. 20-30% of the population.
+**Rural**: people in small towns and the countryside, including farmers. The Union is strongest here, but the AfD is gaining.
 
-**Catholics** are the largest religious minority, at about 30% of the population. They disproportionately support the Center Party (or the Bavarian People's Party in Bavaria).
+**Unemployed**: people out of work or living on the Grundsicherung. Turnout is low, and the Linke and the AfD compete for their votes.
 
-**Jews** account for between 0.5% to 1% of the population, and tend to support liberal parties, mostly the DDP, although substantial numbers support the SPD or KPD.
+**East Germans**: voters in the five eastern Länder, where the AfD and the BSW are much stronger than in the West, and party loyalty is weak.
 
+**Pensioners**: the largest and most reliable group of voters. They are the last stronghold of the SPD and the Union.
 
 @public_opinion
 on-arrival: {!
-Q.pro_republic_disp = Math.round(Q.pro_republic);
+Q.trust_in_democracy_disp = Math.round(Q.trust_in_democracy);
 Q.nationalism_disp = Math.round(Q.nationalism);
 Q.socialism_disp = Math.round(Q.socialism);
 !}
-view-if: (not historical_mode) or game_over
 go-to: election_algorithm
 set-jump: election_projections
 
@@ -144,18 +138,19 @@ set-jump: election_projections
 
 #Support for Nationalism: [+ nationalism +]%
 
-Support for the Republic: [+ pro_republic_disp +]%
+Support for the Republic: [+ trust_in_democracy_disp +]%
 
 
 @election_projections
-view-if: (not historical_mode) or game_over
 go-to: menu
 
 **Projected election results** (if the election were to be held now):
 
 SPD: [+ spd_votes +]%
 
-[? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
+[? if sapd_formed: Soziale Linke: [+ sapd_votes +]% ?]
+
+[? if srpd_formed: Soziale Mitte: [+ srpd_votes +]% ?]
 
 CDU/CSU: [+ cdu_votes +]%
 
@@ -173,19 +168,19 @@ Others: [+ other_votes +]%
 
 **Detailed results for each demographic**
 
-Workers: SPD: [+ workers_spd_display +]%, CDU/CSU: [+ workers_cdu_display +]%, AfD: [+ workers_afd_display +]%, Grüne: [+ workers_greens_display +]%, Linke: [+ workers_linke_display +]%, FDP: [+ workers_fdp_display +]%, BSW: [+ workers_bsw_display +]%, Others: [+ workers_other_display +]% [? if sapd_formed: SAPD: [+ workers_sapd_display +]% ?][? if srpd_formed: SRPD: [+ workers_srpd_display +]% ?]
+Workers: SPD: [+ workers_spd_display +]%, CDU/CSU: [+ workers_cdu_display +]%, AfD: [+ workers_afd_display +]%, Grüne: [+ workers_greens_display +]%, Linke: [+ workers_linke_display +]%, FDP: [+ workers_fdp_display +]%, BSW: [+ workers_bsw_display +]%, Others: [+ workers_other_display +]% [? if sapd_formed: Soziale Linke: [+ workers_sapd_display +]% ?][? if srpd_formed: Soziale Mitte: [+ workers_srpd_display +]% ?]
 
-New middle class: SPD: [+ new_middle_spd_display +]%, CDU/CSU: [+ new_middle_cdu_display +]%, AfD: [+ new_middle_afd_display +]%, Grüne: [+ new_middle_greens_display +]%, Linke: [+ new_middle_linke_display +]%, FDP: [+ new_middle_fdp_display +]%, BSW: [+ new_middle_bsw_display +]%, Others: [+ new_middle_other_display +]% [? if sapd_formed: SAPD: [+ new_middle_sapd_display +]% ?][? if srpd_formed: SRPD: [+ new_middle_srpd_display +]% ?]
+New middle class: SPD: [+ new_middle_spd_display +]%, CDU/CSU: [+ new_middle_cdu_display +]%, AfD: [+ new_middle_afd_display +]%, Grüne: [+ new_middle_greens_display +]%, Linke: [+ new_middle_linke_display +]%, FDP: [+ new_middle_fdp_display +]%, BSW: [+ new_middle_bsw_display +]%, Others: [+ new_middle_other_display +]% [? if sapd_formed: Soziale Linke: [+ new_middle_sapd_display +]% ?][? if srpd_formed: Soziale Mitte: [+ new_middle_srpd_display +]% ?]
 
-Old middle class: SPD: [+ old_middle_spd_display +]%, CDU/CSU: [+ old_middle_cdu_display +]%, AfD: [+ old_middle_afd_display +]%, Grüne: [+ old_middle_greens_display +]%, Linke: [+ old_middle_linke_display +]%, FDP: [+ old_middle_fdp_display +]%, BSW: [+ old_middle_bsw_display +]%, Others: [+ old_middle_other_display +]% [? if sapd_formed: SAPD: [+ old_middle_sapd_display +]% ?][? if srpd_formed: SRPD: [+ old_middle_srpd_display +]% ?]
+Old middle class: SPD: [+ old_middle_spd_display +]%, CDU/CSU: [+ old_middle_cdu_display +]%, AfD: [+ old_middle_afd_display +]%, Grüne: [+ old_middle_greens_display +]%, Linke: [+ old_middle_linke_display +]%, FDP: [+ old_middle_fdp_display +]%, BSW: [+ old_middle_bsw_display +]%, Others: [+ old_middle_other_display +]% [? if sapd_formed: Soziale Linke: [+ old_middle_sapd_display +]% ?][? if srpd_formed: Soziale Mitte: [+ old_middle_srpd_display +]% ?]
 
-Rural: SPD: [+ rural_spd_display +]%, CDU/CSU: [+ rural_cdu_display +]%, AfD: [+ rural_afd_display +]%, Grüne: [+ rural_greens_display +]%, Linke: [+ rural_linke_display +]%, FDP: [+ rural_fdp_display +]%, BSW: [+ rural_bsw_display +]%, Others: [+ rural_other_display +]% [? if sapd_formed: SAPD: [+ rural_sapd_display +]% ?][? if srpd_formed: SRPD: [+ rural_srpd_display +]% ?]
+Rural: SPD: [+ rural_spd_display +]%, CDU/CSU: [+ rural_cdu_display +]%, AfD: [+ rural_afd_display +]%, Grüne: [+ rural_greens_display +]%, Linke: [+ rural_linke_display +]%, FDP: [+ rural_fdp_display +]%, BSW: [+ rural_bsw_display +]%, Others: [+ rural_other_display +]% [? if sapd_formed: Soziale Linke: [+ rural_sapd_display +]% ?][? if srpd_formed: Soziale Mitte: [+ rural_srpd_display +]% ?]
 
-Unemployed: SPD: [+ unemployed_spd_display +]%, CDU/CSU: [+ unemployed_cdu_display +]%, AfD: [+ unemployed_afd_display +]%, Grüne: [+ unemployed_greens_display +]%, Linke: [+ unemployed_linke_display +]%, FDP: [+ unemployed_fdp_display +]%, BSW: [+ unemployed_bsw_display +]%, Others: [+ unemployed_other_display +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_display +]% ?][? if srpd_formed: SRPD: [+ unemployed_srpd_display +]% ?]
+Unemployed: SPD: [+ unemployed_spd_display +]%, CDU/CSU: [+ unemployed_cdu_display +]%, AfD: [+ unemployed_afd_display +]%, Grüne: [+ unemployed_greens_display +]%, Linke: [+ unemployed_linke_display +]%, FDP: [+ unemployed_fdp_display +]%, BSW: [+ unemployed_bsw_display +]%, Others: [+ unemployed_other_display +]% [? if sapd_formed: Soziale Linke: [+ unemployed_sapd_display +]% ?][? if srpd_formed: Soziale Mitte: [+ unemployed_srpd_display +]% ?]
 
-East Germans: SPD: [+ catholics_spd_display +]%, CDU/CSU: [+ catholics_cdu_display +]%, AfD: [+ catholics_afd_display +]%, Grüne: [+ catholics_greens_display +]%, Linke: [+ catholics_linke_display +]%, FDP: [+ catholics_fdp_display +]%, BSW: [+ catholics_bsw_display +]%, Others: [+ catholics_other_display +]% [? if sapd_formed: SAPD: [+ catholics_sapd_display +]% ?][? if srpd_formed: SRPD: [+ catholics_srpd_display +]% ?]
+East Germans: SPD: [+ catholics_spd_display +]%, CDU/CSU: [+ catholics_cdu_display +]%, AfD: [+ catholics_afd_display +]%, Grüne: [+ catholics_greens_display +]%, Linke: [+ catholics_linke_display +]%, FDP: [+ catholics_fdp_display +]%, BSW: [+ catholics_bsw_display +]%, Others: [+ catholics_other_display +]% [? if sapd_formed: Soziale Linke: [+ catholics_sapd_display +]% ?][? if srpd_formed: Soziale Mitte: [+ catholics_srpd_display +]% ?]
 
-Pensioners: SPD: [+ pensioners_spd_display +]%, CDU/CSU: [+ pensioners_cdu_display +]%, AfD: [+ pensioners_afd_display +]%, Grüne: [+ pensioners_greens_display +]%, Linke: [+ pensioners_linke_display +]%, FDP: [+ pensioners_fdp_display +]%, BSW: [+ pensioners_bsw_display +]%, Others: [+ pensioners_other_display +]% [? if sapd_formed: SAPD: [+ pensioners_sapd_display +]% ?][? if srpd_formed: SRPD: [+ pensioners_srpd_display +]% ?]
+Pensioners: SPD: [+ pensioners_spd_display +]%, CDU/CSU: [+ pensioners_cdu_display +]%, AfD: [+ pensioners_afd_display +]%, Grüne: [+ pensioners_greens_display +]%, Linke: [+ pensioners_linke_display +]%, FDP: [+ pensioners_fdp_display +]%, BSW: [+ pensioners_bsw_display +]%, Others: [+ pensioners_other_display +]% [? if sapd_formed: Soziale Linke: [+ pensioners_sapd_display +]% ?][? if srpd_formed: Soziale Mitte: [+ pensioners_srpd_display +]% ?]
 
 @parties
 go-to: menu
@@ -212,7 +207,7 @@ Current relations: [+ linke_relation : relationships +]
 
 Current relations: [+ bsw_relation : relationships +]
 
-[? if sapd_formed: SAPD - a party recently formed in a split from the left wing of the SPD. ?]
+[? if sapd_formed: Soziale Linke - a party recently founded by former members of the SPD left. ?][? if srpd_formed: Soziale Mitte - a party recently founded by former members of the Seeheimer Kreis. ?]
 
 **AfD** - *Alternative für Deutschland* (Alternative for Germany) - a far-right, nationalist party, the largest opposition force in the Bundestag. All other parties refuse to govern with it: the "Brandmauer" (firewall).
 
@@ -288,8 +283,8 @@ data = [
 if (Q.sapd_formed && Q.sapd_r) {
     data.push({
             "id": "sapd",
-            "legend": "SAPD",
-            "name": "SAPD",
+            "legend": "Soziale Linke",
+            "name": "Soziale Linke",
             "seats": Q.sapd_r*5,
             });
 }
@@ -303,8 +298,8 @@ data.push({
 if (Q.srpd_formed && Q.srpd_r) {
     data.push({
             "id": "srpd",
-            "legend": "SRPD",
-            "name": "SRPD",
+            "legend": "Soziale Mitte",
+            "name": "Soziale Mitte",
             "seats": Q.srpd_r*5,
             });
 }
@@ -372,7 +367,7 @@ if (d3 && window) {
     var lines = d3.linegraph(false, false,
             Q.parties,
             {'spd': '#E3000F', 'linke': '#B61C3E', 'greens': '#46962B', 'cdu': '#000000', 'csu': '#0080C9', 'fdp': '#C8A800', 'bsw': '#542344', 'afd': '#009EE0', 'ssw': '#003C8F', 'other': '#a0a0a0', 'sapd': '#c40000', 'srpd': '#F4A460'},
-            {'spd': 'SPD', 'linke': 'Linke', 'greens': 'Grüne', 'cdu': 'CDU/CSU', 'csu': 'CSU', 'fdp': 'FDP', 'bsw': 'BSW', 'afd': 'AfD', 'ssw': 'SSW', 'other': 'Others', 'sapd': 'SAPD', 'srpd': 'SRPD'});
+            {'spd': 'SPD', 'linke': 'Linke', 'greens': 'Grüne', 'cdu': 'CDU/CSU', 'csu': 'CSU', 'fdp': 'FDP', 'bsw': 'BSW', 'afd': 'AfD', 'ssw': 'SSW', 'other': 'Others', 'sapd': 'Soziale Linke', 'srpd': 'Soziale Mitte'});
     lines.width(width).height(400);
     //var svg = lines(Q.election_records);
     if (Q.election_records.length > 0) {
@@ -381,11 +376,11 @@ if (d3 && window) {
     //document.getElementById('election_history').innerHTML = svg.outerHTML;
 
     // party support records should not have so many ticks
-    if (!Q.historical_mode || Q.game_over) {
+    {
         var lines_2 = d3.linegraph(true, true,
             Q.parties,
             {'spd': '#E3000F', 'linke': '#B61C3E', 'greens': '#46962B', 'cdu': '#000000', 'csu': '#0080C9', 'fdp': '#C8A800', 'bsw': '#542344', 'afd': '#009EE0', 'ssw': '#003C8F', 'other': '#a0a0a0', 'sapd': '#c40000', 'srpd': '#F4A460'},
-            {'spd': 'SPD', 'linke': 'Linke', 'greens': 'Grüne', 'cdu': 'CDU/CSU', 'csu': 'CSU', 'fdp': 'FDP', 'bsw': 'BSW', 'afd': 'AfD', 'ssw': 'SSW', 'other': 'Others', 'sapd': 'SAPD', 'srpd': 'SRPD'});
+            {'spd': 'SPD', 'linke': 'Linke', 'greens': 'Grüne', 'cdu': 'CDU/CSU', 'csu': 'CSU', 'fdp': 'FDP', 'bsw': 'BSW', 'afd': 'AfD', 'ssw': 'SSW', 'other': 'Others', 'sapd': 'Soziale Linke', 'srpd': 'Soziale Mitte'});
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
     }
@@ -409,9 +404,9 @@ if (d3 && window) {
 {!<table>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td></tr>!}
 
-[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div></td> <td> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td></tr>!} ?]
+[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div></td> <td> !}Soziale Linke: {!</td><td>!} [+ sapd_r +]% {!</td></tr>!} ?]
 
-[? if srpd_formed : {!<tr><td><div class="box" style='background-color:#F4A460'> </div></td><td> !}SRPD: {!</td><td>!} [+ srpd_r +]% {!</td></tr>!} ?]
+[? if srpd_formed : {!<tr><td><div class="box" style='background-color:#F4A460'> </div></td><td> !}Soziale Mitte: {!</td><td>!} [+ srpd_r +]% {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#B61C3E'> </div></td> <td>!}Linke: {!</td><td>!} [+ linke_r +]% {!</td></tr>!}
 
@@ -435,8 +430,6 @@ if (d3 && window) {
 {!<svg id="election_history" style="width: 500px; height: 400px;"> </svg>!}
 
 = Party support history
-
-[? if historical_mode: Not available in historical mode. ?]
 
 {!<svg id="party_support_history" style="width: 500px; height: 400px;"> </svg>!}
 

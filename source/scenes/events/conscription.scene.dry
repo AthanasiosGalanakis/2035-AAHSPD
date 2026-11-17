@@ -1,0 +1,50 @@
+title: The Return of Conscription
+subtitle: Not enough volunteers for the Bundeswehr
+tags: event
+on-arrival: conscription_seen = 1
+new-page: true
+face-image: img/panzerkreuzer.jpg
+view-if: conscription_seen = 0 and defence_spending_seen = 1 and time >= 20 and (spd_in_government = 1 or spd_toleration = 1)
+
+= The Return of Conscription
+
+The new voluntary military service of 2026 has not brought in enough recruits. The Bundeswehr is still far short of its target of 260,000 soldiers, and the defence ministry wants to activate compulsory service for young men, as the 2025 law allows. [? if defence_funded: The procurement plan passed, so the army has the equipment, but not the people. ?]
+
+Most of the party's youth wing is against it, while the Seeheimer Kreis and many voters over fifty are in favour. What do we do?
+
+- @vote_yes: Vote for compulsory service.
+- @vote_no: Vote against compulsory service.
+- @abstain: Abstain from the vote.
+- @ministry: Use the defence ministry to push a broader civilian service year instead.
+
+@vote_yes
+on-arrival: left_dissent += 10; labor_dissent += 3; reformist_dissent -= 5; conscription_vote = 1; linke_coalition_dissent += 1; linke_relation -= 6; new_middle_spd -= 2; pensioners_spd += 2; bundeswehr_strength += 15
+
+The Jusos are in open revolt, but the law passes easily. From next year, young men will be called up again.
+
+@vote_no
+on-arrival: fdp_relation -= 6; cdu_relation -= 5; pacifism += 1; nationalism -= 3*(1-dissent); coalition_dissent += 1; reformist_dissent += 8; new_middle_spd += 2*(1-dissent)
+go-to: built if spd_r + linke_r + greens_r + bsw_r < 50; not_built if spd_r + linke_r + greens_r + bsw_r >= 50
+
+Our vote against compulsory service is unpopular with the centre-right[? if in_grand_coalition or in_weimar_coalition: , including our coalition partners ?][? if spd_toleration: , including the minority government that we are tolerating ?].
+
+@abstain
+on-arrival: fdp_relation -= 4; cdu_relation -= 3; left_dissent += 5; conscription_vote = 1; linke_relation -= 3; bundeswehr_strength += 15
+
+Neither side is satisfied by our abstention, and the law passes anyway.
+
+@built
+on-arrival: conscription_vote = 1; bundeswehr_strength += 15
+
+The law passes with votes from the Union, the FDP and the AfD. Conscription is back.
+
+@not_built
+on-arrival: conscription_vote = 0
+
+Without our votes there is no majority. Compulsory service stays suspended, and the Bundeswehr will have to keep relying on volunteers.
+
+@ministry
+on-arrival: conscription_vote = 2; bundeswehr_strength += 8; left_dissent -= 3; reformist_dissent += 3; budget -= 1
+view-if: reichswehr_minister_party == "SPD"
+
+Our defence minister proposes a "Gesellschaftsjahr": a year of service for all young people, in the Bundeswehr, civil protection, care or climate work, with a choice for everyone. It costs money, but it passes with broad support, and the Bundeswehr gets more recruits than before.

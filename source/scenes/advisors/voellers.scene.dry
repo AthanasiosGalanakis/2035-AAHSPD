@@ -1,0 +1,42 @@
+title: Marja-Liisa Völlers
+is-pinned-card: true
+tags: advisor, reformist
+view-if: voellers_advisor = 1
+new-page: true
+
+= Marja-Liisa Völlers
+
+Marja-Liisa Völlers from Lower Saxony is a spokesperson of the Seeheimer Kreis. She is a pragmatist who values results over slogans.
+
+- @emergency_fundraising
+- @welfare
+- @organizing_women
+- @root: Return to main
+
+@emergency_fundraising
+title: Emergency fundraising
+subtitle: An emergency infusion of resources.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; resources += dues
+
+We have gained +[+ dues +] resources.
+
+@welfare
+title: Support the Arbeiterwohlfahrt
+subtitle: -1 resources
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if resources <= 0 : Not enough resources. ?]
+choose-if: resources > 0 and advisor_action_timer = 0
+on-arrival: resources -= 1; workers_aid += 1; unemployed_spd += 5*(1 - dissent); workers_spd += 3*(1-dissent); workers_spd += 2*(1-dissent) if recession_seen; advisor_action_timer = 6
+
+We fund counselling on debt, rent and benefits in the neighbourhoods that need it most.
+
+@organizing_women
+title: Campaign among women
+subtitle: Reach out to women voters.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: womens_rights += 1; workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); rural_spd += 2*(1-dissent); advisor_action_timer = 6
+
+We campaign on care, equal pay and safety, and our women candidates lead the campaign.
+

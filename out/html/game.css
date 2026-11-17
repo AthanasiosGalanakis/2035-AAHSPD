@@ -255,8 +255,11 @@ blockquote + blockquote.attribution {
 }
 #qualities p {
   text-indent: 0;
+  margin-bottom: 0.6em;
 }
 #qualities h1 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
   font-size: 1.1em;
   font-weight: normal;
   text-align: center;
@@ -504,46 +507,9 @@ a.card:focus .card-tooltip, a.card:hover .card-tooltip {
   margin: 0;
 }
 
-/*
- * sprite stuff- feel free to comment out/remove if not using
- */
 img {
     max-width: 100%;
     max-height: 100%;
-}
-#contentSpriteContainer {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  max-width: 62em;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  z-index: -97;
-}
-.sprite {
-    position: absolute;
-    width: 180px;
-}
-#topLeftSprite {
-    float: left;
-    top: -1em;
-    left: 0.4em;
-}
-#topRightSprite {
-    float: right;
-    top: -1em;
-    right: 0.4em;
-}
-#bottomLeftSprite {
-    float: left;
-    left: 0.4em;
-    top: 50%;
-}
-#bottomRightSprite {
-    float: right;
-    right: 0.4em;
-    top: 50%;
 }
 
 /* smaller screens: hide left margin */
@@ -779,14 +745,7 @@ table {
     border-bottom-color: #999;
 }
 
-/* Sidebar spacing: tighter rows, more room above each heading */
-#qualities p {
-  margin-bottom: 0.6em;
-}
-#qualities h1 {
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-}
+/* Sidebar spacing: less room above the first heading */
 #qualities h1:first-child {
   margin-top: 0.3em;
 }

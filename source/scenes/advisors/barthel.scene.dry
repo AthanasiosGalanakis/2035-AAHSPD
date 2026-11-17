@@ -1,0 +1,41 @@
+title: Klaus Barthel
+is-pinned-card: true
+tags: advisor, labor
+view-if: barthel_advisor = 1
+new-page: true
+
+= Klaus Barthel
+
+Klaus Barthel from Bavaria sat in the Bundestag for over twenty-five years and led the AfA, the party's workers' association. Nobody in the party has fought longer against the Hartz reforms.
+
+- @labor_rights_
+- @union_unity
+- @depression
+- @root: Return to main
+
+@labor_rights_
+title: Workers' rights
+subtitle: Use the labour ministry.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if labor_minister_party != "SPD" or spd_in_government = 0 : The SPD does not hold the labour ministry. ?]
+choose-if: advisor_action_timer <= 0 and spd_in_government and labor_minister_party = "SPD"
+on-arrival: advisor_action_timer = 6; labor_rights_timer -= 10; last_advisor_action = 1
+go-to: labor_rights
+
+@union_unity
+title: Union-party coordination
+subtitle: Bring the unions and the party closer together.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer <= 0
+on-arrival: advisor_action_timer = 6; labor_dissent -= 8; labor_strength += 3
+
+Regular meetings between the DGB unions and the party leadership calm the AfA.
+
+@depression
+title: Addressing the economic crisis
+subtitle: Argue for the Zukunftsprogramm.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if recession_seen == 0 : There is no economic crisis. ?][? if investment_adopted : The party has already adopted the plan. ?]
+choose-if: advisor_action_timer <= 0 and investment_adopted = 0 and recession_seen
+on-arrival: advisor_action_timer = 6; investment_support += 2; center_dissent += 10; labor_strength += 1
+
+We publish studies showing that public investment pays for itself over time. The idea is gaining ground in the party, though Netzwerk Berlin is unconvinced.
+

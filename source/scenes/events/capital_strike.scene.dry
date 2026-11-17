@@ -1,14 +1,14 @@
-title: Capital Strike
-subtitle: Germany's industries are idling...
+title: Investment Strike
+subtitle: German industry is idling...
 view-if: (capital_strike_progress >= 10 or budget <= -5) and spd_in_government
 new-page: true
 max-visits: 1
-on-arrival: unemployed += 5; workers_spd*= 0.7; new_middle_spd -= 15; old_middle_spd -= 15; unemployed_spd*=0.7; rural_spd -= 15; pro_republic -= 15; capital_strike_seen = 1; cdu_relation -= 10; fdp_relation -= 10; workers_afd += 8; unemployed_afd += 10; new_middle_afd += 15; old_middle_afd += 15; rural_afd += 15; economic_growth -= 4;
+on-arrival: unemployment_rate += 1.5; workers_spd*= 0.8; new_middle_spd -= 10; old_middle_spd -= 12; unemployed_spd*=0.8; rural_spd -= 10; trust_in_democracy -= 10; capital_strike_seen = 1; cdu_relation -= 10; fdp_relation -= 10; workers_afd += 6; unemployed_afd += 6; new_middle_afd += 8; old_middle_afd += 10; rural_afd += 10; economic_growth -= 2;
 tags: event
 
-= Capital Strike
+= Investment Strike
 
-Our policies have greatly angered the capitalists. Investment has fallen, and factories are idling, preventing the workers from fulfilling their jobs. Meanwhile, the bourgeois press is a constant chorus of venomous invective directed at us and our economic policies.
+Our policies have angered business more than any government in decades. Investment has collapsed, plants are being run down, and several companies are moving production abroad. Every newspaper and talk show blames us for the crisis.
 
 What can we do?
 
@@ -18,35 +18,35 @@ What can we do?
 - @nothing
 
 @seize
-title: Empower workers to seize the factories!
-unavailable-subtitle: [? if left_strength <= reformist_strength + neorevisionist_strength : The bulk of the party does not support this radical action. ?] [? if judicial_reform < 3 : The judiciary would oppose this action. ?] [? if works_councils < 1 : We need the support of the works councils first. ?]
-choose-if: left_strength > reformist_strength + neorevisionist_strength and judicial_reform >= 3 and works_councils >= 1
-on-arrival: nationalization_progress += 1; firewall_erosion += 6; unemployed -= 2; unemployed -= 1 if works_councils >= 3; works_program += 1; workers_spd += 10*(1-dissent); unemployed_spd += 10*(1-dissent); coalition_dissent += 2; fdp_relation -= 4; workers_afd -= 8*(1-dissent); unemployed_afd -= 8*(1-dissent); left_strength += 15; reformist_dissent += 10; left_dissent -= 10; factory_takeovers += 1; economic_growth += 2;
+title: Take public stakes in the plants that are being shut down!
+unavailable-subtitle: [? if left_strength <= reformist_strength : The bulk of the party does not support this radical step. ?] [? if judicial_reform < 3 : The courts would strike it down. ?] [? if works_councils < 1 : We need the works councils on our side first. ?]
+choose-if: left_strength > reformist_strength and judicial_reform >= 3 and works_councils >= 1
+on-arrival: nationalization_progress += 1; firewall_erosion += 4; unemployment_rate -= 0.8; unemployment_rate -= 0.4 if works_councils >= 3; works_program += 1; workers_spd += 8*(1-dissent); unemployed_spd += 8*(1-dissent); coalition_dissent += 2; fdp_relation -= 4; workers_afd -= 6*(1-dissent); unemployed_afd -= 6*(1-dissent); left_strength += 15; reformist_dissent += 10; left_dissent -= 10; factory_takeovers += 1; economic_growth += 1;
 
-If the capitalists are going to attack us, then we must hit them back. We have empowered the workers to seize and take full control of the factories that the capitalists have idled. The fascists, of course, call us thieves and looters.
+If business will not invest, the state will. A new public holding takes stakes in the plants that are being closed, and the works councils run them together with the new owners. The opposition calls it the end of the social market economy.
 
 
 @capital_controls
-title: Enact capital controls to lessen the impact.
+title: Offer state guarantees to keep the plants open.
 choose-if: judicial_reform >= 2
-unavailable-subtitle: The judiciary would never allow this.
-on-arrival: unemployed -= 1.5; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); economic_growth += 2;
+unavailable-subtitle: The courts and EU state-aid rules would block this.
+on-arrival: unemployment_rate -= 0.5; workers_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); economic_growth += 1; budget -= 1
 
-Capital controls might blunt some of the worst economic components of the capital strike.
+Federal guarantees and short-time work keep many of the threatened plants open for now. It blunts the worst of the crisis.
 
 
 
 @propaganda
-title: Launch a propaganda campaign blaming the capitalists for the crisis.
+title: Launch a campaign blaming the corporations for the crisis.
 subtitle: -1 resources
 choose-if: (radio >= 2 or commercialized_media >= 3) and resources >= 1
 unavailable-subtitle: [? if radio < 2 and commercialized_media < 3 : We have not built up our media enough. ?] [? if resources < 1: We do not have enough resources. ?]
-on-arrival: workers_spd += 7*(1-dissent); new_middle_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); pro_republic += 5*(1-dissent); resources -= 1
+on-arrival: workers_spd += 6*(1-dissent); new_middle_spd += 5*(1-dissent); unemployed_spd += 6*(1-dissent); trust_in_democracy += 4*(1-dissent); resources -= 1
 
-We launch a counter-propaganda campaign to blame the economic crisis on the capitalists, using all of our media channels to do so. Because of our existing media framework, this is moderately successful in directing popular criticisms towards the capitalists and away from us.
+We use every channel we have to point out that the same companies paid record dividends last year. Because our media work is strong, it partly works: some of the public anger turns towards the corporations and away from us.
 
 
 @nothing
 title: There is nothing we can do.
 
-There is nothing we can do that is within constitutional and legal bounds.
+There is nothing we can do within the law and the EU treaties.

@@ -1,0 +1,42 @@
+title: A New Party
+on-arrival: {!
+// Shared set-up for a party founded by SPD members who walk out.
+// The calling event sets Q.split_id to 'sapd' (split from the left) or 'srpd' (split from the Seeheimer).
+// Q.split_take[class] is the share of the SPD's voters in that class who follow the new party.
+var id = Q.split_id;
+if (!id || Q[id + '_formed']) {
+    return;
+}
+Q[id + '_formed'] = 1;
+if (Q.parties.indexOf(id) < 0) {
+    Q.parties.splice(Q.parties.length - 1, 0, id);
+}
+var take = (id == 'sapd')
+    ? {'workers': 0.2, 'new_middle': 0.15, 'old_middle': 0.05, 'rural': 0.05, 'unemployed': 0.2, 'catholics': 0.1, 'pensioners': 0.05}
+    : {'workers': 0.1, 'new_middle': 0.25, 'old_middle': 0.25, 'rural': 0.1, 'unemployed': 0.05, 'catholics': 0.1, 'pensioners': 0.15};
+for (var c of Q.classes) {
+    var moved = (Q[c + '_spd'] || 0) * (take[c] || 0);
+    if (Q.unions_independent && c == 'workers') {
+        moved += 3;
+    }
+    Q[c + '_' + id] = moved;
+    Q[c + '_spd'] -= moved;
+}
+Q[id + '_r'] = 0;
+Q['old_' + id + '_r'] = 0;
+for (var record of Q.election_records) {
+    record[id] = 0;
+}
+for (var record of Q.party_support_records) {
+    record[id] = 0;
+}
+!}
+go-to: sapd_text if split_id = "sapd"; srpd_text if split_id = "srpd"
+
+@sapd_text
+
+Many of those who left found a new party, the *Soziale Linke*. It promises to be what the SPD used to be, and it will compete with us and the Linke for the same voters.
+
+@srpd_text
+
+Many of those who left found a new party, the *Soziale Mitte*. It promises a sensible, centrist social democracy, and it will compete with us, the Union and the Grüne for the voters of the centre.

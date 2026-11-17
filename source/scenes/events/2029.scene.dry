@@ -1,0 +1,9 @@
+title: 2029
+subtitle: A new year
+tags: event
+view-if: year = 2029 and month = 1
+priority: 2
+max-visits: 1
+on-arrival: economic_growth -= 0.3 if economic_growth > 0.5
+
+A new year begins with an election only weeks away. Growth is weak, prices are still high and the factories of the car and chemical industries are cutting shifts. Every party is already campaigning.

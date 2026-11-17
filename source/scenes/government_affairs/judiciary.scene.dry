@@ -1,4 +1,4 @@
-title: Judiciary Reform
+title: Justice and the Rule of Law
 new-page: true
 is-card: true
 view-if: spd_in_government = 1 and justice_minister_party = "SPD" and judiciary_timer = 0
@@ -6,32 +6,32 @@ on-arrival: month_actions += 1; judiciary_timer += 6
 card-image: img/portraits/RadbruchGustav.jpg
 tags: govt_affairs, cabinet
 
-= Judiciary Reform
+= Justice and the Rule of Law
 
-The Judiciary is one of the most reactionary components of the government, along with the military. Many jurists have held office since the days of the Emperor. They give violent fascists like Adolf Hitler laughably light sentences, while ruthlessly persecuting leftists and pacifists for lesser crimes.
+The courts are overloaded and short of judges, and proceedings against extremist networks drag on for years. At the same time, experts warn that a future AfD majority could pack the Federal Constitutional Court, as happened in Poland and Hungary.
 
-[? if judicial_reform <= 0 : There is great demand in our membership for reforming the judiciary, although this may bring us into a collision course with our coalition allies. ?]
-[? if judicial_reform == 1 : We have started on the path to judicial reform. While some of the most antideluvian and biased justices have been replaced, many still remain. More should be done. ?]
-[? if judicial_reform >= 2 : We have successfully reformed the judiciary, to some extent. At the very least, the courts will not actively obstruct our attempts to prosecute crimes committed by the far-right. ?]
+[? if judicial_reform <= 0 : Many of our members want us to protect the courts before it is too late, even if this leads to a dispute with our partners. ?]
+[? if judicial_reform == 1 : We have started to reform the justice system, but more remains to be done. ?]
+[? if judicial_reform >= 2 : The courts are better equipped, and the rules of the Constitutional Court are written into the Basic Law, where a simple majority cannot change them. ?]
 
-- @reform: Carry out substantial judicial reforms.
-- @minor_reforms: Carry out minor judicial reforms.
-- @as_is: Leave the judiciary as it is.
+- @reform: Protect the Constitutional Court in the Basic Law and hire more judges and prosecutors.
+- @minor_reforms: Hire more judges and prosecutors.
+- @as_is: Leave the justice system as it is.
 - @easy_discard
 - @cancel_advisor_action
 
 @reform
-subtitle: -1 budget
+subtitle: -1 budget. Needs a two-thirds majority, so the Union must agree.
 unavailable-subtitle: Not enough budget.
 choose-if: budget >= 1
-on-arrival: budget -= 1; democratization += 2; coalition_dissent += 1 if in_grand_coalition == 1; workers_spd += 5*(1-dissent) if democratization >= 3; judicial_reform += 2; pro_republic += 5*(1-dissent); firewall_erosion += 1; coalition_dissent += 1 if historical_mode; hindenburg_dissent += 1; hindenburg_relation -= 5
+on-arrival: budget -= 1; democratization += 2; coalition_dissent += 1 if in_grand_coalition == 1; workers_spd += 5*(1-dissent) if democratization >= 3; judicial_reform += 2; trust_in_democracy += 5*(1-dissent); afd_relation -= 5; cdu_relation -= 2
 
-We investigate jurists who have shown themselves to have biased or corrupt behavior, and try to remove them, replacing them with more democratically-oriented jurists. This obviously raises quite a great deal of ire in conservative circles, including within our coalition. 
+We write the term limits, the election rules and the size of the Constitutional Court into the Basic Law, and fund new posts in the courts. The AfD calls it a plot by the old parties, and conservatives in the Union grumble about the cost.
 
 @minor_reforms
-on-arrival: democratization += 1; workers_spd += 3*(1-dissent) if democratization >= 3; judicial_reform += 1; pro_republic += 3*(1-dissent); judiciary_timer += 6
+on-arrival: democratization += 1; workers_spd += 3*(1-dissent) if democratization >= 3; judicial_reform += 1; trust_in_democracy += 3*(1-dissent); judiciary_timer += 6
 
-We try to remove the most obviously biased and corrupt jurists, while leaving most of the system intact. It is slow work reforming the judiciary.
+We fund new posts for judges and prosecutors. It is slow work, but the backlog begins to fall.
 
 @as_is
 go-to: root

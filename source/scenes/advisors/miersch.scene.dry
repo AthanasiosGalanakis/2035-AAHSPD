@@ -1,0 +1,42 @@
+title: Matthias Miersch
+is-pinned-card: true
+tags: advisor, left
+view-if: miersch_advisor = 1
+new-page: true
+
+= Matthias Miersch
+
+Matthias Miersch, a lawyer from the Hanover region, spent years as spokesperson of the Parlamentarische Linke before he became general secretary and then chair of the parliamentary group. He is the left's most experienced negotiator, and an environmental policy expert.
+
+- @building_the_left
+- @left_unity
+- @linke_cooperation
+- @root: Return to main
+
+@building_the_left
+title: Building the Left
+subtitle: Strengthen the Parlamentarische Linke in the party.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; left_strength += 8; left_dissent -= 8; reformist_dissent += 3
+
+We hold strategy meetings in every regional association and win over new delegates for the left.
+
+@left_unity
+title: Unity of the Left
+subtitle: Reduce dissent across the party.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; left_dissent -= 10; labor_dissent -= 5; center_dissent -= 8; reformist_dissent -= 5
+
+We hold a series of open forums where the left and the leadership argue it out, and leave more united than before.
+
+@linke_cooperation
+title: Talks with the Linke
+subtitle: Build trust with the Linke.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; left_strength += 4; linke_relation += 5*(1-dissent); reformist_dissent += 2; linke_coalition += 1 if linke_cooperation_seen <= 1; linke_cooperation_seen += 1
+
+Quiet talks with the Linke's leaders and parliamentary group help to rebuild trust.
+

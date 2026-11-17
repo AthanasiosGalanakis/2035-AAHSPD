@@ -1,0 +1,42 @@
+title: Dirk Wiese
+is-pinned-card: true
+tags: advisor, reformist
+view-if: wiese_advisor = 1
+new-page: true
+
+= Dirk Wiese
+
+Dirk Wiese from the Sauerland is a spokesperson of the Seeheimer Kreis and one of the party's leading parliamentary managers. He gets on well with the Union.
+
+- @coalition
+- @lander
+- @snap_election
+- @root: Return to main
+
+@coalition
+title: Negotiating with the coalition
+subtitle: Calm our partners down.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if spd_in_government = 0 : We are not in government. ?]
+choose-if: advisor_action_timer <= 0 and spd_in_government = 1
+on-arrival: advisor_action_timer = 6; coalition_dissent -= 1 if coalition_dissent > 0; cdu_relation += 4; greens_relation += 4; fdp_relation += 4
+
+Long evenings in the coalition committee pay off. Our partners are calmer.
+
+@lander
+title: The SPD in the Länder
+subtitle: Use our Länder governments.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if spd_states = 0 : We do not lead any Länder governments. ?]
+choose-if: advisor_action_timer <= 0 and spd_states = 1
+on-arrival: advisor_action_timer = 6; prussian_affairs_timer -= 6; last_advisor_action = 1
+go-to: prussian_affairs
+
+@snap_election
+title: Snap election
+subtitle: Ask the confidence question and go for new elections.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if chancellor_party != "SPD" : The SPD must hold the chancellery. ?]
+choose-if: advisor_action_timer == 0 and chancellor_party == "SPD" and spd_in_government
+on-arrival: advisor_action_timer = 6; time_to_election = 3
+call: set_next_election_time
+
+The chancellor loses the confidence question on purpose, and the president dissolves the Bundestag. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+

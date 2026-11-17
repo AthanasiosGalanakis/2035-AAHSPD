@@ -1,0 +1,41 @@
+title: Dagmar Ziegler
+is-pinned-card: true
+tags: advisor, reformist
+view-if: ziegler_advisor = 1
+new-page: true
+
+= Dagmar Ziegler
+
+Dagmar Ziegler from the Prignitz in rural Brandenburg was a state minister there before she went to the Bundestag, where she was a spokesperson of the Seeheimer Kreis. She wants the party to stop ignoring the countryside.
+
+- @agriculture
+- @rural_campaign
+- @depression
+- @root: Return to main
+
+@agriculture
+title: Agricultural policy
+subtitle: Use the agriculture ministry.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if agriculture_minister_party != "SPD" or spd_in_government == 0 : The SPD does not hold the agriculture ministry. ?]
+choose-if: advisor_action_timer <= 0 and spd_in_government and agriculture_minister_party == "SPD"
+on-arrival: advisor_action_timer = 6; agricultural_policy_timer -= 6; last_advisor_action = 1
+go-to: agricultural_policy
+
+@rural_campaign
+title: Campaign in the countryside
+subtitle: Show what we have done for rural areas.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if rural_policy <= 0 : We have no rural policies to show yet. ?]
+choose-if: advisor_action_timer == 0 and rural_policy > 0
+on-arrival: advisor_action_timer = 6; rural_spd += 5*(1-dissent); peoples_party_support += 1
+
+We tour the small towns and villages with our record on farmland, buses and doctors.
+
+@depression
+title: Addressing the economic crisis
+subtitle: Argue for the Zukunftsprogramm.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if recession_seen == 0 : There is no economic crisis. ?][? if investment_adopted : The party has already adopted the plan. ?]
+choose-if: advisor_action_timer <= 0 and investment_adopted = 0 and recession_seen
+on-arrival: advisor_action_timer = 6; investment_support += 2; center_dissent += 10; labor_strength += 1
+
+We publish studies showing that public investment pays for itself over time. The idea is gaining ground in the party, though Netzwerk Berlin is unconvinced.
+

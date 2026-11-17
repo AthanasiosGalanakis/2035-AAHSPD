@@ -1,16 +1,16 @@
-title: Emergency budget cuts
-subtitle: Chancellor [+ chancellor +] proposes significant cuts to social spending.
+title: Debt-Brake Budget Cuts
+subtitle: Chancellor [+ chancellor +] wants to cut social spending to meet the debt brake.
 new-page: true
-view-if: (year == 1929 or year == 1930 or year == 1931 or year == 1932) and month >= 12 and chancellor == "Brüning" and spd_in_government == 0 and (unemployed > 15 or (year == 1929 and unemployed > 10)) and welfare >= 0 and emergency_cuts_timer = 0
+view-if: month >= 11 and spd_in_government == 0 and chancellor_party == "CDU" and unemployment_rate > 6.5 and welfare >= -2 and emergency_cuts_timer = 0
 on-arrival: emergency_cuts_seen = 1; emergency_cuts_timer = 12
 tags: event
 max-visits: 4
 
-= Emergency budget cuts
+= Debt-Brake Budget Cuts
 
-Due to the crisis of the Great Depression, government budgets have fallen and welfare spending has risen substantially. Chancellor [+ chancellor +] has used Article 48 of the constitution in order to pass an emergency bill cutting welfare spending.
+Tax revenue is down and spending on unemployment benefits is up. To keep next year's budget within the debt brake, Chancellor [+ chancellor +]'s government has proposed deep cuts to the Grundsicherung (the former Bürgergeld), to housing benefit and to the Bundesagentur's training programmes.
 
-[? if spd_toleration : If we reject this, it would mean the end of the toleration agreement, and [+ chancellor +] would likely dissolve the Reichstag and call new elections. Of course, the workers are opposed to this policy, although it might be necessary for economic and political stability. ?]
+[? if spd_toleration : The government depends on our votes. If we reject the budget, [+ chancellor +] will probably call a vote of confidence and lose it, and there will be new elections. The workers are against the cuts, but some say that a stable government is worth the price. ?]
 
 - @nothing_to_do: There is nothing we can do.
 - @vote_no
@@ -18,25 +18,25 @@ Due to the crisis of the Great Depression, government budgets have fallen and we
 
 @nothing_to_do
 view-if: spd_toleration == 0
-on-arrival: welfare -= 1; unemployed += 2; unemployed_afd += 4; unemployed_linke += 3; unemployed_spd += 2; pro_republic -= 4; budget += 1; inflation -= 2; economic_growth -= 0.5;
+on-arrival: welfare -= 1; unemployment_rate += 0.3; unemployed_afd += 4; unemployed_linke += 3; unemployed_spd += 2; trust_in_democracy -= 3; budget += 1; inflation -= 0.3; economic_growth -= 0.3;
 
-The emergency policy passes under emergency rules, as the Reichstag is currently dissolved. The Nazis use this as a recruiting tool, and so do we.
+The cuts pass with the votes of the government parties. The AfD and the Linke both use them to recruit, and so do we.
 
 
 @vote_no
-title: Vote against this measure, ending the toleration agreement.
+title: Vote against the budget, ending the toleration agreement.
 view-if: spd_toleration
-on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; pro_republic -= 5
+on-arrival: time_to_election = 3; spd_toleration = 0; trust_in_democracy -= 3
 call: set_next_election_time
 
-We have broken with the [+ chancellor +] government, and have voted against them in a vote of no confidence. Welfare has been saved, but at what cost?
+We vote the budget down. [+ chancellor +] calls a vote of confidence, loses it, and asks the Federal President to dissolve the Bundestag. The Grundsicherung is safe for now, but at what cost?
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
 
 @vote_yes
-title: Vote in favor of this measure to continue the toleration agreement.
+title: Vote for the budget to keep the toleration agreement.
 view-if: spd_toleration
-on-arrival: welfare -= 1; unemployed += 2; left_dissent += 10; labor_dissent += 10; workers_spd *= 0.9; unemployed_spd *= 0.9; unemployed_afd += 5; unemployed_linke += 5; workers_afd += 5; workers_linke += 5; workers_spd -= 4 if welfare < 0; unemployed_spd -= 5 if welfare < 0; pro_republic -= 4; linke_relation -= 8; budget += 1; inflation -= 2; economic_growth -= 0.5;
+on-arrival: welfare -= 1; unemployment_rate += 0.3; left_dissent += 10; labor_dissent += 10; workers_spd *= 0.9; unemployed_spd *= 0.9; unemployed_afd += 5; unemployed_linke += 5; workers_afd += 5; workers_linke += 5; workers_spd -= 4 if welfare < 0; unemployed_spd -= 5 if welfare < 0; trust_in_democracy -= 3; linke_relation -= 8; budget += 1; inflation -= 0.3; economic_growth -= 0.3;
 
-We try to convince the workers that this policy is necessary in order to maintain a stable parliamentary government, and to deal with the fiscal consequences of the depression. Still, this policy provides excellent recruiting fodder for Nazis and Communists.
+We tell our voters that a stable government is better than another snap election, and that we have softened the worst of the cuts. Few believe us. The AfD and the Linke are delighted.

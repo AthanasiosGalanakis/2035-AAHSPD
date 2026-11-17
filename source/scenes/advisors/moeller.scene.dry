@@ -1,0 +1,40 @@
+title: Siemtje Möller
+is-pinned-card: true
+tags: advisor, reformist
+view-if: moeller_advisor = 1
+new-page: true
+
+= Siemtje Möller
+
+Siemtje Möller from Friesland was parliamentary state secretary in the defence ministry and a spokesperson of the Seeheimer Kreis. She wants the SPD to be the party of security.
+
+- @police_affairs
+- @security_profile
+- @lander
+- @root: Return to main
+
+@police_affairs
+title: Internal security
+subtitle: Use the interior ministry.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if interior_minister_party != "SPD" or spd_in_government == 0 : The SPD does not hold the interior ministry. ?]
+choose-if: advisor_action_timer == 0 and spd_in_government and interior_minister_party == "SPD"
+on-arrival: advisor_action_timer = 6; police_timer -= 6; last_advisor_action = 1
+go-to: police
+
+@security_profile
+title: Sharpen our security profile
+subtitle: Present the SPD as the party of security.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; reformist_strength += 5; old_middle_spd += 3*(1-dissent); pensioners_spd += 2*(1-dissent); left_dissent += 3
+
+Our interior and defence experts tour the talk shows. The left of the party grumbles.
+
+@lander
+title: The SPD in the Länder
+subtitle: Use our Länder governments.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if spd_states = 0 : We do not lead any Länder governments. ?]
+choose-if: advisor_action_timer <= 0 and spd_states = 1
+on-arrival: advisor_action_timer = 6; prussian_affairs_timer -= 6; last_advisor_action = 1
+go-to: prussian_affairs
+

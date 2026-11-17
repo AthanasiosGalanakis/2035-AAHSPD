@@ -31,28 +31,12 @@ Q.month = 11;
 // how many actions have been taken this month?
 Q.month_actions = 0;
 
-// 0 = normal difficulty, 1 = hard mode, 2 = hard mode no saves
+// 0 = normal difficulty (the only mode for now)
 Q.difficulty = 0;
-Q.historical_mode = 0;
-// use decimals for reichstag seats
-// TODO: not yet implemented
-Q.use_decimals = 1;
-// TODO: detailed difficulty settinigs
-Q.annual_income = 0;
-Q.saves_disabled = 0;
-Q.discard_disabled = 0;
-Q.hand_size = 4;
-Q.starting_dissent = 1; // default dissent = normal
-Q.starting_relations = 1;
-Q.shuffle_leadership_enabled = 0;
-Q.cabinet_enabled = 0;
-
 
 // party resources
-Q.starting_resources = 2;
 Q.resources = 2;
 // party dues - fundraising income
-Q.starting_dues = 2;
 Q.dues = 2;
 
 // the state of the party
@@ -72,8 +56,6 @@ Q.labor_dissent = 5;
 Q.reformist_strength = 25;
 Q.reformist_dissent = 5;
 // the fifth faction is not used in the modern setting: keep it at 0 so it never counts.
-Q.neorevisionist_strength = 0;
-Q.neorevisionist_dissent = 0;
 
 // secret events...
 Q.unions_independent = 0;
@@ -84,23 +66,23 @@ Q.spd_leader_img = "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/202
 
 // crisis_urgency indicates how seriously the SPD is taking the economic crisis - scale from 0 to 10.
 Q.crisis_urgency = 0;
-// afd_urgency indicates how seriously the SPD takes the nazis - scale from 0 to 10.
+// afd_urgency indicates how seriously the SPD takes the far right (AfD) - scale from 0 to 10.
 Q.afd_urgency = 0;
 // radicalization indicates how radical the SPD's rhetoric is - scale from 0 to 10.
 Q.radicalization = 0;
-// Support for the WTB plan and proto-Keynesian works creation plans in general
-Q.wtb_support = 0;
-// Support for Pacifism within the SPD relative to 1928
+// Support within the party for a large public investment programme (Investitionsoffensive)
+Q.investment_support = 0;
+// Support for pacifism and arms control within the SPD, relative to the start of the game
 Q.pacifism = 0;
-// Support for democratic reform within the SPD relative to 1928
+// Support for democratic reform within the SPD, relative to the start of the game
 Q.democratization = 0;
-// Support for a communist coalition relative to 1928
+// Support within the SPD for a coalition with the Linke, relative to the start of the game
 Q.linke_coalition = 0;
 // economic_plan: have we adopted *any* economic plan?
-// 1 - WTB plan, 2 - AfA-bund plan, 3 - radical plan (mass nationalization of industries)
+// 1 - investment programme (Netzwerk/AfA), 2 - moderate plan (Seeheimer), 3 - left plan (public ownership of key industries)
 Q.economic_plan = 0;
-// have we officially adopted the WTB plan?
-Q.wtb_adopted = 0;
+// have we officially adopted the investment programme?
+Q.investment_adopted = 0;
 // people's party support
 Q.peoples_party_support = 0;
 // support for nationalizations
@@ -121,14 +103,11 @@ Q.fdp_relation = 30;
 Q.bsw_relation = 30;
 Q.afd_relation = 0;
 
-// Does the SPD lead in Prussia?
-Q.spd_prussia = 1;
-// Options: spd, cdu, bsw, papen, afd
-Q.prussian_government = "SPD";
+// Does the SPD lead important Länder governments (Lower Saxony, Rhineland-Palatinate, Brandenburg...)?
+Q.spd_states = 1;
 
 // Security forces
 Q.federal_police_strength = 55;
-Q.federal_police_militancy = 1;
 Q.federal_police_loyalty = 0.90;
 
 // strength includes actual military and de facto reserves?
@@ -148,9 +127,9 @@ Q.nationalism = 50;
 // socialism vs capitalism
 Q.socialism = 35;
 // pro-republic vs anti-republic
-Q.pro_republic = 75;
+Q.trust_in_democracy = 75;
 
-// minimum percentage of votes to be represented in the Reichstag
+// minimum percentage of votes to be represented in the Bundestag
 Q.electoral_threshold = 5;
 // a party that wins 3 constituencies enters the Bundestag even below 5%
 Q.direct_mandate_rule = 1;
@@ -168,7 +147,6 @@ Q.afd_banned = 0;
 Q.firewall_erosion = 0;
 Q.capital_strike_progress = 0;
 
-Q.starting_budget = 2;
 Q.budget = 2;
 
 // Proportion of different social groups
@@ -176,16 +154,15 @@ Q.workers = 14; // blue-collar and routine service workers
 Q.new_middle = 25; // salaried employees, civil servants
 Q.old_middle = 6; // self-employed, business owners
 Q.rural = 8; // rural and small-town West
-Q.unemployed = 6;
+Q.unemployed = 6; // share of voters who are unemployed. post_event keeps it equal to the unemployment rate.
+Q.unemployment_rate = 6.3; // unemployment rate in % (Bundesagentur definition)
 Q.catholics = 17; // now: East Germans (five eastern states, without Berlin)
 Q.pensioners = 24;
 
-// unemployment: 1929 - 13.3, 1930 - 22.7, 1931 - 34.3, 1932 - 43.8 (same source as above)
-
-// inflation (in %; 1928: 2.9; 1929: 0; 1930: -5%; 1931: -10%; 1932: -10%) - source: https://en.wikipedia.org/wiki/File:BSPDRWeltkriseEngl.PNG, derived from https://www.destatis.de/DE/Methoden/WISTA-Wirtschaft-und-Statistik/2009/03/rezession-betrachtung-032009.pdf?__blob=publicationFile
+// inflation in % (ECB target: 2)
 Q.inflation = 4.5; // energy-driven price spike
 
-// economic growth - same source as above, Table 2 (preisbereinigt) - this is also the source for the yearly changes in the great depression.
+// real GDP growth in % per year
 Q.economic_growth = -0.6; // mild recession going into the election
 
 // economic expansion timer
@@ -195,14 +172,14 @@ Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'cath
 Q.parties = ['linke', 'greens', 'spd', 'cdu', 'fdp', 'bsw', 'afd', 'ssw', 'other'];
 
 //Leaders
-Q.linke_leader = ["Ines Schwerdtner", " Luigi Pantisano"];
+Q.linke_leader = ["Ines Schwerdtner", "Jan van Aken"];
 Q.greens_leader = ["Franziska Brantner", "Felix Banaszak"];
-Q.spd_leader = ["Lars Klingbeil"];
+Q.spd_leader = ["Lars Klingbeil", "Bärbel Bas"];
 Q.cdu_leader = ["Friedrich Merz"];
 Q.csu_leader = ["Markus Söder"];
-Q.fdp_leader = ["Wolfgang Kubicki"];
+Q.fdp_leader = ["Christian Dürr"];
 Q.bsw_leader = ["Amira Mohamed Ali", "Fabio De Masi"];
-Q.afd_leader = ["Alice Weidel, Tino Chrupalla"];
+Q.afd_leader = ["Alice Weidel", "Tino Chrupalla"];
 
 // Ideologies
 Q.linke_ideology = "Democratic socialist";
@@ -325,10 +302,14 @@ Q.economic_records = [];
 
 
 // State of the government
-Q.president = "Steinmeier";
+// Steinmeier's second term ended in March 2027. His successor (fictional) was elected by the Bundesversammlung in February 2027; the next Bundesversammlung meets in February 2032.
+Q.president = "Wendt";
+Q.president_full = "Katharina Wendt";
+Q.president_party = "independent";
 // starting chancellor: Friedrich Merz (CDU/CSU-SPD coalition)
 Q.chancellor = "Merz";
-Q.chancellor_party = 'CDU';
+Q.chancellor_party = 'CDU';
+Q.cdu_chancellor = "Merz";
 Q.spd_in_government = 1;
 Q.cdu_in_government = 1;
 Q.csu_in_government = 1;
@@ -385,14 +366,16 @@ Q.in_minority_government = 0;
 
 // if you're in a coalition, this is an incremental counter for how many times dissent has happened from the right.
 Q.coalition_dissent = 0;
-// dissent from the KPD, in a popular front or left front government
+// dissent from the Linke, in a red-red(-green) government
 Q.linke_coalition_dissent = 0;
 
 // does the SPD tolerate the government even if it is not a participant?
-Q.spd_toleration = 0;
+Q.spd_toleration = 0;
+// Article 67: the Bundestag can only remove a chancellor by electing a new one
+Q.constructive_vonc = 1;
 
 // ministries - which parties control the ministries?
-// starting with the Merz cabinet (as of Nov 2026) https://en.wikipedia.org/wiki/Merz_cabinet
+// starting with the Merz cabinet https://en.wikipedia.org/wiki/Merz_cabinet
 // reichswehr_minister = defence minister
 Q.foreign_minister = 'Wadephul';
 Q.foreign_minister_party = 'CDU';
@@ -400,7 +383,7 @@ Q.interior_minister = 'Dobrindt';
 Q.interior_minister_party = 'CSU';
 Q.justice_minister = 'Hubig';
 Q.justice_minister_party = 'SPD';
-Q.labor_minister = 'Schweitzer';
+Q.labor_minister = 'Bas';
 Q.labor_minister_party = 'SPD';
 Q.reichswehr_minister = 'Pistorius';
 Q.reichswehr_minister_party = 'SPD';
@@ -413,31 +396,28 @@ Q.agriculture_minister_party = 'CSU';
 
 // Events: what has occurred?
 // unemployment insurance event is seen if the unemployment level is at least 4 more than the threshold...
-Q.unemployment_insurance_threshold = 10;
+Q.unemployment_insurance_threshold = 6.3;
 
 // have we reformed these institutions to be more democratic?
 Q.judicial_reform = 0;
 Q.bureaucratic_reform = 0;
 Q.military_reform = 0;
 Q.womens_rights = 0;
-// level of welfare relative to 1928 (can go negative)
+// level of welfare relative to the start of the game (can go negative)
 Q.welfare = 0;
 // level of support for farmers
 Q.agricultural_policy = 0;
-// works-creation programs (i.e. WTB-plan) - how much have they implemented?
+// public investment programmes - how much have we implemented?
 Q.works_program = 0;
-Q.wtb_implemented = 0;
+Q.investment_implemented = 0;
 // Relations with the Western countries (France, UK).
 Q.west_relation = 0;
-// Relations with the Eastern countries (Poland, Czechoslovakia)
+// Relations with our eastern partners (Poland, the Baltic states, Ukraine)
 Q.east_relation = 0;
-// Relations with the Soviet Union
-Q.soviet_relation = 0;
-// How much have we exposed the secret rearmament programs?
-Q.rearmament_exposed = 0;
-// reparations vs baseline: young plan is -1.
-Q.reparations = 0;
-Q.reparations_negotiation = 0;
+// Relations with Russia (negative = confrontation)
+Q.russia_relation = 0;
+// Relations with the United States
+Q.us_relation = 0;
 // nationalization_progress is part of the left economic plan.
 Q.nationalization_progress = 0;
 // socializations is part of the economic democracy card.
@@ -454,10 +434,12 @@ Q.eu_progress = 0;
 Q.science = 0;
 Q.education_science = 0;
 
-// Tax rates relative to 1928 baseline
+// Tax rates relative to the 2028 baseline
 Q.lower_tax_rates = 0;
 Q.upper_tax_rates = 0;
-Q.tariffs = 0;
+Q.debt_brake_reformed = 0;
+Q.voting_age_16 = 0;
+Q.direct_democracy = 0;
 
 // our conduct in the government, and the conduct of our coalition opponents.
 // did the SPD vote against the previous government in a vote of no confidence?
@@ -485,10 +467,10 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
             'womens_rights', 'economic_democracy',
             'dealing_with_toleration',
             'constitutional_reform', 'labor_rights',
-            'education_science', 'curriculum',
+            'education_science',
             // events
             'emergency_cuts', 'unemployment_insurance',
-            'kpd_policy', 'kpd_ultimatum', 'popular_front_dispute',
+            'linke_review',
             'high_inflation', 'banking_crisis',
             'understanding_enemy'];
 Q.advisor_action_timer = 0;
@@ -533,69 +515,50 @@ Q.coalition_affairs_timer = 0;
 // event timers
 Q.emergency_cuts_timer = 0;
 Q.unemployment_insurance_timer = 0;
-Q.kpd_ultimatum_timer = 0;
+Q.linke_review_timer = 0;
 
 
-// all the initial advisors are centrists.
-Q.wels_advisor = 1; // Otto Wels
-Q.muller_advisor = 1; // Hermann Müller
-Q.muller_dead = 0;
-Q.hilferding_advisor = 1; // Rudolf Hilferding
-
-// left advisors
-Q.sender_advisor = 0; // Toni Sender
-Q.levi_advisor = 0; // Paul Levi
-Q.levi_dead = 0;
-Q.rosenfeld_advisor = 0; // Kurt Rosenfeld
-Q.seydewitz_advisor = 0; // Max Seydewitz
-
-// centrist alternate advisors
-Q.pfulf_advisor = 0; // Antonie Pfülf
-Q.breitscheid_advisor = 0; // Rudolf Breitscheid
-
-// Reformist advisors
-Q.severing_advisor = 0; // Carl Severing
-Q.braun_advisor = 0; // Otto Braun
-Q.juchacz_advisor = 0; // Marie Juchacz
-Q.baade_advisor = 0; // Fritz Baade
-
-// Labor advisors
-Q.leipart_advisor = 0; // Theodor Leipart
-Q.aufhauser_advisor = 0; // Siegfried Aufhäuser
-Q.woytinsky_advisor = 0; // Wladimir Woytinsky (post-1930)
-Q.wissell_advisor = 0; // Rudolf Wissell
-
-// Revisionist advisors
-Q.mierendorff_advisor = 0; // Carlo Mierendorf (post-1930)
-
-Q.leber_advisor = 0; // Julius Leber (post-1930)
-Q.schumacher_advisor = 0; // Kurt Schumacher (post-1930)
-
-// Nonfactional advisors
-Q.hirschfeld_advisor = 0; // Magnus Hirschfeld
-Q.radbruch_advisor = 0; // Gustav Radbruch
-Q.stampfer_advisor = 0; // Friedrich Stampfer
+// advisors (generated by scripts/gen_advisors.py; real SPD politicians; roles as of 2025)
+Q.miersch_advisor = 0; // Matthias Miersch, Parlamentarische Linke
+Q.tuermer_advisor = 0; // Philipp Türmer, Parlamentarische Linke
+Q.muetzenich_advisor = 0; // Rolf Mützenich, Parlamentarische Linke
+Q.esdar_advisor = 0; // Wiebke Esdar, Parlamentarische Linke
+Q.kluessendorf_advisor = 0; // Tim Klüssendorf, Parlamentarische Linke
+Q.heil_advisor = 1; // Hubertus Heil, Netzwerk Berlin
+Q.schneider_advisor = 1; // Carsten Schneider, Netzwerk Berlin
+Q.mast_advisor = 1; // Katja Mast, Netzwerk Berlin
+Q.roth_advisor = 0; // Michael Roth, Netzwerk Berlin
+Q.hubertz_advisor = 0; // Verena Hubertz, Netzwerk Berlin
+Q.fahimi_advisor = 0; // Yasmin Fahimi, AfA
+Q.vassiliadis_advisor = 0; // Michael Vassiliadis, AfA
+Q.barthel_advisor = 0; // Klaus Barthel, AfA
+Q.ruetzel_advisor = 0; // Bernd Rützel, AfA
+Q.wiese_advisor = 0; // Dirk Wiese, Seeheimer Kreis
+Q.moeller_advisor = 0; // Siemtje Möller, Seeheimer Kreis
+Q.voellers_advisor = 0; // Marja-Liisa Völlers, Seeheimer Kreis
+Q.ziegler_advisor = 0; // Dagmar Ziegler, Seeheimer Kreis
+Q.hubig_advisor = 0; // Stefanie Hubig, non-factional
+Q.lauterbach_advisor = 0; // Karl Lauterbach, non-factional
+Q.drossmann_advisor = 0; // Falko Droßmann, non-factional
 !}
 set-bg: img/map_2.jpg
 new-page: true
 
-> *"Such a general development cannot be attributed to the false tactics of any single party or to the mistakes of individual leaders. On the contrary, the conduct of individual leaders is determined largely by the sentiments of the people as a whole. It would be erroneous, however, to regard the sentiments of the moment as reflecting the natural make-up and character of the people. They are merely the consequence of the special circumstances which have brought about this profound degradation of the entire nation."*
+> *"Nichts kommt von selbst. Und nur wenig ist von Dauer. Darum besinnt Euch auf Eure Kraft und darauf, dass jede Zeit eigene Antworten will."*
 
- - Karl Kautsky, *Hitlerism and Social Democracy*, 1934
+ - Willy Brandt, message to the Socialist International, 1992
 
-This is a game of alternate history. While historical accuracy is a major concern, keep in mind that this is a *game*, and that any divergence from actual events will necessarily have to involve some element of make-believe. Nevertheless, please let the author know if there are any glaring mistakes.
+This is a game of alternative history set in the near future. It starts in November 2028, a few months before the next Bundestag election. Real parties and institutions appear in it, but everything that happens after today is invented, so please read it as a *game*, not a forecast.
 
-For more information on the politics and government of the German Republic, see the "Library" page on the top left. If this is your first time playing the game, it is strongly recommended that you read at least some of this information.
+For more information on the political system, the parties and the SPD's factions, see the "Library" page on the top left. If this is your first time playing, it is a good idea to read at least some of it.
 
-- @1928_main: Begin (normal difficulty)
+- @begin: Begin
 
-@1928_main
-subtitle: The way the game is meant to be player. The only option for now.
-audio: shuffle music/1928_1930/FruhlingsliedMendelssohn.mp3 music/1928_1930/AUF_HOHEN_BERGEN_noise_reduced.mp3 music/1928_1930/MarekWeber.mp3 music/1928_1930/BAUERNKAPELLE.mp3 music/1928_1933/DERLINDENBAUM_normalized.mp3 music/1928_1933/ZurSonne_zurFreiheit.mp3 music/1928_1933/arbeiter_marseille.mp3 music/1928_1933/Wann_wir_schreiten_Seit_an_Seit.mp3 music/1930_1933/Internationale-de_normalized.ogg music/1928_1930/LiedDerPompadour.mp3 music/1928_1933/SozialistenMarsch.mp3
+@begin
 new-page: true
-go-to: main if hand_size == 4; main.main_easy if hand_size == 10
+go-to: main
 
-= 1928
+= November 2028
 
 
 

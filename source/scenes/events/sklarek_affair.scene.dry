@@ -1,44 +1,40 @@
-title: Sklarek Affair
-subtitle: An investigation into a long-running corruption scandal in Berlin
+title: The Housing Contracts Affair
+subtitle: A corruption scandal in one of our Länder
 new-page: true
-view-if: (year = 1929 and month >= 11) and spd_prussia
+view-if: year = 2029 and month >= 11 and spd_states
 max-visits: 1
-on-arrival: sklarek_affair_seen = 1; workers_spd -= 1; new_middle_spd -= 1; old_middle_spd -= 1; rural_spd -= 1; catholics_spd -= 1; unemployed_spd -= 1; new_middle_greens -= 2; pro_republic -= 2
+on-arrival: sklarek_affair_seen = 1; workers_spd -= 1; new_middle_spd -= 1; old_middle_spd -= 1; rural_spd -= 1; catholics_spd -= 1; unemployed_spd -= 1; trust_in_democracy -= 2
 tags: event
 face-image: img/sklarek.jpg
 
-= Sklarek Affair
+= The Housing Contracts Affair
 
-# The Prussian committee of inquiry into the affair in 1929
-A great corruption scandal is being uncovered in Berlin and Prussia. In 1927, a business owned by members of the Sklarek family was contracted to provide uniforms for the Berlin government, but they absconded with the funds without providing the uniforms. It has now been discovered that the Sklareks are deeply embedded in Berlin politics, with family members in the SPD, DDP, and other parties, and have been bribing politicians in exchange for government contracts. The Right has seized upon this affair and is using it to attack the "Weimar" parties and the governing system of the republic, as well as fanning the flames of antisemitism, since the Sklareks are of Eastern European Jewish descent.
+Prosecutors have raided the offices of a construction company that built thousands of social housing flats for one of our Länder governments. Investigators say that it paid for holidays, consultancy contracts and party sponsorship in return for contracts at inflated prices. Two of the officials involved are SPD members, and a state secretary has close ties to the company. The AfD calls it proof that "the old parties" are all corrupt.
 
-The Prussian Landtag has formed a committee to investigate the affair. What should be our posture?
-
-# Corruption is unacceptable. Cooperate with the investigation fully to root out
-# The Sklareks also ingratiated themselves with the DNVP; turn the attacks back against the right. (requires judicial reform and either Prussian police reform or interior ministry reform  to succeed)
+The Landtag has set up a committee of inquiry. What should be our posture?
 
 - @downplay
 - @corruption_unacceptable
 - @turn_back
 
 @corruption_unacceptable
-title: Corruption is unacceptable. Cooperate with the investigation, even if it implicates the SPD.
-on-arrival: center_dissent += 5; reformist_dissent += 5; labor_dissent += 5
+title: Corruption is unacceptable. Cooperate fully with the investigation, even if it implicates the SPD.
+on-arrival: center_dissent += 5; reformist_dissent += 5; labor_dissent += 5; trust_in_democracy += 1
 
-We cooperate with the investigation fully, expelling any party member who has been credibly accused of corruption. This causes internal dissention as many loyal party members are purged. However, our actions have limited the damage to the SPD's support.
+We cooperate fully, the state secretary resigns, and members credibly accused of corruption are suspended from the party. Some loyal comrades feel betrayed, but the damage to the party is limited.
 
 @downplay
 title: Downplay the affair.
-on-arrival: workers_spd -= 1; new_middle_spd -= 2; old_middle_spd -= 2; rural_spd -= 2; catholics_spd -= 2; unemployed_spd -= 2; new_middle_greens -= 2; pro_republic -= 2
+on-arrival: workers_spd -= 1; new_middle_spd -= 2; old_middle_spd -= 2; rural_spd -= 2; catholics_spd -= 2; unemployed_spd -= 2; trust_in_democracy -= 2; afd_relation -= 2
 
-In our media outlets, we downplay the Sklarek affair, and we act only when we have been forced to. The standing of our party has been seriously damaged by the affair, and people are increasingly disillusioned about the Republic.
+We speak of a few individual failings and act only when we are forced to. Every new revelation in the press damages us further, and people are increasingly disillusioned with politics.
 
 @turn_back
-title: The Sklareks also ingratiated themselves with the DNVP; turn the attacks back against the right.
+title: The company also sponsored other parties. Make that known.
 choose-if: judicial_reform > 1 and federal_police_loyalty > 0.5
-unavailable-subtitle: The judiciary and police are set against us.
-on-arrival: new_middle_spd -= 1; old_middle_spd -= 1; rural_spd -= 1; catholics_spd -= 1; new_middle_greens -= 1; workers_bsw -= 1; new_middle_bsw -= 1; old_middle_bsw -= 1; rural_bsw -= 1; pro_republic -= 2
+unavailable-subtitle: We cannot prove it without stronger prosecutors and police.
+on-arrival: new_middle_spd -= 1; old_middle_spd -= 1; rural_spd -= 1; catholics_spd -= 1; new_middle_cdu -= 1; old_middle_cdu -= 1; new_middle_fdp -= 1; trust_in_democracy -= 2
 
-The investigation has uncovered that the Sklareks' corruption had no party lines; the parties of the right are just as implicated as the Weimar Coalition. We turn the propaganda against them.
+The investigation shows that the company sponsored the Union and the FDP just as generously. The scandal now touches every established party.
 
-The only parties that appear to be unscathed from the affair are the KPD and NSDAP.
+Only the AfD and the BSW appear untouched.

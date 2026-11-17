@@ -1,0 +1,31 @@
+title: Rolf Mützenich
+is-pinned-card: true
+tags: advisor, left
+view-if: muetzenich_advisor = 1
+new-page: true
+
+= Rolf Mützenich
+
+Rolf Mützenich from Cologne led the parliamentary group for six years. A political scientist who has worked on arms control all his life, he is the party's most respected voice for diplomacy and disarmament.
+
+- @campaign_pacifism
+- @linke_cooperation
+- @root: Return to main
+
+@campaign_pacifism
+title: Rally for peace
+subtitle: A rally on diplomacy and disarmament.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6
+go-to: rally.pacifism
+
+@linke_cooperation
+title: Talks with the Linke
+subtitle: Build trust with the Linke.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; left_strength += 4; linke_relation += 5*(1-dissent); reformist_dissent += 2; linke_coalition += 1 if linke_cooperation_seen <= 1; linke_cooperation_seen += 1
+
+Quiet talks with the Linke's leaders and parliamentary group help to rebuild trust.
+

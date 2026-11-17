@@ -1,0 +1,9 @@
+title: 2031
+subtitle: A new year
+tags: event
+view-if: year = 2031 and month = 1
+priority: 2
+max-visits: 1
+on-arrival: budget -= 1 if budget > 0
+
+A new year begins. The guarantee of a 48% pension level runs out at the end of this year, and the question of what comes after it hangs over every budget debate. More than a million baby-boomers will retire in the next few years.

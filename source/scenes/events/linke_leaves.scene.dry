@@ -1,0 +1,58 @@
+title: The Linke Threatens to Leave
+subtitle: We have angered the Linke too much.
+new-page: true
+view-if: spd_in_government = 1 and in_left_front = 1 and linke_coalition_dissent >= 4
+tags: event
+go-to: menu
+
+= The Linke Threatens to Leave
+
+The Linke has had enough of our compromises. Its leadership says that it will leave the government unless something changes.
+
+@menu
+
+- @try_assuage: Try to calm them down.
+- @new_partners: Look for new partners in the centre.
+- @let_it_happen: Let them go.
+
+@try_assuage
+
+How do we calm the Linke down?
+
+- @resources: Use our resources to smooth things over.
+- @menu: Never mind.
+
+@resources
+choose-if: resources >= 3 and linke_review_seen = 0
+unavailable-subtitle: [? if resources < 3 : We do not have enough resources. ?][? if linke_review_seen : Resources can no longer fix this. ?]
+subtitle: -3 resources
+on-arrival: resources -= 3; linke_coalition_dissent -= 1
+
+We promise them a few laws and a few posts. It is a crude solution, but it works for now.
+
+@new_partners
+choose-if: (kenya_coalition >= 50 and cdu_relation >= 40 and greens_relation >= 40) or (grand_coalition >= 50 and cdu_relation >= 45) or (traffic_light_coalition >= 50 and fdp_relation >= 35 and greens_relation >= 40)
+unavailable-subtitle: [? if grand_coalition < 50 and kenya_coalition < 50 and traffic_light_coalition < 50 : No other coalition would have a majority. ?][? if cdu_relation < 45 : After governing with the Linke, the CDU/CSU does not trust us. ?]
+
+We could drop the Linke and look for partners in the centre.
+
+- @election_1928.grand_coalition: Form a coalition with the CDU/CSU.
+- @election_1928.kenya_coalition: Form a Kenya coalition.
+- @election_1928.traffic_light_coalition: Form a traffic-light coalition.
+- @let_it_happen: There is nothing we can do.
+
+@let_it_happen
+on-arrival: linke_relation -= 8; workers_linke -= 3; workers_spd -= 4; unemployed_spd -= 3; linke_coalition_dissent = 0; trust_in_democracy -= 3
+go-to: rot_gruen_left if coalition = "r2g"; spd_alone_left if coalition != "r2g"
+
+@rot_gruen_left
+on-arrival: coalition = "rot_gruen"
+call: apply_government
+
+The Linke leaves the cabinet. Chancellor [+ chancellor +] carries on with a red-green minority government, which will need votes from the opposition for every law.
+
+@spd_alone_left
+on-arrival: coalition = "spd_minority"
+call: apply_government
+
+The Linke leaves the cabinet. Chancellor [+ chancellor +] carries on with an SPD minority government, which will need votes from the opposition for every law.

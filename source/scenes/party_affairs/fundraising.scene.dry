@@ -1,6 +1,6 @@
 title: Fundraising
 new-page: true
-view-if: fundraising_timer <= 0 and (not historical_mode)
+view-if: fundraising_timer <= 0
 on-arrival: fundraising_timer = 6; month_actions += 1
 frequency: 300
 is-card: true
@@ -9,7 +9,7 @@ tags: party_affairs
 
 = Fundraising
 
-For better or for worse, the party cannot exist without money.
+For better or for worse, the party cannot exist without money. Membership dues are our largest source of income.
 
 - @maintain: Maintain our current dues.
 - @reduce: Reduce dues.
@@ -27,14 +27,13 @@ subtitle: [+ dues - 1 +] resources gained.
 choose-if: dues > 1
 on-arrival: dues -= 1; resources += dues; left_dissent -= 8; center_dissent -= 8; reformist_dissent -= 8; labor_dissent -= 8
 
-Our current members appreciate this, but no one decides to join a party because of the low dues.
+Our members appreciate this, but nobody joins a party because of low dues.
 
 @increase
-subtitle: [+ dues + 1 +] resources gained. [? if unemployed >= 15 : Given the present economic situation, this may be painful. ?][? if dues >= 4 : Dues are already rather high; increasing them might reduce our membership. ?]
-on-arrival: dues += 1; resources += dues; workers_spd -= 3; unemployed_spd -= 3; workers_spd -= 10 if unemployed >= 15; unemployed_spd -= 10 if unemployed >= 15; workers_spd -= 3*dues if dues >= 5; unemployed_spd -= 3*dues if dues >= 5
+subtitle: [+ dues + 1 +] resources gained. [? if unemployment_rate >= 8 : Given the present economic situation, this may be painful. ?][? if dues >= 4 : Dues are already rather high; increasing them might cost us members. ?]
+on-arrival: dues += 1; resources += dues; workers_spd -= 3; unemployed_spd -= 3; workers_spd -= 5 if unemployment_rate >= 8; unemployed_spd -= 5 if unemployment_rate >= 8; workers_spd -= 3*dues if dues >= 5; unemployed_spd -= 3*dues if dues >= 5
 view-if: dues <= 4
 
-Our members grumble at this, and some of the less committed members leave. But now, we have access to additional resources. 
+Our members grumble, and some leave. But we now have more money to work with.
 
-[? if unemployed >= 15 : Because of the presently high unemployment, our members are feeling the extra burden hard. ?]
-
+[? if unemployment_rate >= 8 : With unemployment this high, many members feel the extra cost. ?]

@@ -1,22 +1,22 @@
 {
-  "name": " social_democracy_alternate_history",
+  "name": "social-democracy-2028",
   "version": "0.11.1",
-  "description": "Building the game:",
+  "description": "Social Democracy: An Alternative History, set in Germany from 2028. A mod of the game by Autumn Chen.",
   "main": "out/html/index.html",
   "scripts": {
     "dendrynexus": "dendrynexus"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://aucchen@github.com/aucchen/social_democracy_alternate_history.git"
+    "url": "git+https://github.com/AthanasiosGalanakis/2035-AAHSPD.git"
   },
   "keywords": [],
-  "author": "Autumn Chen",
-  "license": "MIT",
+  "author": "based on the game by Autumn Chen",
+  "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/aucchen/social_democracy_alternate_history/issues"
+    "url": "https://github.com/AthanasiosGalanakis/2035-AAHSPD/issues"
   },
-  "homepage": "https://github.com/aucchen/social_democracy_alternate_history",
+  "homepage": "https://github.com/AthanasiosGalanakis/2035-AAHSPD",
   "dependencies": {
     "dendrynexus": "github:aucchen/dendrynexus",
     "parliament-svg": "^3.0.0"
